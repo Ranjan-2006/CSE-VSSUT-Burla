@@ -19,6 +19,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .sticky-nav{position:fixed;top:0;width:100%;height:64px;display:flex;justify-content:space-between;align-items:center;padding:0 5%;z-index:999;border-bottom:1px solid transparent;transition:all .4s ease;background:transparent;color:var(--surface)}
 .sticky-nav.scrolled{backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:rgba(11,30,61,.85);border-bottom:1px solid var(--border)}
 .nav-brand{display:flex;align-items:center;gap:12px}
+.vssut-logo{width:40px;height:40px;object-fit:contain}
 .emblem{width:40px;height:40px;border-radius:50%;border:1px solid var(--secondary);display:flex;align-items:center;justify-content:center;font-family:var(--font-sans);font-weight:700;color:var(--secondary);font-size:.9rem}
 .brand-text{display:flex;flex-direction:column;line-height:1.2}
 .uni-name{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;color:var(--secondary)}
