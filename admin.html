@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | VSSUT CSE</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Syne:wght@400..800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Admin Specific Styles overriding some base styles */
+    body { background: var(--surface-alt); color: var(--surface); overflow-y: auto; margin: 0; padding: 0; }
+    .admin-layout { display: flex; height: 100vh; overflow: hidden; }
+    .admin-sidebar { width: 280px; background: var(--primary); border-right: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; padding: 20px; }
+    .admin-hero { font-family: var(--font-display); font-size: 1.5rem; color: var(--secondary); margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .admin-nav { display: flex; flex-direction: column; gap: 10px; }
+    .admin-nav button { text-align: left; padding: 15px 20px; background: transparent; color: var(--muted); font-family: var(--font-sans); font-size: 1rem; border-radius: 4px; transition: all 0.2s; border: none; cursor: pointer; }
+    .admin-nav button:hover, .admin-nav button.active { background: rgba(200, 168, 75, 0.1); color: var(--secondary); }
+    .admin-main { flex: 1; padding: 40px; overflow-y: auto; }
+    
+    .admin-view { display: none; animation: fadeIn 0.4s ease; }
+    .admin-view.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .admin-header { margin-bottom: 30px; }
+    .admin-header h1 { font-size: 2.2rem; margin: 0; color: var(--surface); font-family: var(--font-display); }
+    
+    .admin-card { background: var(--primary); padding: 30px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; margin-bottom: 30px; }
+    .admin-card h3 { font-family: var(--font-sans); color: var(--secondary); margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;}
+    
+    .form-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .form-group label { font-family: var(--font-sans); font-size: 0.9rem; color: var(--muted); }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: var(--surface); border-radius: 4px; font-family: var(--font-sans); }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--secondary); }
+    .btn-submit { background: var(--secondary); color: var(--primary); padding: 12px 25px; font-family: var(--font-sans); font-weight: 600; border-radius: 4px; display: inline-block; cursor: pointer; border: none; margin-top: 10px; }
+    
+    .admin-table { width: 100%; border-collapse: collapse; font-family: var(--font-sans); font-size: 0.95rem; }
+    .admin-table th, .admin-table td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .admin-table th { color: var(--secondary); font-weight: 600; }
+    
+    .back-btn { margin-top: auto; padding: 12px; text-align: center; border: 1px solid var(--muted); color: var(--muted); border-radius: 4px; cursor: pointer; transition: all 0.3s; text-decoration: none; display: block; font-family: var(--font-sans); }
+    .back-btn:hover { background: var(--surface); color: var(--primary); }
+  </style>
+</head>
+
+<body>
+
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-hero">
+        CSE Admin Portal
+      </div>
+      <nav class="admin-nav" id="admin-tabs">
+        <button data-target="admin-dash" class="active">Dashboard</button>
+        <button data-target="admin-students">Student Directory</button>
+        <button data-target="admin-faculty">Faculty Directory</button>
+        <button data-target="admin-news">News & Events</button>
+        <button data-target="admin-resources">Resources</button>
+      </nav>
+      <a href="index.html" class="back-btn">&larr; Back to Site</a>
+    </aside>
+
+    <main class="admin-main">
+      
+      <!-- Dashboard View -->
+      <div id="admin-dash" class="admin-view active">
+        <div class="admin-header">
+          <h1>Dashboard Overview</h1>
+        </div>
+        <div class="admin-card">
+          <h3>Welcome, Admin</h3>
+          <p style="color: var(--muted); font-family: var(--font-sans);">Select a tab from the left menu to update the department website's components.</p>
+        </div>
+      </div>
+
+      <!-- Students View -->
+      <div id="admin-students" class="admin-view">
+        <div class="admin-header">
+          <h1>Update Student Directory</h1>
+        </div>
+        <div class="admin-card">
+          <h3>Upload Batch PDF</h3>
+          <form onsubmit="event.preventDefault(); alert('Student batch list uploaded!');">
+            <div class="form-group">
+              <label>Select Batch Year</label>
+              <select>
+                <option>1st Year (Batch 2023-2027)</option>
+                <option>2nd Year (Batch 2022-2026)</option>
+                <option>3rd Year (Batch 2021-2025)</option>
+                <option>4th Year (Batch 2020-2024)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Upload PDF Document</label>
+              <input type="file" accept=".pdf" required>
+            </div>
+            <button class="btn-submit">Update Directory</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Faculty View -->
+      <div id="admin-faculty" class="admin-view">
+        <div class="admin-header">
+          <h1>Manage Faculty</h1>
+        </div>
+        <div class="admin-card">
+          <h3>Add New Faculty</h3>
+          <form onsubmit="event.preventDefault(); alert('Faculty added successfully!');">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" placeholder="e.g. Dr. John Doe" required>
+            </div>
+            <div class="form-group">
+              <label>Designation & Role</label>
+              <input type="text" placeholder="e.g. Assistant Professor">
+            </div>
+            <div class="form-group">
+              <label>Profile Image</label>
+              <input type="file" accept="image/*">
+            </div>
+            <button class="btn-submit">Save Faculty</button>
+          </form>
+        </div>
+        
+        <div class="admin-card">
+          <h3>Current Roster Snippet</h3>
+          <table class="admin-table">
+            <tr>
+              <th>Name</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+            <tr>
+              <td>Prof. Himansu Sekhar Behera</td>
+              <td>Professor & HOD</td>
+              <td style="color:red; cursor:pointer;" onclick="alert('Delete requested')">Remove</td>
+            </tr>
+            <tr>
+              <td>Dr. Suvasini Panigrahi</td>
+              <td>Associate Professor & HOP</td>
+              <td style="color:red; cursor:pointer;" onclick="alert('Delete requested')">Remove</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- News View -->
+      <div id="admin-news" class="admin-view">
+        <div class="admin-header">
+          <h1>News & Events Update</h1>
+        </div>
+        <div class="admin-card">
+          <h3>Post New Update</h3>
+          <form onsubmit="event.preventDefault(); alert('News successfully posted!');">
+            <div class="form-group">
+              <label>Headline</label>
+              <input type="text" placeholder="Enter headline..." required>
+            </div>
+            <div class="form-group">
+              <label>Date / Category Label</label>
+              <input type="text" placeholder="e.g. OCTOBER 12, 2024 or ACHIEVEMENT" required>
+            </div>
+            <div class="form-group">
+              <label>Content Description (Optional)</label>
+              <textarea rows="4" placeholder="Brief details about the event..."></textarea>
+            </div>
+            <button class="btn-submit">Publish Update</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Resources View -->
+      <div id="admin-resources" class="admin-view">
+        <div class="admin-header">
+          <h1>Resource Manager</h1>
+        </div>
+        <div class="admin-card">
+          <h3>Add Downloadable Resource</h3>
+          <form onsubmit="event.preventDefault(); alert('Resource uploaded to database!');">
+            <div class="form-group">
+              <label>Resource Title</label>
+              <input type="text" placeholder="e.g. 2024 B.Tech Syllabus" required>
+            </div>
+            <div class="form-group">
+              <label>Short Description</label>
+              <input type="text" placeholder="Enter a brief summary..." required>
+            </div>
+            <div class="form-group">
+              <label>Upload File</label>
+              <input type="file" accept=".pdf,.docx,.zip" required>
+            </div>
+            <button class="btn-submit">Upload Resource</button>
+          </form>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // Simple Admin Tab Switching
+    const tabs = document.querySelectorAll('#admin-tabs button');
+    const views = document.querySelectorAll('.admin-view');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        views.forEach(v => v.classList.remove('active'));
+        
+        tab.classList.add('active');
+        document.getElementById(tab.getAttribute('data-target')).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
