@@ -9,7 +9,8 @@ if(dismissBtn) {
 // Sticky Nav Scroll Effect
 const nav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
+  const isHome = document.getElementById('view-home').classList.contains('active');
+  if (!isHome || window.scrollY > 50) {
     nav.classList.add('scrolled');
   } else {
     nav.classList.remove('scrolled');
@@ -62,9 +63,9 @@ areaBtns.forEach(btn => {
 // Smooth Scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
-    e.preventDefault();
     const targetId = this.getAttribute('href');
-    if(targetId === '#') return;
+    if(targetId === '#' || targetId.startsWith('#view')) return;
+    e.preventDefault();
     const targetElement = document.querySelector(targetId);
     if(targetElement) {
       const navHeight = document.getElementById('main-nav').offsetHeight;
@@ -72,6 +73,53 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       window.scrollTo({
         top: targetPosition,
         behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// SPA View Switching Logic
+const navTabs = document.querySelectorAll('.nav-tab');
+const views = document.querySelectorAll('.view');
+
+navTabs.forEach(tab => {
+  tab.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    // Remove active from all tabs
+    navTabs.forEach(t => t.classList.remove('active'));
+    // Add active to clicked
+    tab.classList.add('active');
+    
+    // Hide all views
+    views.forEach(v => {
+      v.classList.remove('active');
+      v.style.display = 'none';
+    });
+    
+    // Show target view
+    const targetId = tab.getAttribute('data-target');
+    const targetView = document.getElementById(targetId);
+    if(targetView) {
+      targetView.classList.add('active');
+      targetView.style.display = 'block';
+      
+      // Keep nav bar solid on non-home tabs
+      const nav = document.getElementById('main-nav');
+      if (targetId !== 'view-home') {
+        nav.classList.add('scrolled');
+      } else if (window.scrollY <= 50) {
+        nav.classList.remove('scrolled');
+      }
+
+      // Reset scroll
+      window.scrollTo(0, 0);
+      
+      // Re-trigger fade-up animations in the new view
+      const fadeElements = targetView.querySelectorAll('.fade-up');
+      fadeElements.forEach(el => {
+        el.classList.remove('visible');
+        fadeObserver.observe(el);
       });
     }
   });

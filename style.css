@@ -179,6 +179,37 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .f-list a:hover{color:var(--secondary)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding:25px 5%;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:.75rem;color:var(--muted)}
 
+/* SPA Styles & New Components */
+.nav-tab.active{color:var(--secondary)}
+.home-content-grid{display:grid;grid-template-columns:1fr 300px}
+.home-content-grid .about{grid-template-columns:1fr;padding:100px 60px}
+.news-sidebar{padding:100px 40px;background:var(--surface-alt);border-left:1px solid var(--border)}
+.news-sidebar .section-tag{color:var(--secondary)}
+.news-sidebar h2{font-size:2rem;color:var(--surface);margin-top:10px;margin-bottom:30px;line-height:1.2}
+.news-list-sidebar{display:flex;flex-direction:column;gap:15px}
+.feat-card-sidebar{background:var(--primary);padding:30px;border:1px solid var(--secondary);display:flex;flex-direction:column}
+.feat-card-sidebar h4{color:var(--surface);font-family:var(--font-sans);font-size:1.1rem;margin:10px 0;line-height:1.4}
+.students{padding:100px 5%;background:var(--surface-alt);color:var(--surface)}
+.students .section-title{color:var(--surface)}
+.students-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.student-btn{background:var(--primary);border:1px solid rgba(200,168,75,0.2);padding:40px;display:flex;justify-content:space-between;align-items:center;transition:transform .3s,border-color .3s;color:var(--surface)}
+.student-btn:hover{transform:translateY(-5px);border-color:var(--secondary);color:var(--surface)}
+.student-btn h3{font-family:var(--font-sans);font-size:1.5rem;margin:0}
+.btn-arrow{font-family:var(--font-sans);font-size:1.5rem;color:var(--secondary)}
+.syllabus{padding:100px 5%;background:var(--surface-alt);color:var(--surface)}
+.syllabus .section-title{color:var(--surface)}
+.syllabus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.syllabus-btn{background:var(--primary);padding:30px;border:1px solid rgba(200,168,75,0.2);font-family:var(--font-sans);font-size:1.1rem;display:flex;justify-content:space-between;align-items:center;transition:all .3s;color:var(--surface)}
+.syllabus-btn:hover{border-color:var(--secondary);color:var(--surface)}
+.syllabus-btn span{font-weight:600}
+.resources{padding:100px 5%;background:var(--surface)}
+.resources-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+.res-dummy-card{background:var(--surface);padding:30px;border:1px solid rgba(11,30,61,0.1);border-top:4px solid var(--secondary);display:flex;flex-direction:column;transition:transform .3s}
+.res-dummy-card:hover{transform:translateY(-5px);border-color:var(--secondary)}
+.res-dummy-card h4{font-family:var(--font-sans);font-size:1.2rem;margin:0 0 10px;color:var(--primary)}
+.res-dummy-card p{font-size:.9rem;color:var(--muted);margin-bottom:20px;flex-grow:1;line-height:1.5}
+.res-dummy-card .btn-outline{display:inline-block;text-align:center;align-self:flex-start}
+
 .fade-up{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 .delay-1{transition-delay:.2s}

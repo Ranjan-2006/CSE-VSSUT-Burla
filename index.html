@@ -19,8 +19,6 @@
 
 <body>
 
-
-
   <!-- 2. Sticky Navigation -->
   <nav class="sticky-nav" id="main-nav">
     <div class="nav-brand">
@@ -32,442 +30,468 @@
       </div>
     </div>
     <ul class="nav-links">
-      <li><a href="#programs">Programs</a></li>
-      <li><a href="#faculty">Faculty</a></li>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#placements">Placements</a></li>
-      <li><a href="#news">News</a></li>
+      <li><a href="#" data-target="view-home" class="nav-tab active">Home</a></li>
+      <li><a href="#" data-target="view-people" class="nav-tab">People</a></li>
+      <li><a href="#" data-target="view-academic" class="nav-tab">Academic</a></li>
+      <li><a href="#" data-target="view-resources" class="nav-tab">Resources</a></li>
     </ul>
     <a href="#contact" class="btn-cta">Contact Us</a>
   </nav>
 
-  <!-- 3. Hero Section -->
-  <section class="hero" id="home">
-    <svg class="noise-overlay" xmlns="http://www.w3.org/2000/svg">
-      <filter id="noiseFilter">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-      </filter>
-      <rect width="100%" height="100%" filter="url(#noiseFilter)" />
-    </svg>
+  <!-- ==================== VIEW: HOME ==================== -->
+  <main id="view-home" class="view active">
+    <!-- 3. Hero Section -->
+    <section class="hero" id="home">
+      <svg class="noise-overlay" xmlns="http://www.w3.org/2000/svg">
+        <filter id="noiseFilter">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#noiseFilter)" />
+      </svg>
 
-    <div class="hero-left fade-up">
-      <span class="eyebrow">EST. 1956 &middot; BURLA, ODISHA</span>
-      <h1>Engineering the <i>Future</i></h1>
-      <p class="mission-text">Fostering innovation and excellence in computer science through rigorous research,
-        academic integrity, and cutting-edge technological development.</p>
-      <div class="hero-ctas">
-        <a href="#programs" class="btn-solid">Explore Programs</a>
-        <a href="#research" class="btn-outline">View Research</a>
+      <div class="hero-left fade-up">
+        <span class="eyebrow">EST. 1956 &middot; BURLA, ODISHA</span>
+        <h1>Engineering the <i>Future</i></h1>
+        <p class="mission-text">Fostering innovation and excellence in computer science through rigorous research,
+          academic integrity, and cutting-edge technological development.</p>
+        <div class="hero-ctas">
+          <a href="#" data-target="view-academic" class="btn-solid nav-tab-link">Explore Programs</a>
+          <a href="#research" class="btn-outline">View Research</a>
+        </div>
       </div>
-    </div>
 
-    <div class="hero-right fade-up delay-1">
-      <div class="stats-card">
-        <div class="stats-grid">
-          <div class="stat-item">
-            <span class="stat-num">20+</span>
-            <span class="stat-lbl">Faculty Count</span>
+      <div class="hero-right fade-up delay-1">
+        <div class="stats-card">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <span class="stat-num">20+</span>
+              <span class="stat-lbl">Faculty Count</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">84%</span>
+              <span class="stat-lbl">Placement Rate</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">150+</span>
+              <span class="stat-lbl">Research Papers</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">47LPA</span>
+              <span class="stat-lbl">Highest Package</span>
+            </div>
           </div>
-          <div class="stat-item">
-            <span class="stat-num">84%</span>
-            <span class="stat-lbl">Placement Rate</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">150+</span>
-            <span class="stat-lbl">Research Papers</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">47LPA</span>
-            <span class="stat-lbl">Highest Package</span>
+          <div class="naac-row">
+            <div class="naac-icon">&#x1F3C6;</div>
+            <span>NAAC A+ Accredited &middot; NBA Accredited</span>
           </div>
         </div>
-        <div class="naac-row">
-          <div class="naac-icon">&#x1F3C6;</div>
-          <span>NAAC A+ Accredited &middot; NBA Accredited</span>
+      </div>
+    </section>
+
+    <!-- 4. Marquee Ticker -->
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <span>AI</span> <span>✦</span>
+        <span>Machine Learning</span> <span>✦</span>
+        <span>Cybersecurity</span> <span>✦</span>
+        <span>Cloud Computing</span> <span>✦</span>
+        <span>Data Science</span> <span>✦</span>
+        <span>VLSI</span> <span>✦</span>
+        <span>Computer Vision</span> <span>✦</span>
+        <span>Blockchain</span> <span>✦</span>
+        <span>IoT</span> <span>✦</span>
+        <span>NLP</span> <span>✦</span>
+        <span>AI</span> <span>✦</span>
+        <span>Machine Learning</span> <span>✦</span>
+        <span>Cybersecurity</span> <span>✦</span>
+        <span>Cloud Computing</span> <span>✦</span>
+        <span>Data Science</span> <span>✦</span>
+        <span>VLSI</span> <span>✦</span>
+        <span>Computer Vision</span> <span>✦</span>
+        <span>Blockchain</span> <span>✦</span>
+        <span>IoT</span> <span>✦</span>
+        <span>NLP</span>
+      </div>
+    </div>
+
+    <!-- 5. Content Grid (About & News side-by-side) -->
+    <div class="home-content-grid">
+      <!-- About the Department -->
+      <section class="about" id="about">
+        <div class="about-content fade-up">
+          <span class="section-tag">Overview</span>
+          <h2>A Legacy of Academic Excellence</h2>
+          <p>The Department of Computer Science and Engineering at VSSUT (formerly UCE Burla) stands as a premier beacon of
+            technical education in Eastern India. Since its inception, we have been committed to producing elite engineers
+            and researchers.</p>
+          <p>Our comprehensive curriculum bridges theoretical foundations with modern industrial practices, empowering
+            students to tackle the complex computational challenges of tomorrow while maintaining a strong ethos of ethics
+            and societal impact.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. Marquee Ticker -->
-  <div class="marquee-container">
-    <div class="marquee-track">
-      <span>AI</span> <span>✦</span>
-      <span>Machine Learning</span> <span>✦</span>
-      <span>Cybersecurity</span> <span>✦</span>
-      <span>Cloud Computing</span> <span>✦</span>
-      <span>Data Science</span> <span>✦</span>
-      <span>VLSI</span> <span>✦</span>
-      <span>Computer Vision</span> <span>✦</span>
-      <span>Blockchain</span> <span>✦</span>
-      <span>IoT</span> <span>✦</span>
-      <span>NLP</span> <span>✦</span>
-      <span>AI</span> <span>✦</span>
-      <span>Machine Learning</span> <span>✦</span>
-      <span>Cybersecurity</span> <span>✦</span>
-      <span>Cloud Computing</span> <span>✦</span>
-      <span>Data Science</span> <span>✦</span>
-      <span>VLSI</span> <span>✦</span>
-      <span>Computer Vision</span> <span>✦</span>
-      <span>Blockchain</span> <span>✦</span>
-      <span>IoT</span> <span>✦</span>
-      <span>NLP</span>
-    </div>
-  </div>
-
-  <!-- 5. About the Department -->
-  <section class="about" id="about">
-    <div class="about-content fade-up">
-      <span class="section-tag">Overview</span>
-      <h2>A Legacy of Academic Excellence</h2>
-      <p>The Department of Computer Science and Engineering at VSSUT (formerly UCE Burla) stands as a premier beacon of
-        technical education in Eastern India. Since its inception, we have been committed to producing elite engineers
-        and researchers.</p>
-      <p>Our comprehensive curriculum bridges theoretical foundations with modern industrial practices, empowering
-        students to tackle the complex computational challenges of tomorrow while maintaining a strong ethos of ethics
-        and societal impact.</p>
-    </div>
-    <div class="about-timeline fade-up delay-1">
-      <div class="timeline-item">
-        <span class="year">1956</span>
-        <span class="timeline-desc">University Founded (UCE Burla)</span>
-      </div>
-      <div class="timeline-item">
-        <span class="year">1985</span>
-        <span class="timeline-desc">PG Programs Initiated</span>
-      </div>
-      <div class="timeline-item">
-        <span class="year">2004</span>
-        <span class="timeline-desc">PhD Research Program</span>
-      </div>
-      <div class="timeline-item">
-        <span class="year">2018</span>
-        <span class="timeline-desc">Awarded NAAC 'A' Grade</span>
-      </div>
-      <div class="timeline-item">
-        <span class="year">2024</span>
-        <span class="timeline-desc">Upgraded to NAAC 'A+' Status</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Academic Programs -->
-  <section class="programs" id="programs">
-    <div class="section-header fade-up">
-      <span class="section-tag">Academics</span>
-      <h2 class="section-title">Degree Programs</h2>
-    </div>
-    <div class="prog-grid fade-up delay-1">
-      <div class="prog-card">
-        <span class="lvl-badge">Undergraduate</span>
-        <h3>B.Tech CSE</h3>
-        <p>A rigorous 4-year foundation in algorithms, systems, and theoretical computer science. Equipping minds for
-          industry and research.</p>
-        <div class="prog-meta">
-          <div>
-            <span class="seats">240</span>
-            <span class="seats-lbl">Intake Capacity</span>
+        <div class="about-timeline fade-up delay-1">
+          <div class="timeline-item">
+            <span class="year">1956</span>
+            <span class="timeline-desc">University Founded (UCE Burla)</span>
           </div>
-          <span class="exam-tag">Admissions: JEE Main</span>
-        </div>
-      </div>
-      <div class="prog-card">
-        <span class="lvl-badge">Postgraduate</span>
-        <h3>M.Tech CSE</h3>
-        <p>Specialized 2-year masters focusing on advanced computing trends, data analytics, and intelligent systems
-          design.</p>
-        <div class="prog-meta">
-          <div>
-            <span class="seats">138</span>
-            <span class="seats-lbl">Intake Capacity</span>
+          <div class="timeline-item">
+            <span class="year">1985</span>
+            <span class="timeline-desc">PG Programs Initiated</span>
           </div>
-          <span class="exam-tag">Admissions: GATE</span>
-        </div>
-      </div>
-      <div class="prog-card">
-        <span class="lvl-badge">Doctorate</span>
-        <h3>Ph.D. CSE</h3>
-        <p>Doctoral research spanning AI, security, and networked systems. For exceptional scholars aiming to redefine
-          computing.</p>
-        <div class="prog-meta">
-          <div>
-            <span class="seats">12</span>
-            <span class="seats-lbl">Scholars</span>
+          <div class="timeline-item">
+            <span class="year">2004</span>
+            <span class="timeline-desc">PhD Research Program</span>
           </div>
-          <span class="exam-tag">Admissions: Rolling</span>
+          <div class="timeline-item">
+            <span class="year">2018</span>
+            <span class="timeline-desc">Awarded NAAC 'A' Grade</span>
+          </div>
+          <div class="timeline-item">
+            <span class="year">2024</span>
+            <span class="timeline-desc">Upgraded to NAAC 'A+' Status</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. News sidebar -->
+      <section class="news-sidebar fade-up delay-1" id="news">
+        <span class="section-tag">Updates</span>
+        <h2>News & Events</h2>
+        <div class="news-list-sidebar">
+          <div class="feat-card-sidebar">
+            <span class="news-cat">ACHIEVEMENT</span>
+            <h4>CSE Team wins Microsoft Imagine Cup</h4>
+            <a href="#" class="read-more">Read Full Story &rarr;</a>
+          </div>
+          <div class="n-item">
+            <span class="n-date">OCTOBER 12, 2024</span>
+            <h4 class="n-title">Dr. Rakesh Das awarded SERB grant</h4>
+          </div>
+          <div class="n-item">
+            <span class="n-date">SEPTEMBER 28, 2024</span>
+            <h4 class="n-title">MoU signed with Samsung R&D</h4>
+          </div>
+          <div class="n-item">
+            <span class="n-date">AUGUST 15, 2024</span>
+            <h4 class="n-title">100% placement for 2024 batch</h4>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ==================== VIEW: PEOPLE ==================== -->
+  <main id="view-people" class="view" style="display:none;">
+    <!-- 7. Faculty Directory -->
+    <section class="faculty" id="faculty">
+      <div class="fac-header fade-up">
+        <div>
+          <span class="section-tag">Our Mentors</span>
+          <h2>Faculty Directory</h2>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- 7. Faculty Directory -->
-  <section class="faculty" id="faculty">
-    <div class="fac-header fade-up">
-      <div>
-        <span class="section-tag">Our Mentors</span>
-        <h2>Faculty Directory</h2>
-      </div>
-    </div>
-    <div class="fac-grid fade-up delay-1">
-      <div class="fac-card">
-        <div class="fac-avatar"><img src="images/HSB.jpg" alt="Prof. Himansu Sekhar Behera"></div>
-        <span class="fac-name">Prof. Himansu Sekhar Behera</span>
-        <span class="fac-role">Professor & HOD</span>
-      </div>
-      <div class="fac-card">
-        <div class="fac-avatar"><img src="images/SP.jpg" alt="Dr. Suvasini Panigrahi"></div>
-        <span class="fac-name">Dr. Suvasini Panigrahi</span>
-        <span class="fac-role">Associate Professor & HOP</span>
-      </div>
-      <div class="fac-card">
-        <div class="fac-avatar"><img src="images/SB.jpg" alt="Dr. (Mrs.) Santi Behera"></div>
-        <span class="fac-name">Dr. (Mrs.) Santi Behera</span>
-        <span class="fac-role">Assistant Professor & Faculty Advisor</span>
-      </div>
-      <div class="fac-card">
-        <div class="fac-avatar"><img src="images/MRK.jpg" alt="Prof. Manas Ranjan Kabat"></div>
-        <span class="fac-name">Prof. Manas Ranjan Kabat</span>
-        <span class="fac-role">Professor</span>
-      </div>
-      <div class="fac-card">
-        <div class="fac-avatar"><img src="images/AM.jpg" alt="Ms. ALINA MISHRA"></div>
-        <span class="fac-name">Ms. ALINA MISHRA</span>
-        <span class="fac-role">Assistant Professor</span>
-      </div>
-      <div class="fac-card">
-        <div class="fac-avatar"><img src="images/SKN.jpg" alt="Dr. Sanjib Kumar Nayak"></div>
-        <span class="fac-name">Dr. Sanjib Kumar Nayak</span>
-        <span class="fac-role">Assistant Professor</span>
-      </div>
-      <div class="fac-card">
-        <div class="fac-avatar"><img src="images/SD.jpg" alt="Dr. Satyabrata Das"></div>
-        <span class="fac-name">Dr. Satyabrata Das</span>
-        <span class="fac-role">Associate Professor</span>
-      </div>
-      <div class="fac-card">
-        <div class="fac-avatar"><img src="images/SK.jpg" alt="Dr. Sumitra Kisan"></div>
-        <span class="fac-name">Dr. Sumitra Kisan</span>
-        <span class="fac-role">Assistant Professor</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. Research & Publications -->
-  <section class="research" id="research">
-    <div class="section-header fade-up">
-      <span class="section-tag">Innovation Engine</span>
-      <h2 class="section-title">Research & Publications</h2>
-    </div>
-
-    <div class="res-stats fade-up delay-1">
-      <div><span class="r-stat-num">500+</span><span class="r-stat-lbl">Total Papers</span></div>
-      <div><span class="r-stat-num">320+</span><span class="r-stat-lbl">SCI Indexed</span></div>
-      <div><span class="r-stat-num">180+</span><span class="r-stat-lbl">Int. Conferences</span></div>
-      <div><span class="r-stat-num">45</span><span class="r-stat-lbl">PhD Awarded</span></div>
-    </div>
-
-    <div class="res-layout fade-up delay-1">
-      <div class="res-areas">
-        <button class="area-btn active" data-filter="all">All Disciplines <span class="area-count">—</span></button>
-        <button class="area-btn" data-filter="ai">AI & ML <span class="area-count">142</span></button>
-        <button class="area-btn" data-filter="sec">Cybersecurity <span class="area-count">87</span></button>
-        <button class="area-btn" data-filter="iot">IoT & Networks <span class="area-count">95</span></button>
-        <button class="area-btn" data-filter="data">Data Science <span class="area-count">110</span></button>
-        <button class="area-btn" data-filter="vlsi">VLSI Design <span class="area-count">66</span></button>
-      </div>
-      <div class="pub-list">
-        <!-- AI Card -->
-        <div class="pub-card" data-area="ai">
-          <div class="pub-meta"><span>IEEE T-PAMI</span><span>2023</span></div>
-          <h3 class="pub-title">Deep Learning Architecture for real-time anomaly detection in high-dimensional sensor
-            streams</h3>
-          <div class="pub-authors">S. Patra, A. Mishra, T. Kumar</div>
-          <span class="pub-rank">Impact Factor: 14.5</span>
+      <div class="fac-grid fade-up delay-1">
+        <div class="fac-card">
+          <div class="fac-avatar"><img src="images/HSB.jpg" alt="Prof. Himansu Sekhar Behera"></div>
+          <span class="fac-name">Prof. Himansu Sekhar Behera</span>
+          <span class="fac-role">Professor & HOD</span>
         </div>
-        <!-- Sec Card -->
-        <div class="pub-card" data-area="sec">
-          <div class="pub-meta"><span>ACM CCS</span><span>2024</span></div>
-          <h3 class="pub-title">A novel zero-knowledge proof mechanism for decentralized identity verification</h3>
-          <div class="pub-authors">A. Nayak, R. Das</div>
-          <span class="pub-rank">CORE Rank: A*</span>
+        <div class="fac-card">
+          <div class="fac-avatar"><img src="images/SP.jpg" alt="Dr. Suvasini Panigrahi"></div>
+          <span class="fac-name">Dr. Suvasini Panigrahi</span>
+          <span class="fac-role">Associate Professor & HOP</span>
         </div>
-        <!-- IOT Card -->
-        <div class="pub-card" data-area="iot">
-          <div class="pub-meta"><span>IEEE IoT Journal</span><span>2023</span></div>
-          <h3 class="pub-title">Energy-efficient edge computing protocols for massive industrial IoT deployments</h3>
-          <div class="pub-authors">R. Das, S. Mishra</div>
-          <span class="pub-rank">Impact Factor: 10.6</span>
+        <div class="fac-card">
+          <div class="fac-avatar"><img src="images/SB.jpg" alt="Dr. (Mrs.) Santi Behera"></div>
+          <span class="fac-name">Dr. (Mrs.) Santi Behera</span>
+          <span class="fac-role">Assistant Professor & Faculty Advisor</span>
+        </div>
+        <div class="fac-card">
+          <div class="fac-avatar"><img src="images/MRK.jpg" alt="Prof. Manas Ranjan Kabat"></div>
+          <span class="fac-name">Prof. Manas Ranjan Kabat</span>
+          <span class="fac-role">Professor</span>
+        </div>
+        <div class="fac-card">
+          <div class="fac-avatar"><img src="images/AM.jpg" alt="Ms. ALINA MISHRA"></div>
+          <span class="fac-name">Ms. ALINA MISHRA</span>
+          <span class="fac-role">Assistant Professor</span>
+        </div>
+        <div class="fac-card">
+          <div class="fac-avatar"><img src="images/SKN.jpg" alt="Dr. Sanjib Kumar Nayak"></div>
+          <span class="fac-name">Dr. Sanjib Kumar Nayak</span>
+          <span class="fac-role">Assistant Professor</span>
+        </div>
+        <div class="fac-card">
+          <div class="fac-avatar"><img src="images/SD.jpg" alt="Dr. Satyabrata Das"></div>
+          <span class="fac-name">Dr. Satyabrata Das</span>
+          <span class="fac-role">Associate Professor</span>
+        </div>
+        <div class="fac-card">
+          <div class="fac-avatar"><img src="images/SK.jpg" alt="Dr. Sumitra Kisan"></div>
+          <span class="fac-name">Dr. Sumitra Kisan</span>
+          <span class="fac-role">Assistant Professor</span>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 9. Placements & Careers -->
-  <section class="placements" id="placements">
-    <div class="quote-bg">"</div>
-    <div class="section-header fade-up">
-      <span class="section-tag">Outcomes</span>
-      <h2 class="section-title">Placements & Careers</h2>
-    </div>
-
-    <div class="plc-stats fade-up delay-1">
-      <div class="plc-stat-item">
-        <div class="p-num">84%</div>
-        <div class="p-lbl">Placement Rate</div>
+    <!-- Students Directory -->
+    <section class="students" id="students">
+      <div class="section-header fade-up">
+        <span class="section-tag">Our Community</span>
+        <h2 class="section-title">Students Directory</h2>
       </div>
-      <div class="plc-stat-item">
-        <div class="p-num">47L</div>
-        <div class="p-lbl">Highest CTC</div>
+      <div class="students-grid fade-up delay-1">
+        <a href="1st_year.pdf" target="_blank" class="student-btn">
+          <h3>1st Year</h3>
+          <span class="btn-arrow">&rarr;</span>
+        </a>
+        <a href="2nd_year.pdf" target="_blank" class="student-btn">
+          <h3>2nd Year</h3>
+          <span class="btn-arrow">&rarr;</span>
+        </a>
+        <a href="3rd_year.pdf" target="_blank" class="student-btn">
+          <h3>3rd Year</h3>
+          <span class="btn-arrow">&rarr;</span>
+        </a>
+        <a href="4th_year.pdf" target="_blank" class="student-btn">
+          <h3>4th Year</h3>
+          <span class="btn-arrow">&rarr;</span>
+        </a>
       </div>
-      <div class="plc-stat-item">
-        <div class="p-num">12L</div>
-        <div class="p-lbl">Average CTC</div>
+    </section>
+  </main>
+
+  <!-- ==================== VIEW: ACADEMIC ==================== -->
+  <main id="view-academic" class="view" style="display:none;">
+    <!-- 6. Academic Programs -->
+    <section class="programs" id="programs">
+      <div class="section-header fade-up">
+        <span class="section-tag">Academics</span>
+        <h2 class="section-title">Degree Programs</h2>
       </div>
-    </div>
-
-    <div class="recruiters fade-up delay-1">
-      <span class="recruiter-tag">Microsoft</span>
-      <span class="recruiter-tag">Google</span>
-      <span class="recruiter-tag">Amazon</span>
-      <span class="recruiter-tag">Infosys</span>
-      <span class="recruiter-tag">TCS</span>
-      <span class="recruiter-tag">Wipro</span>
-      <span class="recruiter-tag">Cognizant</span>
-      <span class="recruiter-tag">Oracle</span>
-      <span class="recruiter-tag">IBM</span>
-      <span class="recruiter-tag">Samsung R&D</span>
-      <span class="recruiter-tag">Accenture</span>
-      <span class="recruiter-tag">DRDO</span>
-      <span class="recruiter-tag">Deloitte</span>
-      <span class="recruiter-tag">iServeU</span>
-    </div>
-
-    <div class="testimonials fade-up delay-1">
-      <div class="test-card">
-        <p class="test-quote">"The computational rigor and research-oriented mindset I developed at VSSUT laid the
-          critical foundation for my journey at Microsoft. The faculty's insistence on fundamentals is unmatched."</p>
-        <div class="test-author">
-          <span class="test-name">Aravind Sharma</span>
-          <span class="test-role">SDE II @ Microsoft &middot; Batch of 2019</span>
+      <div class="prog-grid fade-up delay-1">
+        <div class="prog-card">
+          <span class="lvl-badge">Undergraduate</span>
+          <h3>B.Tech CSE</h3>
+          <p>A rigorous 4-year foundation in algorithms, systems, and theoretical computer science. Equipping minds for industry and research.</p>
+          <div class="prog-meta">
+            <div>
+              <span class="seats">240</span>
+              <span class="seats-lbl">Intake Capacity</span>
+            </div>
+            <span class="exam-tag">Admissions: JEE Main</span>
+          </div>
+        </div>
+        <div class="prog-card">
+          <span class="lvl-badge">Postgraduate</span>
+          <h3>M.Tech CSE</h3>
+          <p>Specialized 2-year masters focusing on advanced computing trends, data analytics, and intelligent systems design.</p>
+          <div class="prog-meta">
+            <div>
+              <span class="seats">138</span>
+              <span class="seats-lbl">Intake Capacity</span>
+            </div>
+            <span class="exam-tag">Admissions: GATE</span>
+          </div>
+        </div>
+        <div class="prog-card">
+          <span class="lvl-badge">Doctorate</span>
+          <h3>Ph.D. CSE</h3>
+          <p>Doctoral research spanning AI, security, and networked systems. For exceptional scholars aiming to redefine computing.</p>
+          <div class="prog-meta">
+            <div>
+              <span class="seats">12</span>
+              <span class="seats-lbl">Scholars</span>
+            </div>
+            <span class="exam-tag">Admissions: Rolling</span>
+          </div>
         </div>
       </div>
-      <div class="test-card">
-        <p class="test-quote">"From hands-on labs to late-night coding in the incubation cell, my experience here was
-          transformative. It directly prepared me for the scale of problems I tackle daily."</p>
-        <div class="test-author">
-          <span class="test-name">Priyanka Das</span>
-          <span class="test-role">Data Scientist @ Amazon &middot; Batch of 2021</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 10. News & Events -->
-  <section class="news-events" id="news">
-    <div class="section-header fade-up">
-      <span class="section-tag">Updates</span>
-      <h2 class="section-title">News & Events</h2>
-    </div>
+    <!-- Syllabus Sections -->
+    <section class="syllabus" id="syllabus">
+      <div class="section-header fade-up">
+        <span class="section-tag">Curriculum</span>
+        <h2 class="section-title">Syllabus & Coursework</h2>
+      </div>
+      <div class="syllabus-grid fade-up delay-1">
+        <a href="#" class="syllabus-btn"><span>B.Tech Syllabus Curriculum</span> &rarr;</a>
+        <a href="#" class="syllabus-btn"><span>M.Tech Syllabus Curriculum</span> &rarr;</a>
+        <a href="#" class="syllabus-btn"><span>Ph.D Coursework Policies</span> &rarr;</a>
+      </div>
+    </section>
 
-    <div class="news-grid fade-up delay-1">
-      <div class="feat-card">
-        <span class="news-cat">ACHIEVEMENT</span>
-        <h3>CSE Team wins Microsoft Imagine Cup National Finals</h3>
-        <p>A team of four senior undergraduates secured the top position with their AI-driven accessibility solution,
-          qualifying for the global finals next month in Seattle.</p>
-        <a href="#" class="read-more">Read Full Story &rarr;</a>
+    <!-- 8. Research & Publications -->
+    <section class="research" id="research">
+      <div class="section-header fade-up">
+        <span class="section-tag">Innovation Engine</span>
+        <h2 class="section-title">Research & Publications</h2>
       </div>
-      <div class="news-list">
-        <div class="n-item">
-          <span class="n-date">OCTOBER 12, 2024</span>
-          <h4 class="n-title">Dr. Rakesh Das awarded massive SERB research grant</h4>
+      <div class="res-stats fade-up delay-1">
+        <div><span class="r-stat-num">500+</span><span class="r-stat-lbl">Total Papers</span></div>
+        <div><span class="r-stat-num">320+</span><span class="r-stat-lbl">SCI Indexed</span></div>
+        <div><span class="r-stat-num">180+</span><span class="r-stat-lbl">Int. Conferences</span></div>
+        <div><span class="r-stat-num">45</span><span class="r-stat-lbl">PhD Awarded</span></div>
+      </div>
+      <div class="res-layout fade-up delay-1">
+        <div class="res-areas">
+          <button class="area-btn active" data-filter="all">All Disciplines <span class="area-count">—</span></button>
+          <button class="area-btn" data-filter="ai">AI & ML <span class="area-count">142</span></button>
+          <button class="area-btn" data-filter="sec">Cybersecurity <span class="area-count">87</span></button>
+          <button class="area-btn" data-filter="iot">IoT & Networks <span class="area-count">95</span></button>
+          <button class="area-btn" data-filter="data">Data Science <span class="area-count">110</span></button>
+          <button class="area-btn" data-filter="vlsi">VLSI Design <span class="area-count">66</span></button>
         </div>
-        <div class="n-item">
-          <span class="n-date">SEPTEMBER 28, 2024</span>
-          <h4 class="n-title">MoU signed with Samsung R&D for AI Lab setup</h4>
-        </div>
-        <div class="n-item">
-          <span class="n-date">AUGUST 15, 2024</span>
-          <h4 class="n-title">CSE department achieves 100% placement for 2024 batch</h4>
-        </div>
-        <div class="n-item">
-          <span class="n-date">JULY 02, 2024</span>
-          <h4 class="n-title">New interdisciplinary Data Science PG program launched</h4>
+        <div class="pub-list">
+          <div class="pub-card" data-area="ai">
+            <div class="pub-meta"><span>IEEE T-PAMI</span><span>2023</span></div>
+            <h3 class="pub-title">Deep Learning Architecture for real-time anomaly detection in high-dimensional sensor streams</h3>
+            <div class="pub-authors">S. Patra, A. Mishra, T. Kumar</div>
+            <span class="pub-rank">Impact Factor: 14.5</span>
+          </div>
+          <div class="pub-card" data-area="sec">
+            <div class="pub-meta"><span>ACM CCS</span><span>2024</span></div>
+            <h3 class="pub-title">A novel zero-knowledge proof mechanism for decentralized identity verification</h3>
+            <div class="pub-authors">A. Nayak, R. Das</div>
+            <span class="pub-rank">CORE Rank: A*</span>
+          </div>
+          <div class="pub-card" data-area="iot">
+            <div class="pub-meta"><span>IEEE IoT Journal</span><span>2023</span></div>
+            <h3 class="pub-title">Energy-efficient edge computing protocols for massive industrial IoT deployments</h3>
+            <div class="pub-authors">R. Das, S. Mishra</div>
+            <span class="pub-rank">Impact Factor: 10.6</span>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="events-row fade-up delay-1">
-      <div class="event-card">
-        <div class="e-date-blk"><span class="e-day">24</span><span class="e-month">NOV</span></div>
-        <div class="e-details">
-          <h4>International Conference on ML (ICML-V)</h4>
-          <span class="e-loc">Golden Jubilee Seminar Hall, 9 AM</span>
+    <!-- 9. Placements & Careers -->
+    <section class="placements" id="placements">
+      <div class="quote-bg">"</div>
+      <div class="section-header fade-up">
+        <span class="section-tag">Outcomes</span>
+        <h2 class="section-title">Placements & Careers</h2>
+      </div>
+      <div class="plc-stats fade-up delay-1">
+        <div class="plc-stat-item">
+          <div class="p-num">84%</div>
+          <div class="p-lbl">Placement Rate</div>
+        </div>
+        <div class="plc-stat-item">
+          <div class="p-num">47L</div>
+          <div class="p-lbl">Highest CTC</div>
+        </div>
+        <div class="plc-stat-item">
+          <div class="p-num">12L</div>
+          <div class="p-lbl">Average CTC</div>
         </div>
       </div>
-      <div class="event-card">
-        <div class="e-date-blk"><span class="e-day">05</span><span class="e-month">DEC</span></div>
-        <div class="e-details">
-          <h4>Alumni Meet 2024 - "Nostalgia"</h4>
-          <span class="e-loc">University Auditorium, 10 AM</span>
+      <div class="recruiters fade-up delay-1">
+        <span class="recruiter-tag">Microsoft</span>
+        <span class="recruiter-tag">Google</span>
+        <span class="recruiter-tag">Amazon</span>
+        <span class="recruiter-tag">Infosys</span>
+        <span class="recruiter-tag">TCS</span>
+        <span class="recruiter-tag">Wipro</span>
+        <span class="recruiter-tag">Cognizant</span>
+        <span class="recruiter-tag">Oracle</span>
+        <span class="recruiter-tag">IBM</span>
+        <span class="recruiter-tag">Samsung R&D</span>
+        <span class="recruiter-tag">Accenture</span>
+        <span class="recruiter-tag">DRDO</span>
+        <span class="recruiter-tag">Deloitte</span>
+        <span class="recruiter-tag">iServeU</span>
+      </div>
+      <div class="testimonials fade-up delay-1">
+        <div class="test-card">
+          <p class="test-quote">"The computational rigor and research-oriented mindset I developed at VSSUT laid the critical foundation for my journey at Microsoft. The faculty's insistence on fundamentals is unmatched."</p>
+          <div class="test-author">
+            <span class="test-name">Aravind Sharma</span>
+            <span class="test-role">SDE II @ Microsoft &middot; Batch of 2019</span>
+          </div>
+        </div>
+        <div class="test-card">
+          <p class="test-quote">"From hands-on labs to late-night coding in the incubation cell, my experience here was transformative. It directly prepared me for the scale of problems I tackle daily."</p>
+          <div class="test-author">
+            <span class="test-name">Priyanka Das</span>
+            <span class="test-role">Data Scientist @ Amazon &middot; Batch of 2021</span>
+          </div>
         </div>
       </div>
-      <div class="event-card">
-        <div class="e-date-blk"><span class="e-day">12</span><span class="e-month">JAN</span></div>
-        <div class="e-details">
-          <h4>Cybersecurity Hackathon - DefendNet</h4>
-          <span class="e-loc">CSE Main Lab Complex, 24-hours</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 11. Infrastructure & Labs -->
-  <section class="labs fade-up">
-    <div class="section-header">
-      <span class="section-tag">Facilities</span>
-      <h2 class="section-title">Infrastructure & Labs</h2>
-    </div>
+    <!-- 11. Infrastructure & Labs -->
+    <section class="labs fade-up">
+      <div class="section-header">
+        <span class="section-tag">Facilities</span>
+        <h2 class="section-title">Infrastructure & Labs</h2>
+      </div>
+      <div class="labs-grid">
+        <div class="lab-card">
+          <div class="lab-icon">&#x1F9E0;</div>
+          <h3>AI & Deep Learning Lab</h3>
+          <p>Equipped with high-end NVIDIA DGX workstations enabling complex neural network training and advanced AI research for students and scholars.</p>
+        </div>
+        <div class="lab-card">
+          <div class="lab-icon">&#x1F6E1;&#xFE0F;</div>
+          <h3>Cybersecurity Lab</h3>
+          <p>A closed network environment specializing in ethical hacking, cryptography, and defensive network architecture simulations.</p>
+        </div>
+        <div class="lab-card">
+          <div class="lab-icon">&#x2601;&#xFE0F;</div>
+          <h3>Cloud & DevOps Lab</h3>
+          <p>Enterprise-grade server architecture allowing students to design, deploy, and scale modern microservices and containerized applications.</p>
+        </div>
+        <div class="lab-card">
+          <div class="lab-icon">&#x1F4F6;</div>
+          <h3>IoT & Embedded Lab</h3>
+          <p>Featuring Raspberry Pi clusters, Arduino microcontrollers, and various sensor suites for building smart connected systems.</p>
+        </div>
+        <div class="lab-card">
+          <div class="lab-icon">&#x1F4DA;</div>
+          <h3>Digital Library</h3>
+          <p>Access to ACM, IEEE Xplore, and Springer digital libraries, alongside thousands of physical references and texts.</p>
+        </div>
+        <div class="lab-card">
+          <div class="lab-icon">&#x1F680;</div>
+          <h3>Startup Incubation Cell</h3>
+          <p>A collaborative workspace offering mentorship, seed funding access, and industry connections for student-led ventures.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <div class="labs-grid">
-      <div class="lab-card">
-        <div class="lab-icon">&#x1F9E0;</div>
-        <h3>AI & Deep Learning Lab</h3>
-        <p>Equipped with high-end NVIDIA DGX workstations enabling complex neural network training and advanced AI
-          research for students and scholars.</p>
+  <!-- ==================== VIEW: RESOURCES ==================== -->
+  <main id="view-resources" class="view" style="display:none;">
+    <section class="resources" id="resources">
+      <div class="section-header fade-up">
+        <span class="section-tag">Downloads & Materials</span>
+        <h2 class="section-title">Department Resources</h2>
       </div>
-      <div class="lab-card">
-        <div class="lab-icon">&#x1F6E1;&#xFE0F;</div>
-        <h3>Cybersecurity Lab</h3>
-        <p>A closed network environment specializing in ethical hacking, cryptography, and defensive network
-          architecture simulations.</p>
+      <div class="resources-grid fade-up delay-1">
+        <div class="res-dummy-card">
+          <h4>Academic Calendar</h4>
+          <p>Important dates and schedules for the ongoing semester.</p>
+          <a href="#" class="btn-outline">Download PDF</a>
+        </div>
+        <div class="res-dummy-card">
+          <h4>Lab Manuals</h4>
+          <p>Comprehensive guides and manuals for laboratory sessions.</p>
+          <a href="#" class="btn-outline">Access Portal</a>
+        </div>
+        <div class="res-dummy-card">
+          <h4>Student Forms</h4>
+          <p>Registration, no-dues, and other administrative forms.</p>
+          <a href="#" class="btn-outline">View Forms</a>
+        </div>
+        <div class="res-dummy-card">
+          <h4>Question Papers</h4>
+          <p>Past year mid-sem and end-sem question bank for reference.</p>
+          <a href="#" class="btn-outline">Browse Archive</a>
+        </div>
       </div>
-      <div class="lab-card">
-        <div class="lab-icon">&#x2601;&#xFE0F;</div>
-        <h3>Cloud & DevOps Lab</h3>
-        <p>Enterprise-grade server architecture allowing students to design, deploy, and scale modern microservices and
-          containerized applications.</p>
-      </div>
-      <div class="lab-card">
-        <div class="lab-icon">&#x1F4F6;</div>
-        <h3>IoT & Embedded Lab</h3>
-        <p>Featuring Raspberry Pi clusters, Arduino microcontrollers, and various sensor suites for building smart
-          connected systems.</p>
-      </div>
-      <div class="lab-card">
-        <div class="lab-icon">&#x1F4DA;</div>
-        <h3>Digital Library</h3>
-        <p>Access to ACM, IEEE Xplore, and Springer digital libraries, alongside thousands of physical references and
-          texts.</p>
-      </div>
-      <div class="lab-card">
-        <div class="lab-icon">&#x1F680;</div>
-        <h3>Startup Incubation Cell</h3>
-        <p>A collaborative workspace offering mentorship, seed funding access, and industry connections for student-led
-          ventures.</p>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- 12. Footer -->
   <footer class="footer" id="contact">
@@ -475,8 +499,7 @@
       <div class="f-brand">
         <h2 class="f-brand-name">VSSUT CSE</h2>
         <div class="f-subtitle">EST. 1956 &middot; ACADEMIC EXCELLENCE</div>
-        <p class="f-desc">Empowering the next generation of technological leaders through uncompromising education and
-          pioneering research.</p>
+        <p class="f-desc">Empowering the next generation of technological leaders through uncompromising education and pioneering research.</p>
         <div class="f-contact">
           <span>VSSUT Burla, Sambalpur, Odisha — 768018</span>
           <span>&#x2709; cse@vssut.ac.in</span>
@@ -523,5 +546,4 @@
 
   <script src="script.js"></script>
 </body>
-
 </html>
