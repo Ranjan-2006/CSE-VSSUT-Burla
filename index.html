@@ -1,543 +1,666 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Department of CSE | VSSUT Burla</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Department of CSE | VSSUT Burla</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
+
 <body>
 
-  <!-- ===== TOP BAR ===== -->
-  <div class="topbar">
-    <div class="topbar-inner">
-      <span><i class="fas fa-envelope"></i> registrar@vssut.ac.in</span>
-      <span><i class="fas fa-phone"></i> +91 8480441756</span>
-      <span class="topbar-social">
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-      </span>
-    </div>
-  </div>
-
-  <!-- ===== HEADER ===== -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="header-logos">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/Veer_Surendra_Sai_University_of_Technology_logo.png/200px-Veer_Surendra_Sai_University_of_Technology_logo.png" alt="VSSUT Logo" class="logo-img" onerror="this.style.display='none'" />
-        <div class="header-text">
-          <h1 class="dept-name">Computer Science &amp; Engineering</h1>
-          <p class="univ-name">Veer Surendra Sai University of Technology, Burla</p>
-          <p class="univ-sub">Sambalpur, Odisha — Established 1994</p>
+    <!-- ===== TOP BAR ===== -->
+    <div class="topbar">
+        <div class="topbar-inner">
+            <span><i class="fas fa-envelope"></i> registrar@vssut.ac.in</span>
+            <span><i class="fas fa-phone"></i> +91 8480441756</span>
+            <span class="topbar-social">
+                <a href="https://www.facebook.com/cseitvssut/"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/VSSUT_official"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/@vssut_burla"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/company/cse-society-vssut/posts/?feedView=all"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/cse_vssut"><i class="fab fa-instagram"></i></a>
+            </span>
         </div>
-        <div class="cse-society-logo">
-          <div class="cse-badge">
-            <span class="cse-badge-text">CSE</span>
-            <span class="cse-badge-sub">Society</span>
-          </div>
-        </div>
-      </div>
     </div>
-  </header>
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li class="has-dropdown">
-          <a href="#about" class="nav-link">About <i class="fas fa-chevron-down"></i></a>
-          <ul class="dropdown">
-            <li><a href="#about">About Department</a></li>
-            <li><a href="#vision">Vision &amp; Mission</a></li>
-            <li><a href="#hod">HOD's Message</a></li>
-          </ul>
-        </li>
-        <li class="has-dropdown">
-          <a href="#programmes" class="nav-link">Academics <i class="fas fa-chevron-down"></i></a>
-          <ul class="dropdown">
-            <li><a href="#programmes">UG Programmes</a></li>
-            <li><a href="#programmes">PG Programmes</a></li>
-            <li><a href="#programmes">Ph.D Programme</a></li>
-            <li><a href="#peo">PEO / PSO / PO</a></li>
-          </ul>
-        </li>
-        <li class="has-dropdown">
-          <a href="#people" class="nav-link">People <i class="fas fa-chevron-down"></i></a>
-          <ul class="dropdown">
-            <li><a href="#people">Faculty</a></li>
-            <li><a href="#people">Staff</a></li>
-          </ul>
-        </li>
-        <li><a href="#research" class="nav-link">Research &amp; Dev</a></li>
-        <li><a href="#gallery" class="nav-link">Gallery</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="home">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <span class="hero-tag">Est. 1994 · NAAC Accredited</span>
-      <h2 class="hero-title">Shaping Tomorrow's<br /><span>Tech Leaders</span></h2>
-      <p class="hero-desc">Department of Computer Science &amp; Engineering at VSSUT Burla — fostering innovation, excellence, and research in computing since 1994.</p>
-      <div class="hero-btns">
-        <a href="#about" class="btn-primary">Explore Department</a>
-        <a href="#programmes" class="btn-outline">Our Programmes</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Years</span></div>
-        <div class="stat-div"></div>
-        <div class="stat"><span class="stat-num">120+</span><span class="stat-label">Faculty &amp; Staff</span></div>
-        <div class="stat-div"></div>
-        <div class="stat"><span class="stat-num">1200+</span><span class="stat-label">Alumni</span></div>
-        <div class="stat-div"></div>
-        <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Publications</span></div>
-      </div>
-    </div>
-    <div class="hero-scroll"><span></span></div>
-  </section>
-
-  <!-- ===== ABOUT + HOD + NEWS (3-col) ===== -->
-  <section class="section about-section" id="about">
-    <div class="container">
-      <div class="section-label">Who We Are</div>
-      <h2 class="section-title">About the Department</h2>
-      <div class="about-grid">
-        <!-- About text -->
-        <div class="about-text card-glass">
-          <p>The Department of Computer Science &amp; Engineering was established in <strong>1994</strong> and has grown into one of the most dynamic departments at VSSUT Burla. It offers a comprehensive range of programmes from B.Tech to Ph.D, equipping students with cutting-edge technical skills and a research-oriented mindset.</p>
-          <p>With state-of-the-art laboratories, experienced faculty, and a vibrant student community through the <strong>CSE Society</strong>, the department continuously strives for academic excellence and industrial relevance.</p>
-          <div class="about-highlights">
-            <div class="highlight"><i class="fas fa-microchip"></i><span>Advanced Labs</span></div>
-            <div class="highlight"><i class="fas fa-flask"></i><span>Active Research</span></div>
-            <div class="highlight"><i class="fas fa-handshake"></i><span>Industry Ties</span></div>
-            <div class="highlight"><i class="fas fa-award"></i><span>NBA Accredited</span></div>
-          </div>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-logos">
+                <div style="display: flex; gap: 16px; align-items: center;">
+                    <a href="https://www.vssut.ac.in/"><img src="assets/logos/Logo_vssut.png" alt="VSSUT Logo"
+                            class="logo-img" onerror="this.style.display='none'" /></a>
+                    <a href="index.html"><img src="assets/logos/CSE.png" alt="CSE Logo" class="logo-img"
+                            onerror="this.style.display='none'" /></a>
+                </div>
+                <div class="header-text">
+                    <h1 class="dept-name">Computer Science &amp; Engineering</h1>
+                    <p class="univ-name">Veer Surendra Sai University of Technology, Burla</p>
+                    <p class="univ-sub">Sambalpur, Odisha — Established 1994</p>
+                </div>
+            </div>
         </div>
+    </header>
 
-        <!-- HOD Message -->
-        <div class="hod-card card-glass" id="hod">
-          <div class="hod-header">
-            <div class="hod-avatar">
-              <i class="fas fa-user-tie"></i>
-            </div>
-            <div>
-              <div class="hod-badge">Head of Department</div>
-              <h3 class="hod-name">Prof. [HOD Name]</h3>
-              <p class="hod-qual">Ph.D, Professor, CSE</p>
-            </div>
-          </div>
-          <blockquote class="hod-quote">
-            <i class="fas fa-quote-left quote-icon"></i>
-            <p>Welcome to the Department of Computer Science &amp; Engineering at VSSUT Burla. Our department is committed to nurturing intellectual curiosity, fostering innovation, and building a strong foundation for students to thrive in the ever-evolving world of technology. We take pride in our dedicated faculty, vibrant research environment, and the achievements of our accomplished alumni.</p>
-          </blockquote>
-          <a href="#" class="read-more-link">Read Full Message <i class="fas fa-arrow-right"></i></a>
-        </div>
-
-        <!-- News & Events -->
-        <div class="news-card card-glass" id="news">
-          <div class="news-header">
-            <h3><i class="fas fa-bell"></i> News &amp; Events</h3>
-            <a href="#" class="view-all-link">View All</a>
-          </div>
-          <div class="news-scroll">
-            <div class="news-item new-tag">
-              <span class="news-date">13 Nov 2025</span>
-              <p>Ph.D Open Defense Viva-Voce of Ms. Swaty Dash, Dept. of Computer Science &amp; Engineering</p>
-            </div>
-            <div class="news-item new-tag">
-              <span class="news-date">03 Nov 2025</span>
-              <p>Ph.D Award Notification of Ms. Priyanka Priyadarshini, Dept. of CSE</p>
-            </div>
-            <div class="news-item">
-              <span class="news-date">Oct 2025</span>
-              <p>Annual Technical Symposium — TechFusion 2025 organized by CSE Society</p>
-            </div>
-            <div class="news-item">
-              <span class="news-date">Sep 2025</span>
-              <p>Workshop on Deep Learning and Neural Networks for final year students</p>
-            </div>
-            <div class="news-item">
-              <span class="news-date">Aug 2025</span>
-              <p>MoU signed with leading IT companies for student internships and placements</p>
-            </div>
-            <div class="news-item">
-              <span class="news-date">Jul 2025</span>
-              <p>Faculty Development Programme on Cloud Computing and DevOps</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PROGRAMMES ===== -->
-  <section class="section programmes-section" id="programmes">
-    <div class="container">
-      <div class="section-label">Academic Offerings</div>
-      <h2 class="section-title">Our Programmes</h2>
-      <div class="prog-tabs">
-        <button class="prog-tab active" data-tab="ug">Under Graduate</button>
-        <button class="prog-tab" data-tab="pg">Post Graduate</button>
-        <button class="prog-tab" data-tab="phd">Ph.D</button>
-      </div>
-
-      <div class="prog-panel active" id="tab-ug">
-        <div class="prog-cards">
-          <div class="prog-card">
-            <div class="prog-icon"><i class="fas fa-laptop-code"></i></div>
-            <h4>B.Tech CSE</h4>
-            <p>Computer Science &amp; Engineering</p>
-            <span class="seats-badge">120 Seats</span>
-            <ul class="prog-details">
-              <li><i class="fas fa-clock"></i> 4 Years</li>
-              <li><i class="fas fa-graduation-cap"></i> Bachelor of Technology</li>
-              <li><i class="fas fa-university"></i> VSSUT Burla</li>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li class="has-dropdown">
+                    <a href="#programmes" class="nav-link">Academics <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="#cources">Courses</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="#people" class="nav-link">People <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="#people">Faculty</a></li>
+                        <li><a href="#people">Staff</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="#people" class="nav-link">Research &amp; Dev <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="#people">All Publications</a></li>
+                        <li><a href="#people">All Projects</a></li>
+                    </ul>
+                </li>
+                <li><a href="#student" class="nav-link">Student Corner</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-          </div>
-          <div class="prog-card featured">
-            <div class="prog-icon"><i class="fas fa-brain"></i></div>
-            <h4>B.Tech CSE (AI &amp; ML)</h4>
-            <p>Specialization in Artificial Intelligence &amp; Machine Learning</p>
-            <span class="seats-badge">60 Seats</span>
-            <ul class="prog-details">
-              <li><i class="fas fa-clock"></i> 4 Years</li>
-              <li><i class="fas fa-graduation-cap"></i> Bachelor of Technology</li>
-              <li><i class="fas fa-star"></i> Specialization</li>
-            </ul>
-          </div>
         </div>
-      </div>
+    </nav>
+    <!-- ===== ABOUT + HOD + NEWS (3-col) ===== -->
+    <section class="section about-section" id="about">
+        <div class="container">
+            <div class="section-label">Who We Are</div>
+            <h2 class="section-title">About the Department</h2>
+            <div class="about-grid">
+                <!-- About text -->
+                <div class="about-text card-glass">
+                    <p>The Department of Computer Science &amp; Engineering was established in <strong>1994</strong> and
+                        has grown into one of the most dynamic departments at VSSUT Burla. It offers a comprehensive
+                        range of programmes from B.Tech to Ph.D, equipping students with cutting-edge technical skills
+                        and a research-oriented mindset.</p>
+                    <p>With state-of-the-art laboratories, experienced faculty, and a vibrant student community through
+                        the <strong>CSE Society</strong>, the department continuously strives for academic excellence
+                        and industrial relevance.</p>
+                    <div class="about-highlights">
+                        <div class="highlight"><i class="fas fa-microchip"></i><span>Advanced Labs</span></div>
+                        <div class="highlight"><i class="fas fa-flask"></i><span>Active Research</span></div>
+                        <div class="highlight"><i class="fas fa-handshake"></i><span>Industry Ties</span></div>
+                        <div class="highlight"><i class="fas fa-award"></i><span>NBA Accredited</span></div>
+                    </div>
+                </div>
 
-      <div class="prog-panel" id="tab-pg">
-        <div class="prog-cards">
-          <div class="prog-card"><div class="prog-icon"><i class="fas fa-code"></i></div><h4>M.Tech CSE</h4><p>Computer Science &amp; Engineering</p><span class="seats-badge">36 Seats</span></div>
-          <div class="prog-card featured"><div class="prog-icon"><i class="fas fa-robot"></i></div><h4>M.Tech CSE (AI &amp; ML)</h4><p>Artificial Intelligence &amp; Machine Learning</p><span class="seats-badge">18 Seats</span></div>
-          <div class="prog-card"><div class="prog-icon"><i class="fas fa-chart-bar"></i></div><h4>M.Tech CSE</h4><p>Data Science</p><span class="seats-badge">18 Seats</span></div>
-          <div class="prog-card"><div class="prog-icon"><i class="fas fa-wifi"></i></div><h4>M.Tech CSE (IOT)</h4><p>Internet of Things</p><span class="seats-badge">18 Seats</span></div>
-          <div class="prog-card"><div class="prog-icon"><i class="fas fa-shield-alt"></i></div><h4>M.Tech CSE</h4><p>Cyber Security</p><span class="seats-badge">18 Seats</span></div>
-          <div class="prog-card"><div class="prog-icon"><i class="fas fa-desktop"></i></div><h4>MCA</h4><p>Master in Computer Application</p><span class="seats-badge">30 Seats</span></div>
-        </div>
-      </div>
+                <!-- HOD Message -->
+                <div class="hod-card card-glass" id="hod">
+                    <div class="hod-header">
+                        <div class="hod-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div>
+                            <div class="hod-badge">Head of Department</div>
+                            <h3 class="hod-name">Prof. [HOD Name]</h3>
+                            <p class="hod-qual">Ph.D, Professor, CSE</p>
+                        </div>
+                    </div>
+                    <blockquote class="hod-quote">
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p>Welcome to the Department of Computer Science &amp; Engineering at VSSUT Burla. Our
+                            department is committed to nurturing intellectual curiosity, fostering innovation, and
+                            building a strong foundation for students to thrive in the ever-evolving world of
+                            technology. We take pride in our dedicated faculty, vibrant research environment, and the
+                            achievements of our accomplished alumni.</p>
+                    </blockquote>
+                    <a href="#" class="read-more-link">Read Full Message <i class="fas fa-arrow-right"></i></a>
+                </div>
 
-      <div class="prog-panel" id="tab-phd">
-        <div class="prog-cards">
-          <div class="prog-card phd-card">
-            <div class="prog-icon"><i class="fas fa-microscope"></i></div>
-            <h4>Ph.D in Engineering</h4>
-            <p>Doctor of Philosophy — Research-focused doctoral programme in Computer Science &amp; Engineering</p>
-            <ul class="prog-details">
-              <li><i class="fas fa-clock"></i> 3–5 Years</li>
-              <li><i class="fas fa-flask"></i> Full-time / Part-time</li>
-              <li><i class="fas fa-book-open"></i> Research Areas: AI, ML, IoT, Cyber Security, Data Science &amp; more</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== VISION & MISSION ===== -->
-  <section class="section vision-section" id="vision">
-    <div class="container">
-      <div class="section-label">Direction &amp; Purpose</div>
-      <h2 class="section-title">Vision &amp; Mission</h2>
-      <div class="vm-grid">
-        <div class="vm-card vision-card">
-          <div class="vm-icon"><i class="fas fa-eye"></i></div>
-          <h3>Vision</h3>
-          <p>To be a recognized leader by imparting quality technical education and thereby facilitating an extensive research environment, equipping students with the latest skills in computing technology — supplemented with practical orientation to face challenges in the fast-evolving modern computing industry and academia for the betterment of society.</p>
-        </div>
-        <div class="vm-card mission-card">
-          <div class="vm-icon"><i class="fas fa-bullseye"></i></div>
-          <h3>Mission</h3>
-          <ul class="mission-list">
-            <li>Produce best quality IT professionals and researchers through state-of-the-art training, hands-on experience, and a healthy research environment.</li>
-            <li>Collaborate with industries and academia globally for achieving quality technical education and excellence in research through active participation of all stakeholders.</li>
-            <li>Encourage and enable students towards excellence in Faculty Development, preparing students with strong technical, ethical, and professional standards.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== RESEARCH & DEVELOPMENT ===== -->
-  <section class="section research-section" id="research">
-    <div class="container">
-      <div class="section-label">Innovation Hub</div>
-      <h2 class="section-title">Research &amp; Development</h2>
-      <div class="research-grid">
-        <div class="research-pubs">
-          <div class="research-tabs">
-            <button class="res-tab active" data-res="pubs">Publications</button>
-            <button class="res-tab" data-res="proj">Sponsored Projects</button>
-          </div>
-          <div class="res-panel active" id="res-pubs">
-            <div class="pub-item">
-              <div class="pub-dot"></div>
-              <div>
-                <p class="pub-title">Soumya Ranjan Sahu and Sucheta Panda — "A spectral-spatial attention guided multi-scale convolutional network for hyperspectral image classification"</p>
-                <span class="pub-journal">Soft Computing</span>
-              </div>
+                <!-- News & Events -->
+                <div class="news-card card-glass" id="news">
+                    <div class="news-header">
+                        <h3><i class="fas fa-bell"></i> News &amp; Events</h3>
+                        <a href="#" class="view-all-link">View All</a>
+                    </div>
+                    <div class="news-scroll">
+                        <div class="news-item new-tag">
+                            <span class="news-date">13 Nov 2025</span>
+                            <p>Ph.D Open Defense Viva-Voce of Ms. Swaty Dash, Dept. of Computer Science &amp;
+                                Engineering</p>
+                        </div>
+                        <div class="news-item new-tag">
+                            <span class="news-date">03 Nov 2025</span>
+                            <p>Ph.D Award Notification of Ms. Priyanka Priyadarshini, Dept. of CSE</p>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-date">Oct 2025</span>
+                            <p>Annual Technical Symposium — TechFusion 2025 organized by CSE Society</p>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-date">Sep 2025</span>
+                            <p>Workshop on Deep Learning and Neural Networks for final year students</p>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-date">Aug 2025</span>
+                            <p>MoU signed with leading IT companies for student internships and placements</p>
+                        </div>
+                        <div class="news-item">
+                            <span class="news-date">Jul 2025</span>
+                            <p>Faculty Development Programme on Cloud Computing and DevOps</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="pub-item">
-              <div class="pub-dot"></div>
-              <div>
-                <p class="pub-title">Gorle, Venkata Lakshmi Narayana, and S. Panigrahi — "A semi-supervised Anti-Fraud model based on integrated XGBoost and BiGRU with self-attention network"</p>
-                <span class="pub-journal">Internet Loan Fraud Detection</span>
-              </div>
+        </div>
+    </section>
+
+    <!-- ===== PROGRAMMES ===== -->
+    <section class="section programmes-section" id="programmes">
+        <div class="container">
+            <div class="section-label">Academic Offerings</div>
+            <h2 class="section-title">Our Programmes</h2>
+            <div class="prog-tabs">
+                <button class="prog-tab active" data-tab="ug">Under Graduate</button>
+                <button class="prog-tab" data-tab="pg">Post Graduate</button>
+                <button class="prog-tab" data-tab="phd">Ph.D</button>
             </div>
-            <div class="pub-item">
-              <div class="pub-dot"></div>
-              <div>
-                <p class="pub-title">Biswaranjan Achrya, Sucheta Panda and Niranjan K Ray — "Multiprocessor Task Scheduling Optimization for Cyber-Physical System using an Improved Salp Swarm Optimization Algorithm"</p>
-                <span class="pub-journal">International Journal</span>
-              </div>
+
+            <div class="prog-panel active" id="tab-ug">
+                <div class="prog-cards">
+                    <div class="prog-card">
+                        <div class="prog-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h4>B.Tech CSE</h4>
+                        <p>Computer Science &amp; Engineering</p>
+                        <span class="seats-badge">120 Seats</span>
+                        <ul class="prog-details">
+                            <li><i class="fas fa-clock"></i> 4 Years</li>
+                            <li><i class="fas fa-graduation-cap"></i> Bachelor of Technology</li>
+                            <li><i class="fas fa-university"></i> VSSUT Burla</li>
+                        </ul>
+                    </div>
+                    <div class="prog-card featured">
+                        <div class="prog-icon"><i class="fas fa-brain"></i></div>
+                        <h4>B.Tech CSE (AI &amp; ML)</h4>
+                        <p>Specialization in Artificial Intelligence &amp; Machine Learning</p>
+                        <span class="seats-badge">60 Seats</span>
+                        <ul class="prog-details">
+                            <li><i class="fas fa-clock"></i> 4 Years</li>
+                            <li><i class="fas fa-graduation-cap"></i> Bachelor of Technology</li>
+                            <li><i class="fas fa-star"></i> Specialization</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="pub-item">
-              <div class="pub-dot"></div>
-              <div>
-                <p class="pub-title">Dakhya Prasad Pati and Sucheta Panda — "Performance Evaluation of Modified Gaussian Mixture Model Algorithm for Image Segmentation of Mammogram"</p>
-                <span class="pub-journal">Journal of Embedded Systems</span>
-              </div>
+
+            <div class="prog-panel" id="tab-pg">
+                <div class="prog-cards">
+                    <div class="prog-card">
+                        <div class="prog-icon"><i class="fas fa-code"></i></div>
+                        <h4>M.Tech CSE</h4>
+                        <p>Computer Science &amp; Engineering</p><span class="seats-badge">36 Seats</span>
+                    </div>
+                    <div class="prog-card featured">
+                        <div class="prog-icon"><i class="fas fa-robot"></i></div>
+                        <h4>M.Tech CSE (AI &amp; ML)</h4>
+                        <p>Artificial Intelligence &amp; Machine Learning</p><span class="seats-badge">18 Seats</span>
+                    </div>
+                    <div class="prog-card">
+                        <div class="prog-icon"><i class="fas fa-chart-bar"></i></div>
+                        <h4>M.Tech CSE</h4>
+                        <p>Data Science</p><span class="seats-badge">18 Seats</span>
+                    </div>
+                    <div class="prog-card">
+                        <div class="prog-icon"><i class="fas fa-wifi"></i></div>
+                        <h4>M.Tech CSE (IOT)</h4>
+                        <p>Internet of Things</p><span class="seats-badge">18 Seats</span>
+                    </div>
+                    <div class="prog-card">
+                        <div class="prog-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h4>M.Tech CSE</h4>
+                        <p>Cyber Security</p><span class="seats-badge">18 Seats</span>
+                    </div>
+                    <div class="prog-card">
+                        <div class="prog-icon"><i class="fas fa-desktop"></i></div>
+                        <h4>MCA</h4>
+                        <p>Master in Computer Application</p><span class="seats-badge">30 Seats</span>
+                    </div>
+                </div>
             </div>
-            <a href="#" class="btn-text">View All Publications <i class="fas fa-arrow-right"></i></a>
-          </div>
-          <div class="res-panel" id="res-proj">
-            <div class="pub-item"><div class="pub-dot accent"></div><div><p class="pub-title">Funded project on AI-based Smart Surveillance System</p><span class="pub-journal">DST Funded · 2024</span></div></div>
-            <div class="pub-item"><div class="pub-dot accent"></div><div><p class="pub-title">IoT-based Smart Agriculture Monitoring System</p><span class="pub-journal">SERB Funded · 2023</span></div></div>
-            <div class="pub-item"><div class="pub-dot accent"></div><div><p class="pub-title">Cyber Security Framework for Critical Infrastructure</p><span class="pub-journal">MeitY Funded · 2023</span></div></div>
-            <a href="#" class="btn-text">View All Projects <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="research-areas">
-          <h3>Research Areas</h3>
-          <div class="area-grid">
-            <div class="area-chip"><i class="fas fa-brain"></i> Artificial Intelligence</div>
-            <div class="area-chip"><i class="fas fa-network-wired"></i> Machine Learning</div>
-            <div class="area-chip"><i class="fas fa-database"></i> Data Science</div>
-            <div class="area-chip"><i class="fas fa-shield-alt"></i> Cyber Security</div>
-            <div class="area-chip"><i class="fas fa-wifi"></i> Internet of Things</div>
-            <div class="area-chip"><i class="fas fa-image"></i> Image Processing</div>
-            <div class="area-chip"><i class="fas fa-cloud"></i> Cloud Computing</div>
-            <div class="area-chip"><i class="fas fa-project-diagram"></i> Graph Theory</div>
-            <div class="area-chip"><i class="fas fa-robot"></i> Deep Learning</div>
-            <div class="area-chip"><i class="fas fa-lock"></i> Cryptography</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===== PEO / PSO / PO ===== -->
-  <section class="section peo-section" id="peo">
-    <div class="container">
-      <div class="section-label">Academic Framework</div>
-      <h2 class="section-title">PEO · PSO · PO</h2>
-      <div class="peo-tabs">
-        <button class="peo-tab active" data-peo="peo">Programme Educational Objectives</button>
-        <button class="peo-tab" data-peo="pso">Programme Specific Outcomes</button>
-        <button class="peo-tab" data-peo="po">Programme Outcomes</button>
-      </div>
-
-      <div class="peo-panel active" id="peo-peo">
-        <div class="outcome-cards">
-          <div class="outcome-card"><div class="outcome-num">PEO 1</div><p>Provide graduating students with core competencies by strengthening their mathematical, scientific and basic engineering fundamentals.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PEO 2</div><p>Train graduates in diversified and applied areas with analysis, design and synthesis of data to create novel products and solutions to meet current industrial and societal needs.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PEO 3</div><p>Inculcate high professionalism among the students by providing technical and soft skills with ethical standards.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PEO 4</div><p>Promote collaborative learning and spirit of team work through multidisciplinary projects and diverse professional activities.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PEO 5</div><p>Encourage students for higher studies, research activities and entrepreneurial skills by imparting interactive quality teaching and organizing symposiums, conferences, seminars, workshops and technical discussions.</p></div>
-        </div>
-      </div>
-
-      <div class="peo-panel" id="peo-pso">
-        <div class="outcome-cards">
-          <div class="outcome-card"><div class="outcome-num">PSO 1</div><p>Students should be able to develop and implement the solution of real life computing problems using contemporary technologies.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PSO 2</div><p>Students should be able to apply ethical principles and commit to professional and social responsibilities.</p></div>
-        </div>
-      </div>
-
-      <div class="peo-panel" id="peo-po">
-        <div class="outcome-cards">
-          <div class="outcome-card"><div class="outcome-num">PO 1</div><p>An ability to apply fundamental knowledge of computing, mathematics, science and engineering appropriate to the discipline.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PO 2</div><p>An ability to analyze a problem, identify and formulate the computing requirements appropriate to its solution.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PO 3</div><p>An ability to design, implement, and evaluate a computer-based system, process, component, or program for various applications like public health, environmental safety, human resource management, economical sustainability, cross-cultural and societal needs.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PO 4</div><p>An ability to formulate models, design, and conduct experiments, as well as to analyze and interpret data.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PO 5</div><p>An ability to use current techniques, skills, and modern tools necessary for computing practice.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PO 6</div><p>An ability to analyze the local and global impact of computing on individuals, organization, and society.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PO 7</div><p>Knowledge of emerging technologies and current trends.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PO 8</div><p>An understanding of professional, ethical, legal, security and social issues and responsibility.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PO 9</div><p>An ability to function effectively individually and on teams, including diverse and multidisciplinary, to accomplish a common goal.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PO 10</div><p>Continuous professional development through long term learning.</p></div>
-          <div class="outcome-card"><div class="outcome-num">PO 11</div><p>An understanding of engineering and management principles and apply these to one's own work, as a member and leader in a team, to manage projects.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== GALLERY ===== -->
-  <section class="section gallery-section" id="gallery">
-    <div class="container">
-      <div class="section-label">Our Community</div>
-      <h2 class="section-title">Alumni · Video · Photos</h2>
-      <div class="gallery-grid">
-
-        <!-- Distinguished Alumni -->
-        <div class="gallery-block alumni-block card-glass">
-          <div class="gallery-block-header">
-            <h3><i class="fas fa-users"></i> Distinguished Alumni</h3>
-            <a href="#" class="view-all-link">View All</a>
-          </div>
-          <div class="alumni-carousel" id="alumniCarousel">
-            <div class="alumni-slide active">
-              <div class="alumni-avatar"><i class="fas fa-user-circle"></i></div>
-              <h4 class="alumni-name">Alumni Name</h4>
-              <p class="alumni-desig">Alumni Designation · Batch 20XX</p>
-              <p class="alumni-quote">"VSSUT gave me the foundation to build my career in technology."</p>
+            <div class="prog-panel" id="tab-phd">
+                <div class="prog-cards">
+                    <div class="prog-card phd-card">
+                        <div class="prog-icon"><i class="fas fa-microscope"></i></div>
+                        <h4>Ph.D in Engineering</h4>
+                        <p>Doctor of Philosophy — Research-focused doctoral programme in Computer Science &amp;
+                            Engineering</p>
+                        <ul class="prog-details">
+                            <li><i class="fas fa-clock"></i> 3–5 Years</li>
+                            <li><i class="fas fa-flask"></i> Full-time / Part-time</li>
+                            <li><i class="fas fa-book-open"></i> Research Areas: AI, ML, IoT, Cyber Security, Data
+                                Science &amp; more</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="alumni-slide">
-              <div class="alumni-avatar"><i class="fas fa-user-circle"></i></div>
-              <h4 class="alumni-name">Alumni Name</h4>
-              <p class="alumni-desig">Senior Engineer at Google · Batch 2018</p>
-              <p class="alumni-quote">"The research environment here is second to none. I'm proud to be from VSSUT CSE."</p>
+        </div>
+    </section>
+
+    <!-- ===== VISION & MISSION ===== -->
+    <section class="section vision-section" id="vision">
+        <div class="container">
+            <div class="section-label">Direction &amp; Purpose</div>
+            <h2 class="section-title">Vision &amp; Mission</h2>
+            <div class="vm-grid">
+                <div class="vm-card vision-card">
+                    <div class="vm-icon"><i class="fas fa-eye"></i></div>
+                    <h3>Vision</h3>
+                    <p>To be a recognized leader by imparting quality technical education and thereby facilitating an
+                        extensive research environment, equipping students with the latest skills in computing
+                        technology — supplemented with practical orientation to face challenges in the fast-evolving
+                        modern computing industry and academia for the betterment of society.</p>
+                </div>
+                <div class="vm-card mission-card">
+                    <div class="vm-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Mission</h3>
+                    <ul class="mission-list">
+                        <li>Produce best quality IT professionals and researchers through state-of-the-art training,
+                            hands-on experience, and a healthy research environment.</li>
+                        <li>Collaborate with industries and academia globally for achieving quality technical education
+                            and excellence in research through active participation of all stakeholders.</li>
+                        <li>Encourage and enable students towards excellence in Faculty Development, preparing students
+                            with strong technical, ethical, and professional standards.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="alumni-slide">
-              <div class="alumni-avatar"><i class="fas fa-user-circle"></i></div>
-              <h4 class="alumni-name">Alumni Name</h4>
-              <p class="alumni-desig">Data Scientist at Microsoft · Batch 2019</p>
-              <p class="alumni-quote">"The faculty's guidance shaped my problem-solving skills and professional approach."</p>
+        </div>
+    </section>
+
+    <!-- ===== RESEARCH & DEVELOPMENT ===== -->
+    <section class="section research-section" id="research">
+        <div class="container">
+            <div class="section-label">Innovation Hub</div>
+            <h2 class="section-title">Research &amp; Development</h2>
+            <div class="research-grid">
+                <div class="research-pubs">
+                    <div class="research-tabs">
+                        <button class="res-tab active" data-res="pubs">Publications</button>
+                        <button class="res-tab" data-res="proj">Sponsored Projects</button>
+                    </div>
+                    <div class="res-panel active" id="res-pubs">
+                        <div class="pub-item">
+                            <div class="pub-dot"></div>
+                            <div>
+                                <p class="pub-title">Soumya Ranjan Sahu and Sucheta Panda — "A spectral-spatial
+                                    attention guided multi-scale convolutional network for hyperspectral image
+                                    classification"</p>
+                                <span class="pub-journal">Soft Computing</span>
+                            </div>
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-dot"></div>
+                            <div>
+                                <p class="pub-title">Gorle, Venkata Lakshmi Narayana, and S. Panigrahi — "A
+                                    semi-supervised Anti-Fraud model based on integrated XGBoost and BiGRU with
+                                    self-attention network"</p>
+                                <span class="pub-journal">Internet Loan Fraud Detection</span>
+                            </div>
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-dot"></div>
+                            <div>
+                                <p class="pub-title">Biswaranjan Achrya, Sucheta Panda and Niranjan K Ray —
+                                    "Multiprocessor Task Scheduling Optimization for Cyber-Physical System using an
+                                    Improved Salp Swarm Optimization Algorithm"</p>
+                                <span class="pub-journal">International Journal</span>
+                            </div>
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-dot"></div>
+                            <div>
+                                <p class="pub-title">Dakhya Prasad Pati and Sucheta Panda — "Performance Evaluation of
+                                    Modified Gaussian Mixture Model Algorithm for Image Segmentation of Mammogram"</p>
+                                <span class="pub-journal">Journal of Embedded Systems</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-text">View All Publications <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="res-panel" id="res-proj">
+                        <div class="pub-item">
+                            <div class="pub-dot accent"></div>
+                            <div>
+                                <p class="pub-title">Funded project on AI-based Smart Surveillance System</p><span
+                                    class="pub-journal">DST Funded · 2024</span>
+                            </div>
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-dot accent"></div>
+                            <div>
+                                <p class="pub-title">IoT-based Smart Agriculture Monitoring System</p><span
+                                    class="pub-journal">SERB Funded · 2023</span>
+                            </div>
+                        </div>
+                        <div class="pub-item">
+                            <div class="pub-dot accent"></div>
+                            <div>
+                                <p class="pub-title">Cyber Security Framework for Critical Infrastructure</p><span
+                                    class="pub-journal">MeitY Funded · 2023</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-text">View All Projects <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="research-areas">
+                    <h3>Research Areas</h3>
+                    <div class="area-grid">
+                        <div class="area-chip"><i class="fas fa-brain"></i> Artificial Intelligence</div>
+                        <div class="area-chip"><i class="fas fa-network-wired"></i> Machine Learning</div>
+                        <div class="area-chip"><i class="fas fa-database"></i> Data Science</div>
+                        <div class="area-chip"><i class="fas fa-shield-alt"></i> Cyber Security</div>
+                        <div class="area-chip"><i class="fas fa-wifi"></i> Internet of Things</div>
+                        <div class="area-chip"><i class="fas fa-image"></i> Image Processing</div>
+                        <div class="area-chip"><i class="fas fa-cloud"></i> Cloud Computing</div>
+                        <div class="area-chip"><i class="fas fa-project-diagram"></i> Graph Theory</div>
+                        <div class="area-chip"><i class="fas fa-robot"></i> Deep Learning</div>
+                        <div class="area-chip"><i class="fas fa-lock"></i> Cryptography</div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="carousel-dots" id="alumniDots">
-            <span class="dot active" data-idx="0"></span>
-            <span class="dot" data-idx="1"></span>
-            <span class="dot" data-idx="2"></span>
-          </div>
         </div>
+    </section>
 
-        <!-- Video Gallery -->
-        <div class="gallery-block video-block card-glass">
-          <div class="gallery-block-header">
-            <h3><i class="fab fa-youtube"></i> Video Gallery</h3>
-            <a href="#" class="view-all-link">View All</a>
-          </div>
-          <div class="video-thumb">
-            <a href="https://www.youtube.com/watch?v=VSSUT" target="_blank" class="video-play-wrap">
-              <div class="video-thumb-img">
-                <div class="video-thumb-bg"></div>
-                <div class="play-btn"><i class="fas fa-play"></i></div>
-                <div class="video-label">Campus Tour of VSSUT Burla</div>
-              </div>
-            </a>
-          </div>
-          <div class="video-list">
-            <a href="#" class="video-list-item"><i class="fas fa-play-circle"></i> Department Annual Day 2025</a>
-            <a href="#" class="video-list-item"><i class="fas fa-play-circle"></i> TechFusion Symposium Highlights</a>
-            <a href="#" class="video-list-item"><i class="fas fa-play-circle"></i> Lab Tour — AI &amp; ML Lab</a>
-          </div>
-        </div>
-
-        <!-- Photo Gallery -->
-        <div class="gallery-block photo-block card-glass">
-          <div class="gallery-block-header">
-            <h3><i class="fas fa-images"></i> Photo Gallery</h3>
-            <a href="#" class="view-all-link">View All</a>
-          </div>
-          <div class="photo-grid-mini">
-            <div class="photo-cell"><i class="fas fa-graduation-cap"></i><span>Convocation</span></div>
-            <div class="photo-cell"><i class="fas fa-flask"></i><span>Lab Sessions</span></div>
-            <div class="photo-cell"><i class="fas fa-laptop"></i><span>Hackathons</span></div>
-            <div class="photo-cell"><i class="fas fa-trophy"></i><span>Awards</span></div>
-            <div class="photo-cell"><i class="fas fa-chalkboard-teacher"></i><span>Seminars</span></div>
-            <div class="photo-cell"><i class="fas fa-users"></i><span>Cultural</span></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer" id="contact">
-    <div class="footer-top">
-      <div class="container footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo-row">
-            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/Veer_Surendra_Sai_University_of_Technology_logo.png/200px-Veer_Surendra_Sai_University_of_Technology_logo.png" alt="VSSUT" class="footer-logo" onerror="this.style.display='none'" />
-            <div>
-              <h4>VSSUT Burla</h4>
-              <p>Dept. of CSE</p>
+    <!-- ===== PEO / PSO / PO ===== -->
+    <section class="section peo-section" id="peo">
+        <div class="container">
+            <div class="section-label">Academic Framework</div>
+            <h2 class="section-title">PEO · PSO · PO</h2>
+            <div class="peo-tabs">
+                <button class="peo-tab active" data-peo="peo">Programme Educational Objectives</button>
+                <button class="peo-tab" data-peo="pso">Programme Specific Outcomes</button>
+                <button class="peo-tab" data-peo="po">Programme Outcomes</button>
             </div>
-          </div>
-          <p class="footer-desc">Veer Surendra Sai University of Technology, Burla, Sambalpur — 768018, Odisha, India.</p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-          </div>
+
+            <div class="peo-panel active" id="peo-peo">
+                <div class="outcome-cards">
+                    <div class="outcome-card">
+                        <div class="outcome-num">PEO 1</div>
+                        <p>Provide graduating students with core competencies by strengthening their mathematical,
+                            scientific and basic engineering fundamentals.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PEO 2</div>
+                        <p>Train graduates in diversified and applied areas with analysis, design and synthesis of data
+                            to create novel products and solutions to meet current industrial and societal needs.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PEO 3</div>
+                        <p>Inculcate high professionalism among the students by providing technical and soft skills with
+                            ethical standards.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PEO 4</div>
+                        <p>Promote collaborative learning and spirit of team work through multidisciplinary projects and
+                            diverse professional activities.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PEO 5</div>
+                        <p>Encourage students for higher studies, research activities and entrepreneurial skills by
+                            imparting interactive quality teaching and organizing symposiums, conferences, seminars,
+                            workshops and technical discussions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="peo-panel" id="peo-pso">
+                <div class="outcome-cards">
+                    <div class="outcome-card">
+                        <div class="outcome-num">PSO 1</div>
+                        <p>Students should be able to develop and implement the solution of real life computing problems
+                            using contemporary technologies.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PSO 2</div>
+                        <p>Students should be able to apply ethical principles and commit to professional and social
+                            responsibilities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="peo-panel" id="peo-po">
+                <div class="outcome-cards">
+                    <div class="outcome-card">
+                        <div class="outcome-num">PO 1</div>
+                        <p>An ability to apply fundamental knowledge of computing, mathematics, science and engineering
+                            appropriate to the discipline.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PO 2</div>
+                        <p>An ability to analyze a problem, identify and formulate the computing requirements
+                            appropriate to its solution.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PO 3</div>
+                        <p>An ability to design, implement, and evaluate a computer-based system, process, component, or
+                            program for various applications like public health, environmental safety, human resource
+                            management, economical sustainability, cross-cultural and societal needs.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PO 4</div>
+                        <p>An ability to formulate models, design, and conduct experiments, as well as to analyze and
+                            interpret data.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PO 5</div>
+                        <p>An ability to use current techniques, skills, and modern tools necessary for computing
+                            practice.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PO 6</div>
+                        <p>An ability to analyze the local and global impact of computing on individuals, organization,
+                            and society.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PO 7</div>
+                        <p>Knowledge of emerging technologies and current trends.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PO 8</div>
+                        <p>An understanding of professional, ethical, legal, security and social issues and
+                            responsibility.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PO 9</div>
+                        <p>An ability to function effectively individually and on teams, including diverse and
+                            multidisciplinary, to accomplish a common goal.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PO 10</div>
+                        <p>Continuous professional development through long term learning.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <div class="outcome-num">PO 11</div>
+                        <p>An understanding of engineering and management principles and apply these to one's own work,
+                            as a member and leader in a team, to manage projects.</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="footer-col">
-          <h5>Quick Links</h5>
-          <ul>
-            <li><a href="#">IPR Cell</a></li>
-            <li><a href="#">RTI</a></li>
-            <li><a href="#">TEQIP-III</a></li>
-            <li><a href="#">UGC</a></li>
-            <li><a href="#">AICTE</a></li>
-            <li><a href="#">CDCE</a></li>
-          </ul>
+    <!-- ===== GALLERY ===== -->
+    <section class="section gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-label">Our Community</div>
+            <h2 class="section-title">Alumni · Video · Photos</h2>
+            <div class="gallery-grid">
+
+                <!-- Distinguished Alumni -->
+                <div class="gallery-block alumni-block card-glass">
+                    <div class="gallery-block-header">
+                        <h3><i class="fas fa-users"></i> Distinguished Alumni</h3>
+                        <a href="#" class="view-all-link">View All</a>
+                    </div>
+                    <div class="alumni-carousel" id="alumniCarousel">
+                        <div class="alumni-slide active">
+                            <div class="alumni-avatar"><i class="fas fa-user-circle"></i></div>
+                            <h4 class="alumni-name">Alumni Name</h4>
+                            <p class="alumni-desig">Alumni Designation · Batch 20XX</p>
+                            <p class="alumni-quote">"VSSUT gave me the foundation to build my career in technology."</p>
+                        </div>
+                        <div class="alumni-slide">
+                            <div class="alumni-avatar"><i class="fas fa-user-circle"></i></div>
+                            <h4 class="alumni-name">Alumni Name</h4>
+                            <p class="alumni-desig">Senior Engineer at Google · Batch 2018</p>
+                            <p class="alumni-quote">"The research environment here is second to none. I'm proud to be
+                                from VSSUT CSE."</p>
+                        </div>
+                        <div class="alumni-slide">
+                            <div class="alumni-avatar"><i class="fas fa-user-circle"></i></div>
+                            <h4 class="alumni-name">Alumni Name</h4>
+                            <p class="alumni-desig">Data Scientist at Microsoft · Batch 2019</p>
+                            <p class="alumni-quote">"The faculty's guidance shaped my problem-solving skills and
+                                professional approach."</p>
+                        </div>
+                    </div>
+                    <div class="carousel-dots" id="alumniDots">
+                        <span class="dot active" data-idx="0"></span>
+                        <span class="dot" data-idx="1"></span>
+                        <span class="dot" data-idx="2"></span>
+                    </div>
+                </div>
+
+                <!-- Video Gallery -->
+                <div class="gallery-block video-block card-glass">
+                    <div class="gallery-block-header">
+                        <h3><i class="fab fa-youtube"></i> Video Gallery</h3>
+                        <a href="#" class="view-all-link">View All</a>
+                    </div>
+                    <div class="video-thumb">
+                        <a href="https://www.youtube.com/watch?v=VSSUT" target="_blank" class="video-play-wrap">
+                            <div class="video-thumb-img">
+                                <div class="video-thumb-bg"></div>
+                                <div class="play-btn"><i class="fas fa-play"></i></div>
+                                <div class="video-label">Campus Tour of VSSUT Burla</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="video-list">
+                        <a href="#" class="video-list-item"><i class="fas fa-play-circle"></i> Department Annual Day
+                            2025</a>
+                        <a href="#" class="video-list-item"><i class="fas fa-play-circle"></i> TechFusion Symposium
+                            Highlights</a>
+                        <a href="#" class="video-list-item"><i class="fas fa-play-circle"></i> Lab Tour — AI &amp; ML
+                            Lab</a>
+                    </div>
+                </div>
+
+                <!-- Photo Gallery -->
+                <div class="gallery-block photo-block card-glass">
+                    <div class="gallery-block-header">
+                        <h3><i class="fas fa-images"></i> Photo Gallery</h3>
+                        <a href="#" class="view-all-link">View All</a>
+                    </div>
+                    <div class="photo-grid-mini">
+                        <div class="photo-cell"><i class="fas fa-graduation-cap"></i><span>Convocation</span></div>
+                        <div class="photo-cell"><i class="fas fa-flask"></i><span>Lab Sessions</span></div>
+                        <div class="photo-cell"><i class="fas fa-laptop"></i><span>Hackathons</span></div>
+                        <div class="photo-cell"><i class="fas fa-trophy"></i><span>Awards</span></div>
+                        <div class="photo-cell"><i class="fas fa-chalkboard-teacher"></i><span>Seminars</span></div>
+                        <div class="photo-cell"><i class="fas fa-users"></i><span>Cultural</span></div>
+                    </div>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <div class="footer-col">
-          <h5>Department</h5>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#programmes">Programmes</a></li>
-            <li><a href="#research">Research</a></li>
-            <li><a href="#peo">PEO / PSO / PO</a></li>
-            <li><a href="#gallery">Alumni</a></li>
-            <li><a href="#">Faculty List</a></li>
-          </ul>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="contact">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo-row">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/Veer_Surendra_Sai_University_of_Technology_logo.png/200px-Veer_Surendra_Sai_University_of_Technology_logo.png"
+                            alt="VSSUT" class="footer-logo" onerror="this.style.display='none'" />
+                        <div>
+                            <h4>VSSUT Burla</h4>
+                            <p>Dept. of CSE</p>
+                        </div>
+                    </div>
+                    <p class="footer-desc">Veer Surendra Sai University of Technology, Burla, Sambalpur — 768018,
+                        Odisha, India.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">IPR Cell</a></li>
+                        <li><a href="#">RTI</a></li>
+                        <li><a href="#">TEQIP-III</a></li>
+                        <li><a href="#">UGC</a></li>
+                        <li><a href="#">AICTE</a></li>
+                        <li><a href="#">CDCE</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Department</h5>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#programmes">Programmes</a></li>
+                        <li><a href="#research">Research</a></li>
+                        <li><a href="#peo">PEO / PSO / PO</a></li>
+                        <li><a href="#gallery">Alumni</a></li>
+                        <li><a href="#">Faculty List</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col footer-contact">
+                    <h5>Contact Us</h5>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Burla, Sambalpur — 768018,
+                            Odisha</span></div>
+                    <div class="contact-item"><i class="fas fa-phone"></i><span>+91 (0663) 2430211 / 2430204</span>
+                    </div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i><span>registrar@vssut.ac.in</span></div>
+                    <div class="weather-widget">
+                        <i class="fas fa-cloud-sun"></i>
+                        <span id="weather-display">Campus: Sambalpur, Odisha</span>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="footer-col footer-contact">
-          <h5>Contact Us</h5>
-          <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Burla, Sambalpur — 768018, Odisha</span></div>
-          <div class="contact-item"><i class="fas fa-phone"></i><span>+91 (0663) 2430211 / 2430204</span></div>
-          <div class="contact-item"><i class="fas fa-envelope"></i><span>registrar@vssut.ac.in</span></div>
-          <div class="weather-widget">
-            <i class="fas fa-cloud-sun"></i>
-            <span id="weather-display">Campus: Sambalpur, Odisha</span>
-          </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>© 2025 Veer Surendra Sai University of Technology. All Rights Reserved.</p>
+                <p>Designed by <strong>CSE Society, VSSUT</strong></p>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container footer-bottom-inner">
-        <p>© 2025 Veer Surendra Sai University of Technology. All Rights Reserved.</p>
-        <p>Designed by <strong>CSE Society, VSSUT</strong></p>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!-- Back to top -->
-  <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+    <!-- Back to top -->
+    <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

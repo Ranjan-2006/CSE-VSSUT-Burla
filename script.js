@@ -13,7 +13,7 @@ window.addEventListener('scroll', () => {
     navbar.classList.remove('scrolled');
   }
   toggleBackToTop();
-  updateActiveNavLink();
+  // updateActiveNavLink(); // Disabled to keep Home always active
 });
 
 // ===== HAMBURGER MENU =====
@@ -238,7 +238,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 // ===== NAVBAR SECTION-LABEL HIGHLIGHT =====
 // Set "Home" as active on load
 document.addEventListener('DOMContentLoaded', () => {
-  const homeLink = document.querySelector('.nav-link[href="#home"]');
+  const homeLink = document.querySelector('.nav-link[href="index.html"]');
   if (homeLink) homeLink.classList.add('active');
 });
 
