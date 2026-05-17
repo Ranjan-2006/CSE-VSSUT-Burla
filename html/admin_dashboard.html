@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="../css/admin_components.css" />
     <link rel="stylesheet" href="../css/admin_dashboard.css" />
     <link rel="icon" type="image/png" href="../assets/logos/CSE.png" />
 </head>
@@ -72,7 +73,6 @@
                 </li>
                 <li><a href="../index.html#student" class="nav-link">Student Corner</a></li>
                 <li><a href="../index.html#gallery" class="nav-link">Gallery</a></li>
-                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -87,49 +87,49 @@
             
             <div class="admin-grid">
                 <!-- 1. News and Events -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.1s;">
+                <a href="#" class="admin-card fade-in" style="animation-delay: 0.1s;" onclick="AdminModals.openNews(event)">
                     <div class="admin-card-icon"><i class="fas fa-newspaper"></i></div>
                     <h3>News & Events</h3>
                     <p>Add, modify, or delete the latest departmental news and upcoming events.</p>
                 </a>
                 
                 <!-- 2. Research & Development -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.2s;">
+                <a href="#" class="admin-card fade-in" style="animation-delay: 0.2s;" onclick="AdminModals.openResearch(event)">
                     <div class="admin-card-icon"><i class="fas fa-flask"></i></div>
                     <h3>Research & Development</h3>
                     <p>Manage R&D projects, ongoing publications, and research details.</p>
                 </a>
                 
                 <!-- 3. Distinguished Alumni -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.3s;">
+                <a href="#" class="admin-card fade-in" style="animation-delay: 0.3s;" onclick="AdminModals.openAlumni(event)">
                     <div class="admin-card-icon"><i class="fas fa-user-graduate"></i></div>
                     <h3>Distinguished Alumni</h3>
                     <p>Add or update profiles of notable alumni and their achievements.</p>
                 </a>
                 
                 <!-- 4. Photo Gallery -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.4s;">
+                <a href="#" class="admin-card fade-in" style="animation-delay: 0.4s;" onclick="AdminModals.openGallery(event)">
                     <div class="admin-card-icon"><i class="fas fa-images"></i></div>
                     <h3>Photo Gallery</h3>
                     <p>Upload new event photos or manage existing albums in the gallery.</p>
                 </a>
                 
                 <!-- 5. Course Structure -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.5s;">
+                <a href="#" class="admin-card fade-in" style="animation-delay: 0.5s;" onclick="AdminModals.openCourseStructure(event)">
                     <div class="admin-card-icon"><i class="fas fa-book"></i></div>
                     <h3>Course Structure</h3>
                     <p>Update academic syllabi and upload new course structure PDFs.</p>
                 </a>
                 
                 <!-- 6. Faculty & Staff -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.6s;">
+                <a href="faculty-admin.html" class="admin-card fade-in" style="animation-delay: 0.6s;">
                     <div class="admin-card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                     <h3>Faculty & Staff</h3>
                     <p>Add or manage faculty members, guest lecturers, and support staff.</p>
                 </a>
                 
                 <!-- 7. Student Directory -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.7s;">
+                <a href="student-admin.html" class="admin-card fade-in" style="animation-delay: 0.7s;">
                     <div class="admin-card-icon"><i class="fas fa-users"></i></div>
                     <h3>Student Directory</h3>
                     <p>Maintain student records, update batch details, and manage directories.</p>
@@ -198,7 +198,8 @@
     <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
 
     <script src="../script.js"></script>
-
+    <script src="../js/admin_utils.js"></script>
+    <script src="../js/admin_modals.js"></script>
 </body>
 
 </html>

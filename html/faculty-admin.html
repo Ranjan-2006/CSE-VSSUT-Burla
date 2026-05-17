@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Faculty & Staff | Admin</title>
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+    <!-- Admin Components & Page Specific Styles -->
+    <link rel="stylesheet" href="../css/admin_components.css" />
+    <link rel="stylesheet" href="../css/faculty_admin.css" />
+    <link rel="icon" type="image/png" href="../assets/logos/CSE.png" />
+</head>
+
+<body style="background: var(--gray-50);">
+
+    <!-- Admin Top Bar -->
+    <header class="site-header" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <div class="header-inner" style="padding: 10px 0; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <div class="header-logos">
+                <div style="display: flex; gap: 16px; align-items: center; margin-left: 20px;">
+                    <img src="../assets/logos/CSE.png" alt="CSE Logo" class="logo-img" style="height: 50px;" onerror="this.style.display='none'" />
+                    <div>
+                        <h2 style="font-size: 1.2rem; color: var(--white); margin: 0;">Faculty & Staff Management</h2>
+                        <span style="font-size: 0.85rem; color: var(--blue-200);">Admin Control Panel</span>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-right: 20px;">
+                <a href="admin_dashboard.html" class="btn btn-outline-light"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="faculty-main">
+        <div class="faculty-container">
+            
+            <!-- Page Header & Tabs -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; border-bottom: 1px solid var(--gray-200);">
+                <div class="admin-tabs" style="margin-bottom: -1px; border: none;">
+                    <button class="admin-tab-btn active" id="tab-fac">Faculty</button>
+                    <button class="admin-tab-btn" id="tab-staff">Staff</button>
+                    <button class="admin-tab-btn" id="tab-guest">Guest Lecturer</button>
+                </div>
+                <div style="padding-bottom: 10px;">
+                    <button class="btn btn-primary" id="btn-add-new"><i class="fas fa-plus"></i> Add New Profile</button>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="admin-tab-content active" id="content-fac">
+                <div class="grid-list" id="faculty-list">
+                    <!-- Javascript will populate this -->
+                </div>
+            </div>
+            
+            <div class="admin-tab-content" id="content-staff">
+                <div class="grid-list" id="staff-list">
+                    <!-- Javascript will populate this -->
+                </div>
+            </div>
+            
+            <div class="admin-tab-content" id="content-guest">
+                <div class="grid-list" id="guest-list">
+                    <!-- Javascript will populate this -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Generic Modals & Utilities -->
+    <script src="../js/admin_utils.js"></script>
+    <script src="../js/faculty_admin.js"></script>
+</body>
+</html>

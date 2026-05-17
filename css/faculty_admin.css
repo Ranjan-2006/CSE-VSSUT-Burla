@@ -1,0 +1,139 @@
+/* faculty_admin.css - Styles for the Faculty Management Page */
+
+.faculty-main {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.faculty-container {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    min-height: 70vh;
+}
+
+/* Grid Layout for Profile Cards */
+.grid-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.profile-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 20px;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: all 0.2s;
+}
+
+.profile-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: var(--blue-200);
+    transform: translateY(-2px);
+}
+
+.profile-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.profile-img-wrap {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--gray-200);
+    flex-shrink: 0;
+}
+
+.profile-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    margin: 0 0 4px 0;
+    font-size: 1.1rem;
+    color: var(--blue-900);
+    font-weight: 700;
+}
+
+.profile-role {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    font-weight: 500;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--gray-600);
+}
+
+.profile-details div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px dashed var(--gray-200);
+}
+
+/* Collapsible Form Sections */
+.form-section {
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.form-section-header {
+    background: var(--gray-50);
+    padding: 12px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--blue-900);
+    user-select: none;
+}
+
+.form-section-header i {
+    transition: transform 0.3s;
+}
+
+.form-section.collapsed .form-section-header i {
+    transform: rotate(-90deg);
+}
+
+.form-section-body {
+    padding: 20px;
+    border-top: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
+}
+
+.form-section.collapsed .form-section-body {
+    display: none;
+}

@@ -1,10 +1,8 @@
-/* ============================================================
-   VSSUT CSE Department — script.js
-   ============================================================ */
+// VSSUT CSE Department — script.js
 
 'use strict';
 
-// ===== NAVBAR: Sticky + scroll class =====
+// NAVBAR: Sticky + scroll class
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 60) {
@@ -16,7 +14,7 @@ window.addEventListener('scroll', () => {
     // updateActiveNavLink(); // Disabled to keep Home always active
 });
 
-// ===== HAMBURGER MENU =====
+// HAMBURGER MENU
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
 
@@ -59,7 +57,7 @@ document.querySelectorAll('.nav-links a').forEach(a => {
     });
 });
 
-// ===== ACTIVE NAV LINK ON SCROLL =====
+// ACTIVE NAV LINK ON SCROLL
 function updateActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
     const scrollPos = window.scrollY + 120;
@@ -77,7 +75,7 @@ function updateActiveNavLink() {
     });
 }
 
-// ===== NEWS MODAL =====
+// NEWS MODAL
 document.addEventListener('DOMContentLoaded', () => {
     const newsViewAllBtn = document.getElementById('newsViewAllBtn');
     const newsModal = document.getElementById('newsModal');
@@ -126,7 +124,62 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-// ===== PROGRAMME TABS =====
+
+// PUBLICATIONS MODAL
+document.addEventListener('DOMContentLoaded', () => {
+    const pubViewAllBtn = document.getElementById('viewPubBtn');
+    const pubModal = document.getElementById('pubModal');
+    const pubModalClose = document.getElementById('pubModalClose');
+
+    if (pubViewAllBtn && pubModal && pubModalClose) {
+        pubViewAllBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            pubModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        pubModalClose.addEventListener('click', () => {
+            pubModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        pubModal.addEventListener('click', (e) => {
+            if (e.target === pubModal) {
+                pubModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+
+// PROJECTS MODAL
+document.addEventListener('DOMContentLoaded', () => {
+    const projViewAllBtn = document.getElementById('viewProjBtn');
+    const projModal = document.getElementById('projModal');
+    const projModalClose = document.getElementById('projModalClose');
+
+    if (projViewAllBtn && projModal && projModalClose) {
+        projViewAllBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            projModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        projModalClose.addEventListener('click', () => {
+            projModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        projModal.addEventListener('click', (e) => {
+            if (e.target === projModal) {
+                projModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+
+// PROGRAMME TABS
 const progTabs = document.querySelectorAll('.prog-tab');
 const progPanels = document.querySelectorAll('.prog-panel');
 
@@ -141,7 +194,7 @@ progTabs.forEach(tab => {
     });
 });
 
-// ===== RESEARCH TABS =====
+// RESEARCH TABS
 const resTabs = document.querySelectorAll('.res-tab');
 const resPanels = document.querySelectorAll('.res-panel');
 
@@ -156,7 +209,7 @@ resTabs.forEach(tab => {
     });
 });
 
-// ===== PEO / PSO / PO TABS =====
+// PEO / PSO / PO TABS
 const peoTabs = document.querySelectorAll('.peo-tab');
 const peoPanels = document.querySelectorAll('.peo-panel');
 
@@ -171,7 +224,7 @@ peoTabs.forEach(tab => {
     });
 });
 
-// ===== ALUMNI CAROUSEL =====
+// ALUMNI CAROUSEL
 let currentSlide = 0;
 const slides = document.querySelectorAll('.alumni-slide');
 const dots = document.querySelectorAll('.dot');
@@ -201,7 +254,7 @@ function resetCarouselTimer() {
 }
 if (slides.length > 0) startCarouselTimer();
 
-// ===== PHOTO CAROUSEL =====
+// PHOTO CAROUSEL
 let photoCurrentSlide = 0;
 const photoSlides = document.querySelectorAll('.photo-slide');
 let photoTimer = null;
@@ -242,7 +295,7 @@ if (photoPrev && photoNext) {
     });
 }
 
-// ===== SCROLL REVEAL =====
+// SCROLL REVEAL
 const revealElements = document.querySelectorAll(
     '.card-glass: .prog-card, .vm-card, .outcome-card, .area-chip, .gallery-block, .about-text, .hod-card'
 );
@@ -268,7 +321,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealElements.forEach(el => revealObserver.observe(el));
 
-// ===== STAT COUNTER ANIMATION =====
+// STAT COUNTER ANIMATION
 function animateCounter(el, target, suffix) {
     let start = 0;
     const duration = 1800;
@@ -297,7 +350,7 @@ const statsObserver = new IntersectionObserver((entries) => {
 const heroStats = document.querySelector('.hero-stats');
 if (heroStats) statsObserver.observe(heroStats);
 
-// ===== BACK TO TOP =====
+// BACK TO TOP
 const backToTop = document.getElementById('backToTop');
 
 function toggleBackToTop() {
@@ -312,7 +365,7 @@ backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// ===== SMOOTH SCROLL FOR ALL # LINKS =====
+// SMOOTH SCROLL FOR ALL # LINKS
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         const href = a.getAttribute('href');
@@ -334,14 +387,14 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     });
 });
 
-// ===== NAVBAR SECTION-LABEL HIGHLIGHT =====
+// NAVBAR SECTION-LABEL HIGHLIGHT
 // Set "Home" as active on load
 document.addEventListener('DOMContentLoaded', () => {
     const homeLink = document.querySelector('.nav-link[href="index.html"]');
     if (homeLink) homeLink.classList.add('active');
 });
 
-// ===== NEWS MARQUEE: subtle auto-scroll =====
+// NEWS MARQUEE: subtle auto-scroll
 const newsScroll = document.querySelector('.news-scroll');
 if (newsScroll) {
     let isPaused = false;

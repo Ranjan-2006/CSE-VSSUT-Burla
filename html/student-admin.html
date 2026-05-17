@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Directory | Admin</title>
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="../style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+    <!-- Admin Components & Page Specific Styles -->
+    <link rel="stylesheet" href="../css/admin_components.css" />
+    <link rel="stylesheet" href="../css/student_admin.css" />
+    <link rel="icon" type="image/png" href="../assets/logos/CSE.png" />
+</head>
+
+<body style="background: var(--gray-50);">
+
+    <!-- Admin Top Bar -->
+    <header class="site-header" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <div class="header-inner" style="padding: 10px 0; max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <div class="header-logos">
+                <div style="display: flex; gap: 16px; align-items: center; margin-left: 20px;">
+                    <img src="../assets/logos/CSE.png" alt="CSE Logo" class="logo-img" style="height: 50px;" onerror="this.style.display='none'" />
+                    <div>
+                        <h2 style="font-size: 1.2rem; color: var(--white); margin: 0;">Student Directory Management</h2>
+                        <span style="font-size: 0.85rem; color: var(--blue-200);">Admin Control Panel</span>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-right: 20px;">
+                <a href="admin_dashboard.html" class="btn btn-outline-light"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="student-main">
+        <div class="student-container">
+
+            <!-- Page Header & Tabs -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; border-bottom: 1px solid var(--gray-200);">
+                <div class="admin-tabs" style="margin-bottom: -1px; border: none;">
+                    <button class="admin-tab-btn active" id="tab-2025">Class of 2025</button>
+                    <button class="admin-tab-btn" id="tab-2024">Class of 2024</button>
+                    <button class="admin-tab-btn" id="tab-2023">Class of 2023</button>
+                </div>
+                <div style="padding-bottom: 10px;">
+                    <button class="btn btn-primary" id="btn-add-student"><i class="fas fa-plus"></i> Add New Student</button>
+                </div>
+            </div>
+
+            <!-- Content Area (Table View) -->
+            <div class="admin-tab-content active" id="content-2025">
+                <div class="table-responsive">
+                    <table class="student-table" id="table-2025">
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Registration No.</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- JS populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="admin-tab-content" id="content-2024">
+                <div class="table-responsive">
+                    <table class="student-table" id="table-2024">
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Registration No.</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- JS populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="admin-tab-content" id="content-2023">
+                <div class="table-responsive">
+                    <table class="student-table" id="table-2023">
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Registration No.</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- JS populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Generic Modals & Utilities -->
+    <script src="../js/admin_utils.js"></script>
+    <script src="../js/student_admin.js"></script>
+</body>
+</html>

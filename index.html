@@ -75,7 +75,6 @@
                 </li>
                 <li><a href="#student" class="nav-link">Student Corner</a></li>
                 <li><a href="#gallery" class="nav-link">Gallery</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -193,6 +192,60 @@
                 <div class="news-item">
                     <span class="news-date">May 2025</span>
                     <p>B.Tech Final Year Project Exhibition</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ===== PUBLICATIONS MODAL ===== -->
+    <div class="modal-overlay" id="pubModal">
+        <div class="modal-content card-glass">
+            <div class="modal-header">
+                <h3><i class="fas fa-book-open"></i> All Publications</h3>
+                <button class="modal-close" id="pubModalClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body news-scroll">
+                <div class="news-item new-tag">
+                    <span class="news-date">International Journal</span>
+                    <p>Biswaranjan Achrya, Sucheta Panda and Niranjan K Ray — "Multiprocessor Task Scheduling Optimization for Cyber-Physical System using an Improved Salp Swarm Optimization Algorithm"</p>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">Journal of Embedded Systems</span>
+                    <p>Dakhya Prasad Pati and Sucheta Panda — "Performance Evaluation of Modified Gaussian Mixture Model Algorithm for Image Segmentation of Mammogram"</p>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">IEEE Transactions</span>
+                    <p>S. K. Majhi and S. K. Das — "A novel approach to optimize routing protocols in Wireless Sensor Networks"</p>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">ACM Computing Surveys</span>
+                    <p>M. R. Kabat and P. K. Sahu — "A Comprehensive Study of Load Balancing Algorithms in Cloud Computing Environments"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ===== PROJECTS MODAL ===== -->
+    <div class="modal-overlay" id="projModal">
+        <div class="modal-content card-glass">
+            <div class="modal-header">
+                <h3><i class="fas fa-flask"></i> All Projects</h3>
+                <button class="modal-close" id="projModalClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body news-scroll">
+                <div class="news-item new-tag">
+                    <span class="news-date">DST Funded · 2024</span>
+                    <p>Funded project on AI-based Smart Surveillance System</p>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">SERB Funded · 2023</span>
+                    <p>IoT-based Smart Agriculture Monitoring System</p>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">MeitY Funded · 2023</span>
+                    <p>Cyber Security Framework for Critical Infrastructure</p>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">AICTE Funded · 2022</span>
+                    <p>Modernization of Network and Information Security Laboratory</p>
                 </div>
             </div>
         </div>
@@ -361,7 +414,7 @@
                                 <span class="pub-journal">Journal of Embedded Systems</span>
                             </div>
                         </div>
-                        <a href="#" class="btn-text">View All Publications <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="btn-text" id="viewPubBtn">View All Publications <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="res-panel" id="res-proj">
                         <div class="pub-item">
@@ -385,7 +438,7 @@
                                     class="pub-journal">MeitY Funded · 2023</span>
                             </div>
                         </div>
-                        <a href="#" class="btn-text">View All Projects <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="btn-text" id="viewProjBtn">View All Projects <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="research-areas">
