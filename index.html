@@ -42,8 +42,8 @@
                 </div>
                 <div class="header-text">
                     <h1 class="dept-name">Computer Science &amp; Engineering</h1>
-                    <p class="univ-name">Veer Surendra Sai University of Technology, Burla</p>
-                    <p class="univ-sub">Sambalpur, Odisha — Established 1994</p>
+                    <p class="univ-name">Veer Surendra Sai University of Technology</p>
+                    <p class="univ-sub">Burla, Sambalpur, Odisha — 768018</p>
                 </div>
             </div>
         </div>
@@ -125,7 +125,7 @@
                     <div class="news-card card-glass" id="news">
                         <div class="news-header">
                             <h3><i class="fas fa-bell"></i> News &amp; Events</h3>
-                            <a href="#" class="view-all-link">View All</a>
+                            <a href="javascript:void(0)" class="view-all-link" onclick="openNewsModal()">View All</a>
                         </div>
                         <div class="news-scroll">
                             <div class="news-item new-tag">
@@ -159,11 +159,52 @@
             </div>
         </div>
     </section>
-
+    <!-- ===== NEWS MODAL ===== -->
+    <div class="modal-overlay" id="newsModal">
+        <div class="modal-content card-glass">
+            <div class="modal-header">
+                <h3><i class="fas fa-bell"></i> All News &amp; Events</h3>
+                <button class="modal-close" id="newsModalClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body news-scroll">
+                <div class="news-item new-tag">
+                    <span class="news-date">13 Nov 2025</span>
+                    <p>Ph.D Open Defense Viva-Voce of Ms. Swaty Dash, Dept. of Computer Science &amp; Engineering</p>
+                </div>
+                <div class="news-item new-tag">
+                    <span class="news-date">03 Nov 2025</span>
+                    <p>Ph.D Award Notification of Ms. Priyanka Priyadarshini, Dept. of CSE</p>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">Oct 2025</span>
+                    <p>Annual Technical Symposium — TechFusion 2025 organized by CSE Society</p>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">Sep 2025</span>
+                    <p>Workshop on Deep Learning and Neural Networks for final year students</p>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">Aug 2025</span>
+                    <p>MoU signed with leading IT companies for student internships and placements</p>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">Jul 2025</span>
+                    <p>Faculty Development Programme on Cloud Computing and DevOps</p>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">Jun 2025</span>
+                    <p>Alumni Meet &amp; Tech Talk Series</p>
+                </div>
+                <div class="news-item">
+                    <span class="news-date">May 2025</span>
+                    <p>B.Tech Final Year Project Exhibition</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ===== PROGRAMMES ===== -->
     <section class="section programmes-section" id="programmes">
         <div class="container">
-            <div class="section-label">Academic Offerings</div>
             <h2 class="section-title">Our Programmes</h2>
             <div class="prog-tabs">
                 <button class="prog-tab active" data-tab="ug">Under Graduate</button>
@@ -177,22 +218,20 @@
                         <div class="prog-icon"><i class="fas fa-laptop-code"></i></div>
                         <h4>B.Tech CSE</h4>
                         <p>Computer Science &amp; Engineering</p>
-                        <span class="seats-badge">120 Seats</span>
+                        <span class="seats-badge">160 Seats</span>
                         <ul class="prog-details">
                             <li><i class="fas fa-clock"></i> 4 Years</li>
                             <li><i class="fas fa-graduation-cap"></i> Bachelor of Technology</li>
-                            <li><i class="fas fa-university"></i> VSSUT Burla</li>
                         </ul>
                     </div>
-                    <div class="prog-card featured">
+                    <div class="prog-card">
                         <div class="prog-icon"><i class="fas fa-brain"></i></div>
                         <h4>B.Tech CSE (AI &amp; ML)</h4>
                         <p>Specialization in Artificial Intelligence &amp; Machine Learning</p>
-                        <span class="seats-badge">60 Seats</span>
+                        <span class="seats-badge">80 Seats</span>
                         <ul class="prog-details">
                             <li><i class="fas fa-clock"></i> 4 Years</li>
                             <li><i class="fas fa-graduation-cap"></i> Bachelor of Technology</li>
-                            <li><i class="fas fa-star"></i> Specialization</li>
                         </ul>
                     </div>
                 </div>
@@ -205,7 +244,7 @@
                         <h4>M.Tech CSE</h4>
                         <p>Computer Science &amp; Engineering</p><span class="seats-badge">36 Seats</span>
                     </div>
-                    <div class="prog-card featured">
+                    <div class="prog-card">
                         <div class="prog-icon"><i class="fas fa-robot"></i></div>
                         <h4>M.Tech CSE (AI &amp; ML)</h4>
                         <p>Artificial Intelligence &amp; Machine Learning</p><span class="seats-badge">18 Seats</span>
@@ -255,7 +294,6 @@
     <!-- ===== VISION & MISSION ===== -->
     <section class="section vision-section" id="vision">
         <div class="container">
-            <div class="section-label">Direction &amp; Purpose</div>
             <h2 class="section-title">Vision &amp; Mission</h2>
             <div class="vm-grid">
                 <div class="vm-card vision-card">
@@ -285,7 +323,6 @@
     <!-- ===== RESEARCH & DEVELOPMENT ===== -->
     <section class="section research-section" id="research">
         <div class="container">
-            <div class="section-label">Innovation Hub</div>
             <h2 class="section-title">Research &amp; Development</h2>
             <div class="research-grid">
                 <div class="research-pubs">
@@ -378,8 +415,7 @@
     <!-- ===== PEO / PSO / PO ===== -->
     <section class="section peo-section" id="peo">
         <div class="container">
-            <div class="section-label">Academic Framework</div>
-            <h2 class="section-title">PEO · PSO · PO</h2>
+            <h2 class="section-title">Academic Framework</h2>
             <div class="peo-tabs">
                 <button class="peo-tab active" data-peo="peo">Programme Educational Objectives</button>
                 <button class="peo-tab" data-peo="pso">Programme Specific Outcomes</button>
@@ -496,8 +532,7 @@
     <!-- ===== GALLERY ===== -->
     <section class="section gallery-section" id="gallery">
         <div class="container">
-            <div class="section-label">Our Community</div>
-            <h2 class="section-title">Alumni · Video · Photos</h2>
+            <div class="section-title">Our Community</div>
             <div class="gallery-grid">
 
                 <!-- Distinguished Alumni -->
@@ -566,13 +601,18 @@
                         <h3><i class="fas fa-images"></i> Photo Gallery</h3>
                         <a href="#" class="view-all-link">View All</a>
                     </div>
-                    <div class="photo-grid-mini">
-                        <div class="photo-cell"><i class="fas fa-graduation-cap"></i><span>Convocation</span></div>
-                        <div class="photo-cell"><i class="fas fa-flask"></i><span>Lab Sessions</span></div>
-                        <div class="photo-cell"><i class="fas fa-laptop"></i><span>Hackathons</span></div>
-                        <div class="photo-cell"><i class="fas fa-trophy"></i><span>Awards</span></div>
-                        <div class="photo-cell"><i class="fas fa-chalkboard-teacher"></i><span>Seminars</span></div>
-                        <div class="photo-cell"><i class="fas fa-users"></i><span>Cultural</span></div>
+                    <div class="photo-carousel" id="photoCarousel">
+                        <div class="photo-slide active" style="background-image: url('assets/images/gallery1.png');">
+                            <div class="photo-caption">Computer Science Lab</div>
+                        </div>
+                        <div class="photo-slide" style="background-image: url('assets/images/gallery2.png');">
+                            <div class="photo-caption">Campus Environment</div>
+                        </div>
+                        <div class="photo-slide" style="background-image: url('assets/images/gallery3.png');">
+                            <div class="photo-caption">Student Hackathon</div>
+                        </div>
+                        <button class="photo-nav prev" id="photoPrev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="photo-nav next" id="photoNext"><i class="fas fa-chevron-right"></i></button>
                     </div>
                 </div>
 
@@ -654,6 +694,7 @@
     <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
 
     <script src="script.js"></script>
+
 </body>
 
 </html>

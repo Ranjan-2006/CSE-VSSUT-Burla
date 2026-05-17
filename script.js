@@ -77,6 +77,55 @@ function updateActiveNavLink() {
     });
 }
 
+// ===== NEWS MODAL =====
+document.addEventListener('DOMContentLoaded', () => {
+    const newsViewAllBtn = document.getElementById('newsViewAllBtn');
+    const newsModal = document.getElementById('newsModal');
+    const newsModalClose = document.getElementById('newsModalClose');
+
+    if (newsViewAllBtn && newsModal && newsModalClose) {
+        newsViewAllBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            newsModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        newsModalClose.addEventListener('click', () => {
+            newsModal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        newsModal.addEventListener('click', (e) => {
+            if (e.target === newsModal) {
+                newsModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+});
+        function openNewsModal() {
+            var modal = document.getElementById('newsModal');
+            if(modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        var closeBtn = document.getElementById('newsModalClose');
+        if(closeBtn) {
+            closeBtn.addEventListener('click', function() {
+                document.getElementById('newsModal').classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+        var modalOverlay = document.getElementById('newsModal');
+        if(modalOverlay) {
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
 // ===== PROGRAMME TABS =====
 const progTabs = document.querySelectorAll('.prog-tab');
 const progPanels = document.querySelectorAll('.prog-panel');
@@ -152,6 +201,47 @@ function resetCarouselTimer() {
 }
 if (slides.length > 0) startCarouselTimer();
 
+// ===== PHOTO CAROUSEL =====
+let photoCurrentSlide = 0;
+const photoSlides = document.querySelectorAll('.photo-slide');
+let photoTimer = null;
+
+function goToPhotoSlide(idx) {
+    photoSlides.forEach(s => s.classList.remove('active'));
+    photoCurrentSlide = (idx + photoSlides.length) % photoSlides.length;
+    if (photoSlides[photoCurrentSlide]) {
+        photoSlides[photoCurrentSlide].classList.add('active');
+    }
+}
+
+function startPhotoTimer() {
+    photoTimer = setInterval(() => goToPhotoSlide(photoCurrentSlide + 1), 3500);
+}
+
+function resetPhotoTimer() {
+    clearInterval(photoTimer);
+    startPhotoTimer();
+}
+
+if (photoSlides.length > 0) {
+    startPhotoTimer();
+}
+
+const photoPrev = document.getElementById('photoPrev');
+const photoNext = document.getElementById('photoNext');
+
+if (photoPrev && photoNext) {
+    photoPrev.addEventListener('click', () => {
+        goToPhotoSlide(photoCurrentSlide - 1);
+        resetPhotoTimer();
+    });
+    
+    photoNext.addEventListener('click', () => {
+        goToPhotoSlide(photoCurrentSlide + 1);
+        resetPhotoTimer();
+    });
+}
+
 // ===== SCROLL REVEAL =====
 const revealElements = document.querySelectorAll(
     '.card-glass: .prog-card, .vm-card, .outcome-card, .area-chip, .gallery-block, .about-text, .hod-card'
@@ -225,12 +315,21 @@ backToTop.addEventListener('click', () => {
 // ===== SMOOTH SCROLL FOR ALL # LINKS =====
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
+        const href = a.getAttribute('href');
+        if (href === '#') {
             e.preventDefault();
-            const offset = navbar.offsetHeight + 8;
-            const top = target.getBoundingClientRect().top + window.scrollY - offset;
-            window.scrollTo({ top, behavior: 'smooth' });
+            return;
+        }
+        try {
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                const offset = navbar ? navbar.offsetHeight + 8 : 0;
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        } catch (err) {
+            // Invalid selector, ignore
         }
     });
 });
