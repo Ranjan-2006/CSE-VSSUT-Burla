@@ -147,6 +147,27 @@ button {
     color: var(--gold);
 }
 
+.topbar-admin {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--gray-400);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.topbar-admin:hover {
+    color: var(--gold);
+}
+
+.topbar-admin i {
+    color: var(--gold);
+    font-size: 0.72rem;
+}
+
 /* ===== HEADER ===== */
 .site-header {
     background: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-700) 60%, var(--blue-600) 100%);
