@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="../css/admin_dashboard.css" />
+    <link rel="icon" type="image/png" href="../assets/logos/CSE.png" />
 </head>
 
 <body>
@@ -75,11 +77,64 @@
         </div>
     </nav>
 
-    <!-- ===== BLANK ADMIN BODY ===== -->
-    <main style="min-height: 60vh; padding: 40px 20px; background-color: var(--gray-50);">
-        <div class="container" style="background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
-            <h2 style="color: var(--blue-900); font-size: 1.8rem; margin-bottom: 20px;">Welcome to the Admin Portal</h2>
-            <p style="color: var(--gray-600); font-size: 1.1rem;">This is the secure dashboard area. Use the navigation to manage department content.</p>
+    <!-- ===== ADMIN BODY ===== -->
+    <main class="admin-main">
+        <div class="container">
+            <div class="admin-header">
+                <h2>Admin Control Panel</h2>
+                <p>Welcome back. Select a module below to manage department content and records.</p>
+            </div>
+            
+            <div class="admin-grid">
+                <!-- 1. News and Events -->
+                <a href="#" class="admin-card fade-in" style="animation-delay: 0.1s;">
+                    <div class="admin-card-icon"><i class="fas fa-newspaper"></i></div>
+                    <h3>News & Events</h3>
+                    <p>Add, modify, or delete the latest departmental news and upcoming events.</p>
+                </a>
+                
+                <!-- 2. Research & Development -->
+                <a href="#" class="admin-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="admin-card-icon"><i class="fas fa-flask"></i></div>
+                    <h3>Research & Development</h3>
+                    <p>Manage R&D projects, ongoing publications, and research details.</p>
+                </a>
+                
+                <!-- 3. Distinguished Alumni -->
+                <a href="#" class="admin-card fade-in" style="animation-delay: 0.3s;">
+                    <div class="admin-card-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>Distinguished Alumni</h3>
+                    <p>Add or update profiles of notable alumni and their achievements.</p>
+                </a>
+                
+                <!-- 4. Photo Gallery -->
+                <a href="#" class="admin-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="admin-card-icon"><i class="fas fa-images"></i></div>
+                    <h3>Photo Gallery</h3>
+                    <p>Upload new event photos or manage existing albums in the gallery.</p>
+                </a>
+                
+                <!-- 5. Course Structure -->
+                <a href="#" class="admin-card fade-in" style="animation-delay: 0.5s;">
+                    <div class="admin-card-icon"><i class="fas fa-book"></i></div>
+                    <h3>Course Structure</h3>
+                    <p>Update academic syllabi and upload new course structure PDFs.</p>
+                </a>
+                
+                <!-- 6. Faculty & Staff -->
+                <a href="#" class="admin-card fade-in" style="animation-delay: 0.6s;">
+                    <div class="admin-card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3>Faculty & Staff</h3>
+                    <p>Add or manage faculty members, guest lecturers, and support staff.</p>
+                </a>
+                
+                <!-- 7. Student Directory -->
+                <a href="#" class="admin-card fade-in" style="animation-delay: 0.7s;">
+                    <div class="admin-card-icon"><i class="fas fa-users"></i></div>
+                    <h3>Student Directory</h3>
+                    <p>Maintain student records, update batch details, and manage directories.</p>
+                </a>
+            </div>
         </div>
     </main>
 
