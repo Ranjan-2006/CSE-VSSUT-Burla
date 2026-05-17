@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | Department of CSE</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+    <!-- ===== TOP BAR ===== -->
+    <div class="topbar">
+        <div class="topbar-inner">
+            <span><i class="fas fa-envelope"></i> registrar@vssut.ac.in</span>
+            <span><i class="fas fa-phone"></i> +91 8480441756</span>
+            <a href="../index.html" class="topbar-admin" onclick="localStorage.removeItem('adminSession')"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="header-logos">
+                <div style="display: flex; gap: 16px; align-items: center;">
+                    <a href="https://www.vssut.ac.in/"><img src="../assets/logos/Logo_vssut.png" alt="VSSUT Logo" class="logo-img" onerror="this.style.display='none'" /></a>
+                    <a href="../index.html"><img src="../assets/logos/CSE.png" alt="CSE Logo" class="logo-img" onerror="this.style.display='none'" /></a>
+                </div>
+                <div class="header-text">
+                    <h1 class="dept-name">Computer Science &amp; Engineering</h1>
+                    <p class="univ-name">Veer Surendra Sai University of Technology</p>
+                    <p class="univ-sub">Burla, Sambalpur, Odisha — 768018</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#" class="nav-link active">Admin Dashboard</a></li>
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li class="has-dropdown">
+                    <a href="../index.html#programmes" class="nav-link">Academics <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="../index.html#cources">Courses</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="../index.html#people" class="nav-link">People <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="../index.html#people">Faculty</a></li>
+                        <li><a href="../index.html#people">Guest Faculty</a></li>
+                        <li><a href="../index.html#people">Staff</a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="../index.html#people" class="nav-link">Research &amp; Dev <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="../index.html#people">All Publications</a></li>
+                        <li><a href="../index.html#people">All Projects</a></li>
+                    </ul>
+                </li>
+                <li><a href="../index.html#student" class="nav-link">Student Corner</a></li>
+                <li><a href="../index.html#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== BLANK ADMIN BODY ===== -->
+    <main style="min-height: 60vh; padding: 40px 20px; background-color: var(--gray-50);">
+        <div class="container" style="background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+            <h2 style="color: var(--blue-900); font-size: 1.8rem; margin-bottom: 20px;">Welcome to the Admin Portal</h2>
+            <p style="color: var(--gray-600); font-size: 1.1rem;">This is the secure dashboard area. Use the navigation to manage department content.</p>
+        </div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="contact">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo-row">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/Veer_Surendra_Sai_University_of_Technology_logo.png/200px-Veer_Surendra_Sai_University_of_Technology_logo.png"
+                            alt="VSSUT" class="footer-logo" onerror="this.style.display='none'" />
+                        <div>
+                            <h4>Department of Computer Science & Engineering</h4>
+                            <p>VSSUT Burla</p>
+                        </div>
+                    </div>
+                    <p class="footer-desc">Veer Surendra Sai University of Technology, Burla, Sambalpur — 768018,
+                        Odisha, India.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Quick Links</h5>
+                    <ul class="quick-links-list">
+                        <li><a href="javascript:void(0)">IPR Cell</a></li>
+                        <li><a href="https://www.bis.gov.in/" target="_blank" rel="noopener noreferrer">BIS</a></li>
+                        <li><a href="https://rti.gov.in/" target="_blank" rel="noopener noreferrer">RTI</a></li>
+                        <li><a href="https://odisha.gov.in/" target="_blank" rel="noopener noreferrer">Govt. of Odisha</a></li>
+                        <li><a href="javascript:void(0)">Disclaimer</a></li>
+                        <li><a href="javascript:void(0)">Downloads</a></li>
+                        <li><a href="../index.html#about">TEQIP - III</a></li>
+                        <li><a href="../index.html#programmes">Faculty Activities</a></li>
+                        <li><a href="https://www.ugc.gov.in/" target="_blank" rel="noopener noreferrer">UGC</a></li>
+                        <li><a href="../index.html#peo">Annual Reports</a></li>
+                        <li><a href="https://www.aicte.gov.in/" target="_blank" rel="noopener noreferrer">AICTE</a></li>
+                        <li><a href="javascript:void(0)">CDCE</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col footer-contact">
+                    <h5>Location</h5>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Burla, Sambalpur — 768018, Odisha</span></div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3712.2620432708322!2d83.90142197450959!3d21.497453571517276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a213da4ec28af2d%3A0xb33a5cc9af8c33c7!2sVeer%20Surendra%20Sai%20University%20of%20Technology!5e0!3m2!1sen!2sin!4v1779050085492!5m2!1sen!2sin" width="100%" height="240" style="border:0; border-radius: 8px; margin-top: 12px; pointer-events: auto;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>© 2026 Veer Surendra Sai University of Technology. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="../script.js"></script>
+
+</body>
+
+</html>

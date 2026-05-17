@@ -1778,8 +1778,14 @@ button {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    grid-template-columns: 2fr 2fr 1.5fr;
     gap: 48px;
+}
+
+.footer-col ul.quick-links-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
 }
 
 .footer-brand {
