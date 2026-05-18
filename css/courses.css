@@ -1,0 +1,270 @@
+/* ===== courses.css — Styles for the Course Structure page ===== */
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+    background: #ffffff;
+    padding: 80px 0 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: drift 20s linear infinite;
+}
+
+@keyframes drift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(30px, 30px); }
+}
+
+.page-hero h1 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    color: var(--blue-900);
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.page-hero p {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+.page-hero .breadcrumb {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--gray-400);
+    position: relative;
+    z-index: 1;
+}
+
+.page-hero .breadcrumb a {
+    color: var(--blue-600);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.page-hero .breadcrumb a:hover { color: var(--blue-800); }
+
+.page-hero .breadcrumb strong { color: var(--gray-700); }
+
+/* ===== PROGRAMME TOGGLE ===== */
+.prog-toggle-section {
+    padding: 50px 0 30px;
+}
+
+.prog-toggle-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.prog-toggle-card {
+    background: var(--card-glass);
+    backdrop-filter: blur(12px);
+    border: 2px solid var(--gray-200);
+    border-radius: 16px;
+    padding: 30px 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 260px;
+    position: relative;
+    overflow: hidden;
+}
+
+.prog-toggle-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue-600), var(--blue-400));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.prog-toggle-card:hover {
+    border-color: var(--blue-400);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.prog-toggle-card:hover::before,
+.prog-toggle-card.active::before { transform: scaleX(1); }
+
+.prog-toggle-card.active {
+    border-color: var(--blue-600);
+    background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(59,130,246,0.02));
+    box-shadow: 0 8px 25px rgba(59,130,246,0.15);
+}
+
+.prog-toggle-card i {
+    font-size: 2.5rem;
+    color: var(--blue-600);
+    margin-bottom: 12px;
+    display: block;
+}
+
+.prog-toggle-card h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--blue-900);
+    margin: 0 0 6px;
+}
+
+.prog-toggle-card p {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    margin: 0;
+}
+
+/* ===== COURSE CARDS GRID ===== */
+.courses-section {
+    padding: 20px 0 80px;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.course-card {
+    background: var(--card-glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.course-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--blue-600), var(--blue-400));
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border-color: var(--blue-300);
+}
+
+.course-card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--blue-100), var(--blue-50));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--blue-600);
+}
+
+.course-card h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--blue-900);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.course-card-meta {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.course-card .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.course-card .btn-download:hover {
+    background: linear-gradient(135deg, var(--blue-700), var(--blue-800));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59,130,246,0.3);
+}
+
+/* ===== EMPTY & LOADING STATES ===== */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gray-500);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: var(--gray-300);
+    display: block;
+}
+
+.empty-state p {
+    font-size: 1.05rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.loading-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gray-500);
+    font-size: 1.1rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+    .prog-toggle-card { min-width: 100%; padding: 22px 24px; }
+    .courses-grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 60px 0 40px; }
+}

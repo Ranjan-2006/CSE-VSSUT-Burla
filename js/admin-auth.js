@@ -26,6 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 5. Global Session Observer
+    // Determine correct dashboard path based on current page location
+    const isSubpage = window.location.pathname.includes('/html/');
+    const dashboardPath = isSubpage ? 'admin_dashboard.html' : 'html/admin_dashboard.html';
+
     supabase.auth.onAuthStateChange((event, session) => {
         if (session) {
             // Valid active session
@@ -38,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Transform topbar login button to dashboard link
             if (openBtn) {
                 openBtn.innerHTML = '<i class="fas fa-columns"></i> Dashboard';
-                openBtn.href = 'html/admin_dashboard.html';
+                openBtn.href = dashboardPath;
                 openBtn.removeAttribute('id'); // So it doesn't trigger modal
                 
                 // Add Admin to navbar dynamically if not already added
@@ -46,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (navLinks && !document.getElementById('admin-nav-link')) {
                     const adminNav = document.createElement('li');
                     adminNav.id = 'admin-nav-link';
-                    adminNav.innerHTML = '<a href="html/admin_dashboard.html" class="nav-link" style="color: var(--gold);">Admin Dashboard</a>';
+                    adminNav.innerHTML = `<a href="${dashboardPath}" class="nav-link" style="color: var(--gold);">Admin Dashboard</a>`;
                     navLinks.insertBefore(adminNav, navLinks.firstChild);
                 }
             }
@@ -58,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (adminPanel) adminPanel.style.display = 'none';
             // Kick user out of admin dashboard pages if no session
             if (window.location.pathname.includes('admin_dashboard') || window.location.pathname.includes('faculty-admin') || window.location.pathname.includes('student-admin')) {
-                window.location.href = '../index.html';
+                window.location.href = isSubpage ? '../index.html' : 'index.html';
             }
         }
     });
@@ -100,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 loginForm.reset();
                 // Explicitly redirect ONLY when they actively log in through the form
                 setTimeout(() => {
-                    window.location.href = 'html/admin_dashboard.html';
+                    window.location.href = dashboardPath;
                 }, 1000);
 
             } catch (error) {

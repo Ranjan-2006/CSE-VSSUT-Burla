@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inject generic Delete Confirmation Modal HTML
     if (!document.getElementById('deleteConfirmModal')) {
         const deleteModalHTML = `
-        <div class="admin-modal-overlay" id="deleteConfirmModal">
+        <div class="admin-modal-overlay" id="deleteConfirmModal" style="z-index: 9999;">
             <div class="admin-modal" style="max-width: 400px;">
                 <div class="admin-modal-header">
                     <h3><i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i> Confirm Delete</h3>

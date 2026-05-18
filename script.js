@@ -226,46 +226,7 @@ peoTabs.forEach(tab => {
 
 // ALUMNI CAROUSEL (Moved to dynamic alumni-feed.js module)
 
-// PHOTO CAROUSEL
-let photoCurrentSlide = 0;
-const photoSlides = document.querySelectorAll('.photo-slide');
-let photoTimer = null;
-
-function goToPhotoSlide(idx) {
-    photoSlides.forEach(s => s.classList.remove('active'));
-    photoCurrentSlide = (idx + photoSlides.length) % photoSlides.length;
-    if (photoSlides[photoCurrentSlide]) {
-        photoSlides[photoCurrentSlide].classList.add('active');
-    }
-}
-
-function startPhotoTimer() {
-    photoTimer = setInterval(() => goToPhotoSlide(photoCurrentSlide + 1), 3500);
-}
-
-function resetPhotoTimer() {
-    clearInterval(photoTimer);
-    startPhotoTimer();
-}
-
-if (photoSlides.length > 0) {
-    startPhotoTimer();
-}
-
-const photoPrev = document.getElementById('photoPrev');
-const photoNext = document.getElementById('photoNext');
-
-if (photoPrev && photoNext) {
-    photoPrev.addEventListener('click', () => {
-        goToPhotoSlide(photoCurrentSlide - 1);
-        resetPhotoTimer();
-    });
-    
-    photoNext.addEventListener('click', () => {
-        goToPhotoSlide(photoCurrentSlide + 1);
-        resetPhotoTimer();
-    });
-}
+// PHOTO CAROUSEL (Moved to dynamic gallery-feed.js module)
 
 // SCROLL REVEAL
 const revealElements = document.querySelectorAll(

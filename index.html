@@ -53,28 +53,28 @@
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
                 <li class="has-dropdown">
-                    <a href="#programmes" class="nav-link">Academics <i class="fas fa-chevron-down"></i></a>
+                    <a href="html/courses.html" class="nav-link">Academics <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown">
-                        <li><a href="#cources">Courses</a></li>
+                        <li><a href="html/courses.html">Courses</a></li>
                     </ul>
                 </li>
                 <li class="has-dropdown">
-                    <a href="#people" class="nav-link">People <i class="fas fa-chevron-down"></i></a>
+                    <a href="html/faculty.html" class="nav-link">People <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown">
-                        <li><a href="#people">Faculty</a></li>
-                         <li><a href="#people">Guest Faculty</a></li>
-                        <li><a href="#people">Staff</a></li>
+                        <li><a href="html/faculty.html">Faculty</a></li>
+                        <li><a href="html/guest-faculty.html">Guest Faculty</a></li>
+                        <li><a href="html/staff.html">Staff</a></li>
                     </ul>
                 </li>
                 <li class="has-dropdown">
-                    <a href="#people" class="nav-link">Research &amp; Dev <i class="fas fa-chevron-down"></i></a>
+                    <a href="html/publications.html" class="nav-link">Research &amp; Dev <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown">
-                        <li><a href="#people">All Publications</a></li>
-                        <li><a href="#people">All Projects</a></li>
+                        <li><a href="html/publications.html">All Publications</a></li>
+                        <li><a href="html/projects.html">All Projects</a></li>
                     </ul>
                 </li>
-                <li><a href="#student" class="nav-link">Student Corner</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="html/student-corner.html" class="nav-link">Student Corner</a></li>
+                <li><a href="html/gallery.html" class="nav-link">Gallery</a></li>
             </ul>
         </div>
     </nav>
@@ -628,22 +628,13 @@
                         <h3><i class="fab fa-youtube"></i> Video Gallery</h3>
                         <a href="#" class="view-all-link">View All</a>
                     </div>
-                    <div class="video-thumb">
-                        <a href="https://www.youtube.com/watch?v=VSSUT" target="_blank" class="video-play-wrap">
-                            <div class="video-thumb-img">
-                                <div class="video-thumb-bg"></div>
-                                <div class="play-btn"><i class="fas fa-play"></i></div>
-                                <div class="video-label">Campus Tour of VSSUT Burla</div>
-                            </div>
-                        </a>
+                    <div class="video-thumb" id="mainVideoContainer" style="margin-bottom: 15px; display: none; position: relative;">
+                        <iframe id="mainVideoIframe" style="width: 100%; aspect-ratio: 16/9; border-radius: 8px;" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <button id="videoPrev" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; font-size: 1.2rem; cursor: pointer; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; z-index: 10;"><i class="fas fa-chevron-left"></i></button>
+                        <button id="videoNext" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.5); border: none; font-size: 1.2rem; cursor: pointer; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.3s; z-index: 10;"><i class="fas fa-chevron-right"></i></button>
                     </div>
-                    <div class="video-list">
-                        <a href="#" class="video-list-item"><i class="fas fa-play-circle"></i> Department Annual Day
-                            2025</a>
-                        <a href="#" class="video-list-item"><i class="fas fa-play-circle"></i> TechFusion Symposium
-                            Highlights</a>
-                        <a href="#" class="video-list-item"><i class="fas fa-play-circle"></i> Lab Tour — AI &amp; ML
-                            Lab</a>
+                    <div class="video-list" style="display: flex; align-items: center; justify-content: center; padding: 15px 10px; border-top: 1px solid var(--gray-200);">
+                        <p id="mainVideoMessage" style="text-align: center; color: var(--gray-500); font-style: italic; margin: 0; padding: 0 15px;">More videos will be updated soon. Stay tuned!</p>
                     </div>
                 </div>
 
@@ -771,6 +762,8 @@
     <script type="module" src="js/news-feed.js"></script>
     <script type="module" src="js/research-feed.js"></script>
     <script type="module" src="js/alumni-feed.js"></script>
+    <script type="module" src="js/gallery-feed.js"></script>
+    <script type="module" src="js/video-feed.js"></script>
 </body>
 
 </html>

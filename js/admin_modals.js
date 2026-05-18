@@ -7,6 +7,7 @@ const AdminModals = {
         research: false,
         alumni: false,
         gallery: false,
+        videos: false,
         courseStructure: false
     },
 
@@ -295,94 +296,73 @@ const AdminModals = {
         if (!this.loaded.gallery) {
             const html = `
             <style>
-                .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
-                .gallery-item { position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 1; background: var(--gray-200); }
+                .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+                .gallery-item { position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 16/9; background: var(--gray-200); }
                 .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-                .gallery-item-actions { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); padding: 6px; display: flex; justify-content: space-between; align-items: center; opacity: 0; transition: opacity 0.2s; }
+                .gallery-item-actions { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.6); padding: 8px; display: flex; justify-content: flex-end; align-items: center; opacity: 0; transition: opacity 0.2s; }
                 .gallery-item:hover .gallery-item-actions { opacity: 1; }
-                .gallery-checkbox { position: absolute; top: 8px; left: 8px; z-index: 2; width: 18px; height: 18px; cursor: pointer; }
             </style>
             <div class="admin-modal-overlay" id="galleryAdminModal">
-                <div class="admin-modal" style="max-width: 900px;">
+                <div class="admin-modal" style="max-width: 800px;">
                     <div class="admin-modal-header">
-                        <h3><i class="fas fa-images"></i> Manage Gallery</h3>
+                        <h3><i class="fas fa-images"></i> Manage Photo Gallery</h3>
                         <button class="admin-modal-close" onclick="AdminUtils.closeModal('galleryAdminModal')"><i class="fas fa-times"></i></button>
                     </div>
                     
                     <div class="admin-tabs" style="padding: 0 24px;">
-                        <button class="admin-tab-btn active" id="tabBtn-gal-add">Upload Photos</button>
+                        <button class="admin-tab-btn active" id="tabBtn-gal-add">Add Photo</button>
                         <button class="admin-tab-btn" id="tabBtn-gal-modify">Manage Gallery</button>
                     </div>
 
                     <div class="admin-modal-body">
                         <!-- Add Tab -->
                         <div class="admin-tab-content active" id="tabContent-gal-add">
-                            <form onsubmit="event.preventDefault(); AdminUtils.showToast('Photos uploaded successfully!'); this.reset();">
-                                <div class="form-group">
-                                    <label>Upload Photos (Multiple allowed)</label>
-                                    <div class="file-upload-wrapper" style="padding: 40px;">
-                                        <input type="file" accept="image/*" multiple onchange="AdminUtils.showToast(this.files.length + ' photos selected', 'success')">
-                                        <span class="file-upload-text">
-                                            <i class="fas fa-images"></i>
-                                            Click to browse or drag images here
-                                        </span>
+                            <form id="gal-form" onsubmit="return false;">
+                                <input type="hidden" id="gal-id" value="">
+                                <div style="display: flex; gap: 20px; align-items: flex-start;">
+                                    <div style="flex: 1;">
+                                        <div class="form-group">
+                                            <label>Photo Title <span style="color:red;">*</span></label>
+                                            <input type="text" id="gal-title" class="form-control" required placeholder="e.g. Computer Science Lab">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Description (Optional)</label>
+                                            <textarea id="gal-desc" class="form-control" placeholder="Short description of the photo..."></textarea>
+                                        </div>
+                                    </div>
+                                    <div style="width: 200px;">
+                                        <label style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 8px;">Photo Upload <span style="color:red;">*</span></label>
+                                        <div class="file-upload-wrapper" style="padding: 10px; height: 150px; display: flex; align-items: center; justify-content: center;">
+                                            <input type="file" id="gal-photo" accept="image/*" onchange="
+                                                if(this.files[0]) {
+                                                    // Pass NaN to allow free aspect ratio crop
+                                                    AdminUtils.openCropper(this.files[0], NaN, (croppedBlob) => {
+                                                        const url = window.URL.createObjectURL(croppedBlob);
+                                                        const img = document.getElementById('galPreview');
+                                                        img.src = url;
+                                                        img.style.display = 'block';
+                                                        document.getElementById('gal-photo').croppedBlob = croppedBlob;
+                                                    });
+                                                }">
+                                            <span class="file-upload-text" style="font-size: 0.8rem;"><i class="fas fa-camera" style="font-size: 1.5rem;"></i> Upload</span>
+                                            <img id="galPreview" style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; display: none; border-radius: 6px;">
+                                        </div>
                                     </div>
                                 </div>
-                                <div style="display: flex; gap: 20px;">
-                                    <div class="form-group" style="flex: 1;">
-                                        <label>Album / Event Tag</label>
-                                        <input type="text" class="form-control" placeholder="e.g. TechFusion 2025">
-                                    </div>
-                                    <div class="form-group" style="flex: 1;">
-                                        <label>Date</label>
-                                        <input type="date" class="form-control">
-                                    </div>
+                                <div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-top: 15px;">
+                                    <input type="checkbox" id="gal-showcase" checked style="width: 18px; height: 18px; cursor: pointer;">
+                                    <label for="gal-showcase" style="margin: 0; cursor: pointer;">Showcase in public carousel</label>
                                 </div>
-                                <div style="display: flex; gap: 12px; justify-content: flex-end;">
-                                    <button type="submit" class="btn btn-primary">Upload to Gallery</button>
+                                <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px;">
+                                    <button type="submit" id="save-gal-btn" class="btn btn-primary">Save Photo</button>
                                 </div>
                             </form>
                         </div>
                         
                         <!-- Modify Tab -->
                         <div class="admin-tab-content" id="tabContent-gal-modify">
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 16px; align-items: center;">
-                                <div style="display: flex; gap: 10px; align-items: center;">
-                                    <input type="checkbox" id="selectAllGallery" style="cursor: pointer;" onchange="
-                                        document.querySelectorAll('.gallery-checkbox').forEach(cb => cb.checked = this.checked);
-                                    ">
-                                    <label for="selectAllGallery" style="margin:0; cursor:pointer;">Select All</label>
-                                </div>
-                                <div style="display: flex; gap: 10px;">
-                                    <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.85rem;" onclick="AdminUtils.showToast('Selected visibility toggled', 'success')">Toggle Visibility</button>
-                                    <button class="btn btn-danger" style="padding: 6px 12px; font-size: 0.85rem;" onclick="AdminUtils.confirmDelete(() => { AdminUtils.showToast('Selected photos deleted'); })">Delete Selected</button>
-                                </div>
-                            </div>
-                            <div class="gallery-grid">
-                                <div class="gallery-item">
-                                    <input type="checkbox" class="gallery-checkbox">
-                                    <img src="../assets/gallery/photo1.jpg" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZWVlIi8+PC9zdmc+'" loading="lazy">
-                                    <div class="gallery-item-actions">
-                                        <label class="toggle-switch" style="transform: scale(0.6); transform-origin: left center;">
-                                            <input type="checkbox" checked>
-                                            <span class="toggle-slider"></span>
-                                        </label>
-                                        <button class="action-btn delete" style="width: 24px; height: 24px; font-size: 0.7rem;"><i class="fas fa-trash"></i></button>
-                                    </div>
-                                </div>
-                                <!-- Mock more images -->
-                                ${Array(7).fill(`
-                                <div class="gallery-item">
-                                    <input type="checkbox" class="gallery-checkbox">
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZWVlIi8+PC9zdmc+" loading="lazy">
-                                    <div class="gallery-item-actions">
-                                        <label class="toggle-switch" style="transform: scale(0.6); transform-origin: left center;">
-                                            <input type="checkbox" checked>
-                                            <span class="toggle-slider"></span>
-                                        </label>
-                                        <button class="action-btn delete" style="width: 24px; height: 24px; font-size: 0.7rem;"><i class="fas fa-trash"></i></button>
-                                    </div>
-                                </div>`).join('')}
+                            <div class="gallery-grid" id="admin-gal-list">
+                                <!-- Dynamic items loaded here -->
                             </div>
                         </div>
                     </div>
@@ -398,7 +378,70 @@ const AdminModals = {
         AdminUtils.openModal('galleryAdminModal');
     },
 
-    // 5. Course Structure
+    // 5. Video Gallery
+    openVideos: function(e) {
+        if(e) e.preventDefault();
+        
+        if (!this.loaded.videos) {
+            const html = `
+            <style>
+                .vid-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+            </style>
+            <div class="admin-modal-overlay" id="videosAdminModal">
+                <div class="admin-modal" style="max-width: 800px;">
+                    <div class="admin-modal-header">
+                        <h3><i class="fab fa-youtube"></i> Manage Video Gallery</h3>
+                        <button class="admin-modal-close" onclick="AdminUtils.closeModal('videosAdminModal')"><i class="fas fa-times"></i></button>
+                    </div>
+                    
+                    <div class="admin-tabs" style="padding: 0 24px;">
+                        <button class="admin-tab-btn active" id="tabBtn-vid-add">Add Video</button>
+                        <button class="admin-tab-btn" id="tabBtn-vid-modify">Manage Videos</button>
+                    </div>
+
+                    <div class="admin-modal-body">
+                        <!-- Add Tab -->
+                        <div class="admin-tab-content active" id="tabContent-vid-add">
+                            <form id="vid-form" onsubmit="return false;">
+                                <div class="form-group">
+                                    <label>YouTube Embed URL <span style="color:red;">*</span></label>
+                                    <input type="text" id="vid-embed" class="form-control" required placeholder='e.g. https://www.youtube.com/embed/zoRDYDfsPCU'>
+                                    <small style="color: var(--gray-500); display: block; margin-top: 5px;">Copy the src attribute from the YouTube embed code.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label>Message / Caption (Optional)</label>
+                                    <textarea id="vid-message" class="form-control" placeholder="Short description or message..."></textarea>
+                                </div>
+                                <div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-top: 15px;">
+                                    <input type="checkbox" id="vid-showcase" checked style="width: 18px; height: 18px; cursor: pointer;">
+                                    <label for="vid-showcase" style="margin: 0; cursor: pointer;">Showcase on main page</label>
+                                </div>
+                                <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px;">
+                                    <button type="submit" id="save-vid-btn" class="btn btn-primary">Save Video</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <!-- Modify Tab -->
+                        <div class="admin-tab-content" id="tabContent-vid-modify">
+                            <div class="vid-grid" id="admin-vid-list">
+                                <!-- Dynamic items loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+            this.injectHTML(html);
+            AdminUtils.setupTabs(
+                [document.getElementById('tabBtn-vid-add'), document.getElementById('tabBtn-vid-modify')],
+                [document.getElementById('tabContent-vid-add'), document.getElementById('tabContent-vid-modify')]
+            );
+            this.loaded.videos = true;
+        }
+        AdminUtils.openModal('videosAdminModal');
+    },
+
+    // 6. Course Structure
     openCourseStructure: function(e) {
         if(e) e.preventDefault();
         
@@ -413,83 +456,74 @@ const AdminModals = {
                 .prog-card-select h4 { margin: 0; color: var(--blue-900); }
             </style>
             <div class="admin-modal-overlay" id="courseAdminModal">
-                <div class="admin-modal">
+                <div class="admin-modal" style="max-width: 800px;">
                     <div class="admin-modal-header">
-                        <h3><i class="fas fa-book"></i> Update Course Structure</h3>
+                        <h3><i class="fas fa-book"></i> Manage Course Structure</h3>
                         <button class="admin-modal-close" onclick="AdminUtils.closeModal('courseAdminModal')"><i class="fas fa-times"></i></button>
                     </div>
+
+                    <div class="admin-tabs" style="padding: 0 24px;">
+                        <button class="admin-tab-btn active" id="tabBtn-course-add">Add Course Structure</button>
+                        <button class="admin-tab-btn" id="tabBtn-course-modify">Manage Courses</button>
+                    </div>
+
                     <div class="admin-modal-body">
-                        <form onsubmit="event.preventDefault(); AdminUtils.showToast('Course structure updated successfully!'); this.reset(); document.querySelectorAll('.prog-card-select').forEach(c=>c.classList.remove('selected'));">
-                            
-                            <div class="form-group">
-                                <label>Step 1: Choose Programme</label>
-                                <div class="prog-selection">
-                                    <div class="prog-card-select" onclick="document.querySelectorAll('.prog-card-select').forEach(c=>c.classList.remove('selected')); this.classList.add('selected'); document.getElementById('selectedProg').value='ug';">
-                                        <i class="fas fa-laptop-code"></i>
-                                        <h4>Undergraduate (B.Tech)</h4>
+                        <!-- Add Tab -->
+                        <div class="admin-tab-content active" id="tabContent-course-add">
+                            <form id="course-form" onsubmit="return false;">
+                                
+                                <div class="form-group">
+                                    <label>Step 1: Choose Programme <span style="color:red;">*</span></label>
+                                    <div class="prog-selection">
+                                        <div class="prog-card-select" onclick="document.querySelectorAll('.prog-card-select').forEach(c=>c.classList.remove('selected')); this.classList.add('selected'); document.getElementById('course-prog').value='ug';">
+                                            <i class="fas fa-laptop-code"></i>
+                                            <h4>Undergraduate (B.Tech)</h4>
+                                        </div>
+                                        <div class="prog-card-select" onclick="document.querySelectorAll('.prog-card-select').forEach(c=>c.classList.remove('selected')); this.classList.add('selected'); document.getElementById('course-prog').value='pg';">
+                                            <i class="fas fa-code"></i>
+                                            <h4>Postgraduate (M.Tech/MCA)</h4>
+                                        </div>
                                     </div>
-                                    <div class="prog-card-select" onclick="document.querySelectorAll('.prog-card-select').forEach(c=>c.classList.remove('selected')); this.classList.add('selected'); document.getElementById('selectedProg').value='pg';">
-                                        <i class="fas fa-code"></i>
-                                        <h4>Postgraduate (M.Tech/MCA)</h4>
+                                    <input type="hidden" id="course-prog" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Step 2: Course Title / Academic Year <span style="color:red;">*</span></label>
+                                    <input type="text" id="course-title" class="form-control" placeholder="e.g. B.Tech CSE — Scheme & Syllabus 2024" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Step 3: Upload Syllabus PDF <span style="color:red;">*</span></label>
+                                    <div class="file-upload-wrapper">
+                                        <input type="file" id="course-pdf" accept=".pdf" required onchange="this.nextElementSibling.nextElementSibling.textContent = this.files[0] ? this.files[0].name : ''">
+                                        <span class="file-upload-text">
+                                            <i class="fas fa-file-pdf"></i>
+                                            Click to browse or drag PDF here
+                                        </span>
+                                        <div class="file-preview"></div>
                                     </div>
                                 </div>
-                                <input type="hidden" id="selectedProg" required>
-                            </div>
 
-                            <div class="form-group">
-                                <label>Step 2: Course Title <span style="color:red;">*</span></label>
-                                <input type="text" class="form-control" placeholder="e.g. B.Tech CSE — Scheme & Syllabus 2024" required>
-                            </div>
+                                <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px;">
+                                    <button type="submit" id="save-course-btn" class="btn btn-primary">Upload & Save</button>
+                                </div>
+                            </form>
+                        </div>
 
-                            <div class="form-group">
-                                <label>Step 3: Upload Syllabus PDF <span style="color:red;">*</span></label>
-                                <div class="file-upload-wrapper">
-                                    <input type="file" accept=".pdf" required onchange="this.nextElementSibling.nextElementSibling.textContent = this.files[0] ? this.files[0].name : ''">
-                                    <span class="file-upload-text">
-                                        <i class="fas fa-file-pdf"></i>
-                                        Click to browse or drag PDF here
-                                    </span>
-                                    <div class="file-preview"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group" style="display: flex; align-items: center; gap: 10px;">
-                                <input type="checkbox" id="replaceExisting" checked style="width: 18px; height: 18px; cursor: pointer;">
-                                <label for="replaceExisting" style="margin: 0; cursor: pointer;">Replace existing syllabus file for this programme</label>
-                            </div>
-
-                            <div style="display: flex; gap: 12px; justify-content: flex-end; margin-top: 20px;">
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                            </div>
-                        </form>
-                        
-                        <hr style="border: 0; border-top: 1px solid var(--gray-200); margin: 30px 0;">
-                        
-                        <h4 style="margin-bottom: 15px; color: var(--blue-900);">Current Uploads</h4>
-                        <div class="data-list">
-                            <div class="data-item">
-                                <div class="data-item-content">
-                                    <div class="data-item-title">B.Tech CSE Syllabus 2023</div>
-                                    <div class="data-item-meta">Undergraduate</div>
-                                </div>
-                                <div class="data-item-actions">
-                                    <button class="action-btn delete" title="Delete" onclick="AdminUtils.confirmDelete(() => { this.closest('.data-item').remove(); AdminUtils.showToast('Item deleted'); })"><i class="fas fa-trash"></i></button>
-                                </div>
-                            </div>
-                            <div class="data-item">
-                                <div class="data-item-content">
-                                    <div class="data-item-title">M.Tech AI & ML Syllabus 2022</div>
-                                    <div class="data-item-meta">Postgraduate</div>
-                                </div>
-                                <div class="data-item-actions">
-                                    <button class="action-btn delete" title="Delete" onclick="AdminUtils.confirmDelete(() => { this.closest('.data-item').remove(); AdminUtils.showToast('Item deleted'); })"><i class="fas fa-trash"></i></button>
-                                </div>
+                        <!-- Modify Tab -->
+                        <div class="admin-tab-content" id="tabContent-course-modify">
+                            <div class="data-list" id="admin-course-list">
+                                <!-- Dynamic items loaded here -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>`;
             this.injectHTML(html);
+            AdminUtils.setupTabs(
+                [document.getElementById('tabBtn-course-add'), document.getElementById('tabBtn-course-modify')],
+                [document.getElementById('tabContent-course-add'), document.getElementById('tabContent-course-modify')]
+            );
             this.loaded.courseStructure = true;
         }
         AdminUtils.openModal('courseAdminModal');

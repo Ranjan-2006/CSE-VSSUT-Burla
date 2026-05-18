@@ -74,9 +74,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         carouselContainer.innerHTML = slidesHTML;
         dotsContainer.innerHTML = dotsHTML;
 
-        // ==========================================
         // ENCAPSULATED DYNAMIC CAROUSEL LOGIC
-        // ==========================================
+
         let currentSlide = 0;
         const slides = carouselContainer.querySelectorAll('.alumni-slide');
         const dots = dotsContainer.querySelectorAll('.dot');
