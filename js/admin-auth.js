@@ -55,8 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
             
-            // If on the index page and user just signed in, redirect to dashboard
-            // We removed the auto-redirect here so it doesn't force you back to dashboard when you visit Home.
+            // Initialize Session Manager if not already running
+            if (!window.sessionManagerRunning) {
+                initSessionManager();
+                window.sessionManagerRunning = true;
+            }
         } else {
             // No session exists
             if (adminPanel) adminPanel.style.display = 'none';
@@ -141,5 +144,82 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert(`Logout Failed: ${error.message}`);
             }
         });
+    }
+    
+    // --- Session Manager Logic ---
+    function initSessionManager() {
+        // Limits
+        const HARD_LIMIT_MS = 2 * 60 * 60 * 1000; // 2 hours
+        const IDLE_WARNING_MS = 10 * 60 * 1000;   // 10 mins
+        const IDLE_LOGOUT_MS = 15 * 60 * 1000;    // 15 mins (10 + 5)
+        
+        let lastActivityTime = Date.now();
+        
+        // Track session start in sessionStorage (so it persists across page reloads in same tab)
+        if (!sessionStorage.getItem('adminSessionStart')) {
+            sessionStorage.setItem('adminSessionStart', Date.now().toString());
+        }
+        
+        // Activity events to reset idle timer
+        const activityEvents = ['mousemove', 'mousedown', 'keypress', 'DOMMouseScroll', 'mousewheel', 'touchmove', 'MSPointerMove'];
+        
+        const resetIdleTime = () => {
+            lastActivityTime = Date.now();
+            if (document.getElementById('sessionWarningModal')) {
+                document.getElementById('sessionWarningModal').classList.remove('active');
+            }
+        };
+
+        activityEvents.forEach(event => {
+            document.addEventListener(event, resetIdleTime, false);
+        });
+
+        // Add Warning Modal HTML if not exists
+        if (!document.getElementById('sessionWarningModal')) {
+            const warningHTML = `
+            <div class="admin-modal-overlay" id="sessionWarningModal" style="z-index: 99999;">
+                <div class="admin-modal" style="max-width: 450px; text-align: center; padding: 40px 20px;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #f59e0b; margin-bottom: 20px;"></i>
+                    <h2 style="margin: 0 0 10px 0; color: var(--blue-900);">Are you still there?</h2>
+                    <p style="color: var(--gray-600); margin-bottom: 25px;">You have been inactive for a while. For security reasons, you will be automatically logged out in 5 minutes unless you interact with the page.</p>
+                    <button class="btn btn-primary" onclick="document.getElementById('sessionWarningModal').classList.remove('active')">I'm still here</button>
+                </div>
+            </div>`;
+            document.body.insertAdjacentHTML('beforeend', warningHTML);
+        }
+
+        // Timer Check every second
+        setInterval(async () => {
+            const now = Date.now();
+            const sessionStart = parseInt(sessionStorage.getItem('adminSessionStart') || now.toString());
+            const idleTime = now - lastActivityTime;
+            const totalSessionTime = now - sessionStart;
+
+            // 1. Hard Limit Check (2 hours)
+            if (totalSessionTime >= HARD_LIMIT_MS) {
+                alert("Session expired: 2-hour maximum limit reached. Please log in again.");
+                sessionStorage.removeItem('adminSessionStart');
+                await supabase.auth.signOut();
+                window.location.reload();
+                return;
+            }
+
+            // 2. Idle Logout Check (15 mins)
+            if (idleTime >= IDLE_LOGOUT_MS) {
+                alert("You have been automatically logged out due to inactivity.");
+                sessionStorage.removeItem('adminSessionStart');
+                await supabase.auth.signOut();
+                window.location.reload();
+                return;
+            }
+
+            // 3. Idle Warning Check (10 mins)
+            if (idleTime >= IDLE_WARNING_MS && idleTime < IDLE_LOGOUT_MS) {
+                const modal = document.getElementById('sessionWarningModal');
+                if (modal && !modal.classList.contains('active')) {
+                    modal.classList.add('active');
+                }
+            }
+        }, 1000);
     }
 });
