@@ -224,35 +224,7 @@ peoTabs.forEach(tab => {
     });
 });
 
-// ALUMNI CAROUSEL
-let currentSlide = 0;
-const slides = document.querySelectorAll('.alumni-slide');
-const dots = document.querySelectorAll('.dot');
-let carouselTimer = null;
-
-function goToSlide(idx) {
-    slides.forEach(s => s.classList.remove('active'));
-    dots.forEach(d => d.classList.remove('active'));
-    currentSlide = (idx + slides.length) % slides.length;
-    if (slides[currentSlide]) slides[currentSlide].classList.add('active');
-    if (dots[currentSlide]) dots[currentSlide].classList.add('active');
-}
-
-dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-        goToSlide(parseInt(dot.dataset.idx));
-        resetCarouselTimer();
-    });
-});
-
-function startCarouselTimer() {
-    carouselTimer = setInterval(() => goToSlide(currentSlide + 1), 4000);
-}
-function resetCarouselTimer() {
-    clearInterval(carouselTimer);
-    startCarouselTimer();
-}
-if (slides.length > 0) startCarouselTimer();
+// ALUMNI CAROUSEL (Moved to dynamic alumni-feed.js module)
 
 // PHOTO CAROUSEL
 let photoCurrentSlide = 0;

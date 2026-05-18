@@ -28,6 +28,27 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>`;
         document.body.insertAdjacentHTML('beforeend', deleteModalHTML);
     }
+
+    // Inject Cropper Modal HTML
+    if (!document.getElementById('cropModal')) {
+        const cropModalHTML = `
+        <div class="admin-modal-overlay" id="cropModal" style="z-index: 10000;">
+            <div class="admin-modal" style="max-width: 600px; width: 100%;">
+                <div class="admin-modal-header">
+                    <h3><i class="fas fa-crop-alt"></i> Crop Image</h3>
+                    <button class="admin-modal-close" id="cropModalCloseBtn"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="admin-modal-body" style="height: 400px; display: flex; justify-content: center; align-items: center; background: #000; padding: 0;">
+                    <img id="cropperImage" style="max-width: 100%; max-height: 100%; display: block;">
+                </div>
+                <div class="admin-modal-footer">
+                    <button class="btn btn-outline" id="cropCancelBtn">Cancel</button>
+                    <button class="btn btn-primary" id="cropSaveBtn">Apply Crop</button>
+                </div>
+            </div>
+        </div>`;
+        document.body.insertAdjacentHTML('beforeend', cropModalHTML);
+    }
 });
 
 const AdminUtils = {
@@ -121,6 +142,129 @@ const AdminUtils = {
                 tabContents[index].classList.add('active');
             });
         });
+    },
+
+    /**
+     * Open the universal image cropper
+     * @param {File} file - The file to crop
+     * @param {number} aspectRatio - e.g. 1 for square, 16/9 for landscape
+     * @param {Function} onCropComplete - Callback receiving the cropped Blob
+     */
+    openCropper: function(file, aspectRatio, onCropComplete) {
+        const imageElement = document.getElementById('cropperImage');
+        const modal = document.getElementById('cropModal');
+        const saveBtn = document.getElementById('cropSaveBtn');
+        const cancelBtn = document.getElementById('cropCancelBtn');
+        const closeBtn = document.getElementById('cropModalCloseBtn');
+
+        if (!imageElement || !modal) {
+            console.error('Cropper UI not found. Ensure Cropper HTML is injected.');
+            return;
+        }
+
+        // Clean up previous instance if exists
+        if (this.currentCropper) {
+            this.currentCropper.destroy();
+            this.currentCropper = null;
+        }
+
+        // Load image data
+        const objectUrl = URL.createObjectURL(file);
+        
+        imageElement.onload = () => {
+            // Wait slightly for modal CSS transitions to ensure image has layout dimensions
+            setTimeout(() => {
+                if (this.currentCropper) {
+                    this.currentCropper.destroy();
+                }
+                this.currentCropper = new Cropper(imageElement, {
+                    aspectRatio: aspectRatio,
+                    viewMode: 1,
+                    autoCropArea: 1,
+                    background: false,
+                    zoomable: true,
+                });
+            }, 100); // 100ms delay to allow modal to become fully visible
+        };
+        
+        imageElement.src = objectUrl;
+
+        // Reset handlers
+        const cleanup = () => {
+            if (this.currentCropper) {
+                this.currentCropper.destroy();
+                this.currentCropper = null;
+            }
+            imageElement.src = '';
+            URL.revokeObjectURL(objectUrl);
+            this.closeModal('cropModal');
+        };
+
+        const handleSave = () => {
+            try {
+                if (!this.currentCropper) {
+                    alert("Cropper not initialized yet. Please wait a second and try again.");
+                    return;
+                }
+                
+                // Change button text to show it's working
+                newSaveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                newSaveBtn.disabled = true;
+
+                const canvas = this.currentCropper.getCroppedCanvas({
+                    maxWidth: 1024,
+                    maxHeight: 1024
+                });
+                
+                if (!canvas) {
+                    alert("Failed to get cropped canvas. Image might be invalid.");
+                    newSaveBtn.innerHTML = 'Apply Crop';
+                    newSaveBtn.disabled = false;
+                    return;
+                }
+                
+                canvas.toBlob((blob) => {
+                    if (!blob) {
+                        alert("Failed to compress image.");
+                        newSaveBtn.innerHTML = 'Apply Crop';
+                        newSaveBtn.disabled = false;
+                        return;
+                    }
+
+                    try {
+                        onCropComplete(blob);
+                    } catch (e) {
+                        alert("Error updating thumbnail: " + e.message);
+                    }
+                    cleanup();
+                    newSaveBtn.innerHTML = 'Apply Crop';
+                    newSaveBtn.disabled = false;
+                }, file.type || 'image/jpeg', 0.9);
+            } catch (err) {
+                alert("An unexpected error occurred: " + err.message);
+                newSaveBtn.innerHTML = 'Apply Crop';
+                newSaveBtn.disabled = false;
+            }
+        };
+
+        const handleCancel = () => {
+            cleanup();
+        };
+
+        // We must clone buttons to strip old event listeners
+        const newSaveBtn = saveBtn.cloneNode(true);
+        saveBtn.parentNode.replaceChild(newSaveBtn, saveBtn);
+        newSaveBtn.addEventListener('click', handleSave);
+
+        const newCancelBtn = cancelBtn.cloneNode(true);
+        cancelBtn.parentNode.replaceChild(newCancelBtn, cancelBtn);
+        newCancelBtn.addEventListener('click', handleCancel);
+        
+        const newCloseBtn = closeBtn.cloneNode(true);
+        closeBtn.parentNode.replaceChild(newCloseBtn, closeBtn);
+        newCloseBtn.addEventListener('click', handleCancel);
+
+        this.openModal('cropModal');
     }
 };
 

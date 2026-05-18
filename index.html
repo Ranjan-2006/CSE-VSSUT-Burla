@@ -611,10 +611,14 @@
                                 professional approach."</p>
                         </div>
                     </div>
-                    <div class="carousel-dots" id="alumniDots">
-                        <span class="dot active" data-idx="0"></span>
-                        <span class="dot" data-idx="1"></span>
-                        <span class="dot" data-idx="2"></span>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 15px;">
+                        <button id="alumniPrev" style="background: none; border: none; color: var(--gray-500); font-size: 1.2rem; cursor: pointer; padding: 5px; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--gray-500)'"><i class="fas fa-chevron-left"></i></button>
+                        <div class="carousel-dots" id="alumniDots" style="margin-top: 0;">
+                            <span class="dot active" data-idx="0"></span>
+                            <span class="dot" data-idx="1"></span>
+                            <span class="dot" data-idx="2"></span>
+                        </div>
+                        <button id="alumniNext" style="background: none; border: none; color: var(--gray-500); font-size: 1.2rem; cursor: pointer; padding: 5px; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--gray-500)'"><i class="fas fa-chevron-right"></i></button>
                     </div>
                 </div>
 
@@ -764,6 +768,9 @@
 
     <script src="js/admin_login.js"></script>
     <script type="module" src="js/admin-auth.js"></script>
+    <script type="module" src="js/news-feed.js"></script>
+    <script type="module" src="js/research-feed.js"></script>
+    <script type="module" src="js/alumni-feed.js"></script>
 </body>
 
 </html>

@@ -52,11 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             // If on the index page and user just signed in, redirect to dashboard
-            if (event === 'SIGNED_IN' && (window.location.pathname.endsWith('index.html') || window.location.pathname === '/')) {
-                setTimeout(() => {
-                    window.location.href = 'html/admin_dashboard.html';
-                }, 1000);
-            }
+            // We removed the auto-redirect here so it doesn't force you back to dashboard when you visit Home.
         } else {
             // No session exists
             if (adminPanel) adminPanel.style.display = 'none';
@@ -102,7 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.style.color = 'white';
                 
                 loginForm.reset();
-                // The onAuthStateChange will handle the redirect
+                // Explicitly redirect ONLY when they actively log in through the form
+                setTimeout(() => {
+                    window.location.href = 'html/admin_dashboard.html';
+                }, 1000);
 
             } catch (error) {
                 // Re-enable and reset button
