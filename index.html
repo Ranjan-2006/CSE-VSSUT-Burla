@@ -728,7 +728,7 @@
     <script src="script.js"></script>
 
     <!-- Dropdown Login Screen Overlay -->
-    <div class="login-screen" id="loginScreen">
+    <div class="login-screen" id="admin-login-overlay">
         <button class="close-login-btn" id="closeLoginBtn"><i class="fas fa-times"></i></button>
         <div class="login-card">
             <div class="login-header">
@@ -736,15 +736,15 @@
                 <h2>Admin Portal</h2>
                 <p>Sign in to access the department dashboard</p>
             </div>
-            <form class="login-form" id="adminLoginForm">
+            <form class="login-form" id="admin-login-form">
                 <div class="input-group">
-                    <label for="username"><i class="fas fa-user"></i> Username</label>
-                    <input type="text" id="username" placeholder="Enter admin username" required autocomplete="off">
+                    <label for="login-email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="login-email" placeholder="Enter admin email" required autocomplete="off">
                 </div>
                 <div class="input-group">
-                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <label for="login-password"><i class="fas fa-lock"></i> Password</label>
                     <div class="password-wrapper">
-                        <input type="password" id="password" placeholder="Enter admin password" required>
+                        <input type="password" id="login-password" placeholder="Enter admin password" required>
                         <i class="fas fa-eye toggle-password" id="togglePassword"></i>
                     </div>
                 </div>
@@ -754,7 +754,7 @@
                     </label>
                     <a href="#" class="forgot-pwd">Forgot password?</a>
                 </div>
-                <button type="submit" class="btn-login" id="loginBtn">Login <i class="fas fa-sign-in-alt"></i></button>
+                <button type="submit" class="btn-login" id="login-submit-btn">Login <i class="fas fa-sign-in-alt"></i></button>
             </form>
             <div class="login-footer">
                 <p>Authorized Personnel Only</p>
@@ -763,6 +763,7 @@
     </div>
 
     <script src="js/admin_login.js"></script>
+    <script type="module" src="js/admin-auth.js"></script>
 </body>
 
 </html>
