@@ -169,7 +169,7 @@ const AdminUtils = {
         }
 
         // Load image data
-        const objectUrl = URL.createObjectURL(file);
+        const objectUrl = window.URL.createObjectURL(file);
         
         imageElement.onload = () => {
             // Wait slightly for modal CSS transitions to ensure image has layout dimensions
@@ -196,7 +196,7 @@ const AdminUtils = {
                 this.currentCropper = null;
             }
             imageElement.src = '';
-            URL.revokeObjectURL(objectUrl);
+            window.URL.revokeObjectURL(objectUrl);
             this.closeModal('cropModal');
         };
 

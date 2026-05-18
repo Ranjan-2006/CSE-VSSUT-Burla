@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="../css/admin_login.css" />
     <link rel="icon" type="image/png" href="../assets/logos/CSE.png" />
-    <link rel="stylesheet" href="../css/courses.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
 </head>
 
 <body>
@@ -76,17 +76,16 @@
     <!-- ===== PAGE HERO ===== -->
     <section class="page-hero">
         <div class="container">
-            <h1>Research Projects</h1>
+            <h1>Sponsored Projects</h1>
             <p>Discover the funded research projects, government-sponsored initiatives, and industry collaborations driving innovation in our department.</p>
         </div>
     </section>
 
     <!-- ===== CONTENT ===== -->
-    <section class="courses-section">
+    <section class="page-content-section" style="padding: 60px 0; background: var(--gray-50);">
         <div class="container">
-            <div class="empty-state">
-                <i class="fas fa-project-diagram"></i>
-                <p>Project details are being compiled. Please check back soon.</p>
+            <div id="projects-list-container">
+                <!-- Dynamically populated by JS -->
             </div>
         </div>
     </section>
@@ -150,5 +149,6 @@
     </div>
     <script src="../js/admin_login.js"></script>
     <script type="module" src="../js/admin-auth.js"></script>
+    <script type="module" src="../js/projects-page.js"></script>
 </body>
 </html>

@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="../css/admin_login.css" />
     <link rel="icon" type="image/png" href="../assets/logos/CSE.png" />
-    <link rel="stylesheet" href="../css/courses.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+    <link rel="stylesheet" href="../css/faculty.css" />
 </head>
 
 <body>
@@ -82,14 +83,26 @@
     </section>
 
     <!-- ===== CONTENT ===== -->
-    <section class="courses-section">
+    <section class="page-content-section">
         <div class="container">
-            <div class="empty-state">
-                <i class="fas fa-id-card-alt"></i>
-                <p>Staff profiles are being updated. Please check back soon.</p>
+            <div id="facultyGrid" data-category="staff">
+                <!-- Dynamically populated by JS -->
             </div>
         </div>
     </section>
+
+    <!-- ===== FACULTY PROFILE MODAL ===== -->
+    <div class="faculty-modal-overlay" id="facultyProfileModal">
+        <div class="faculty-profile-modal">
+            <button class="modal-close-btn" onclick="closeProfileModal()"><i class="fas fa-times"></i></button>
+            <div class="profile-modal-header" id="modalProfileHeader">
+                <!-- Header content populated by JS -->
+            </div>
+            <div class="profile-modal-body" id="modalProfileBody">
+                <!-- Detailed fields populated by JS -->
+            </div>
+        </div>
+    </div>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer" id="contact">
@@ -150,5 +163,6 @@
     </div>
     <script src="../js/admin_login.js"></script>
     <script type="module" src="../js/admin-auth.js"></script>
+    <script type="module" src="../js/faculty-feed.js"></script>
 </body>
 </html>

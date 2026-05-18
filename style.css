@@ -742,7 +742,11 @@ button {
 /* HOD Card */
 .hod-card {
     padding: 32px;
-    animation: fadeUp 0.8s 0.4s ease both;
+}
+
+.hod-card:hover {
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15);
+    border-color: var(--blue-300);
 }
 
 .hod-header {
