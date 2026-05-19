@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <input type="checkbox" class="vid-showcase-toggle" data-id="${item.id}" ${item.showcase ? 'checked' : ''}>
                                 <span class="toggle-slider"></span>
                             </label>
-                            <button class="action-btn delete" onclick="deleteVideoItem(${item.id})" style="width: 32px; height: 32px; border-radius: 50%; border: none; background: #ef4444; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2);"><i class="fas fa-trash"></i></button>
+                            <button class="action-btn delete" onclick="deleteVideoItem('${item.id}')" style="width: 32px; height: 32px; border-radius: 50%; border: none; background: #ef4444; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2);"><i class="fas fa-trash"></i></button>
                         </div>
                         <div style="position: absolute; top: 0; left: 0; right: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent); padding: 8px; color: white; font-size: 0.8rem; font-weight: 600;">
                             ${item.message || 'No message'}

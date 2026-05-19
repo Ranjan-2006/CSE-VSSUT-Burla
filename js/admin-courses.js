@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                         </div>
                         <div class="data-item-actions">
-                            <button class="action-btn delete" onclick="deleteCourseItem(${item.id}, '${item.pdf_url}')" title="Delete"><i class="fas fa-trash"></i></button>
+                            <button class="action-btn delete" onclick="deleteCourseItem('${item.id}', '${item.pdf_url}')" title="Delete"><i class="fas fa-trash"></i></button>
                         </div>
                     </div>
                 `;

@@ -275,8 +275,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <td>${student.phone}</td>
                         <td>
                             <div class="row-actions">
-                                <button class="action-btn" title="View/Edit Profile" onclick="StudentAdmin.openProfileModal(${student.id})"><i class="fas fa-expand-arrows-alt"></i></button>
-                                <button class="action-btn delete" title="Delete" onclick="StudentAdmin.deleteStudent(${student.id}, '${student.photo_url || ''}')"><i class="fas fa-trash"></i></button>
+                                <button class="action-btn" title="View/Edit Profile" onclick="StudentAdmin.openProfileModal('${student.id}')"><i class="fas fa-expand-arrows-alt"></i></button>
+                                <button class="action-btn delete" title="Delete" onclick="StudentAdmin.deleteStudent('${student.id}', '${student.photo_url || ''}')"><i class="fas fa-trash"></i></button>
                             </div>
                         </td>
                     `;
@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         list.innerHTML = allClasses.map(c => `
             <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px;">
                 <span style="font-weight: 600; color: var(--blue-900);">Class of ${c.class_year}</span>
-                <button class="btn btn-outline" style="color: var(--red-500); border-color: var(--red-200); padding: 5px 10px;" onclick="deleteClass(${c.id}, '${c.class_year}')"><i class="fas fa-trash"></i></button>
+                <button class="btn btn-outline" style="color: var(--red-500); border-color: var(--red-200); padding: 5px 10px;" onclick="deleteClass('${c.id}', '${c.class_year}')"><i class="fas fa-trash"></i></button>
             </div>
         `).join('');
     }

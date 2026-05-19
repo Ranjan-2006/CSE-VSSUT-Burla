@@ -50,6 +50,10 @@ document.querySelectorAll('.has-dropdown > .nav-link').forEach(link => {
 document.querySelectorAll('.nav-links a').forEach(a => {
     a.addEventListener('click', () => {
         if (window.innerWidth <= 768) {
+            // Do not close nav menu if clicking a parent dropdown trigger
+            if (a.parentElement.classList.contains('has-dropdown')) {
+                return;
+            }
             navLinks.classList.remove('open');
             const spans = hamburger.querySelectorAll('span');
             spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });

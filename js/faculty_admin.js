@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Actually, we can load all 3 categories at once.
     
     // Inject Modal HTML
+    // Inject Modal HTML
     const modalHTML = `
     <div class="admin-modal-overlay" id="facultyModal">
         <div class="admin-modal" style="max-width: 700px;">
@@ -72,18 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     
                     <div style="display: flex; gap: 20px;">
-                        <div class="form-group" id="qualificationGroup" style="flex: 2;">
+                        <div class="form-group" id="qualificationGroup" style="flex: 1;">
                             <label>Qualification <span style="color:red;">*</span></label>
-                            <input type="text" id="facQualification" class="form-control" placeholder="e.g. Ph.D, M.Tech">
-                        </div>
-                        <div class="form-group" style="flex: 1;">
-                            <label>Gender <span style="color:red;">*</span></label>
-                            <select id="facGender" class="form-control" required>
-                                <option value="" disabled selected>Select</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Other</option>
-                            </select>
+                            <textarea id="facQualification" class="form-control" placeholder="e.g. Ph.D, M.Tech" style="min-height: 38px; height: 38px; resize: none;"></textarea>
                         </div>
                     </div>
 
@@ -103,17 +95,114 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <option value="Faculty Advisor">Faculty Advisor</option>
                                 </select>
                             </div>
-                            <div class="form-group"><label>Specialization</label><input type="text" id="facSpecialization" class="form-control"></div>
+                            
+                            <div class="form-group">
+                                <label>Specialization</label>
+                                <div class="tag-input-wrapper" style="border: 1px solid var(--gray-300); border-radius: 6px; padding: 6px; display: flex; flex-wrap: wrap; gap: 6px; background: var(--white);">
+                                    <div id="specialization-tags" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+                                    <input type="text" id="specialization-input" placeholder="Type and press Enter" style="border: none; outline: none; flex: 1; min-width: 150px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+                            
                             <div class="form-group"><label>Experience (Years)</label><input type="number" id="facExperience" class="form-control"></div>
-                            <div class="form-group"><label>Subjects Teaching</label><input type="text" id="facSubjects" class="form-control"></div>
-                            <div class="form-group"><label>Research Areas</label><textarea id="facResearchAreas" class="form-control" style="min-height: 60px;"></textarea></div>
-                            <div class="form-group"><label>Research Guidance</label><textarea id="facResearchGuidance" class="form-control" style="min-height: 60px;"></textarea></div>
-                            <div class="form-group"><label>Awards & Honors</label><textarea id="facAwards" class="form-control" style="min-height: 60px;"></textarea></div>
-                            <div class="form-group"><label>Projects & Publications</label><textarea id="facPublications" class="form-control" style="min-height: 60px;"></textarea></div>
-                            <div class="form-group"><label>Patents</label><textarea id="facPatents" class="form-control" style="min-height: 60px;"></textarea></div>
-                            <div class="form-group"><label>Books / Book Chapters</label><textarea id="facBooks" class="form-control" style="min-height: 60px;"></textarea></div>
-                            <div class="form-group"><label>Seminars Organized</label><textarea id="facSeminars" class="form-control" style="min-height: 60px;"></textarea></div>
-                            <div class="form-group"><label>Administrative Responsibilities</label><textarea id="facAdminRes" class="form-control" style="min-height: 60px;"></textarea></div>
+                            
+                            <div class="form-group" style="border: 1px solid var(--gray-200); padding: 12px; border-radius: 8px; background: var(--gray-50);">
+                                <label style="font-weight: 700; margin-bottom: 8px; display: block;">Subjects Teaching</label>
+                                <div id="subjects-group-list" style="margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px;"></div>
+                                <div style="border-top: 1px dashed var(--gray-300); padding-top: 10px; display: flex; flex-direction: column; gap: 8px;">
+                                    <div style="display: flex; gap: 10px;">
+                                        <select id="subject-level-select" class="form-control" style="flex: 1;">
+                                            <option value="Graduate Level">Graduate Level</option>
+                                            <option value="Post Graduate Level">Post Graduate Level</option>
+                                        </select>
+                                        <button type="button" class="btn btn-outline" style="padding: 5px 12px; font-size: 0.85rem;" onclick="addSubjectsGroup()">Add Group</button>
+                                    </div>
+                                    <textarea id="subject-list-textarea" class="form-control" placeholder="Enter subjects (one per line)" style="min-height: 60px; font-size: 0.9rem;"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Research Areas</label>
+                                <div class="tag-input-wrapper" style="border: 1px solid var(--gray-300); border-radius: 6px; padding: 6px; display: flex; flex-wrap: wrap; gap: 6px; background: var(--white);">
+                                    <div id="research-areas-tags" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+                                    <input type="text" id="research-areas-input" placeholder="Type and press Enter" style="border: none; outline: none; flex: 1; min-width: 150px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="border: 1px solid var(--gray-200); padding: 12px; border-radius: 8px; background: var(--gray-50);">
+                                <label style="font-weight: 700; margin-bottom: 8px; display: block;">Research Guidance</label>
+                                <div id="guidance-group-list" style="margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px;"></div>
+                                <div style="border-top: 1px dashed var(--gray-300); padding-top: 10px; display: flex; flex-direction: column; gap: 8px;">
+                                    <div style="display: flex; gap: 10px;">
+                                        <select id="guidance-degree-select" class="form-control" style="width: 120px;">
+                                            <option value="Ph.D">Ph.D</option>
+                                            <option value="M.Tech">M.Tech</option>
+                                            <option value="MCA">MCA</option>
+                                        </select>
+                                        <input type="text" id="guidance-summary-input" class="form-control" placeholder="Summary (e.g. 11 Awarded, 05 ongoing)" style="flex: 1;">
+                                        <button type="button" class="btn btn-outline" style="padding: 5px 12px; font-size: 0.85rem;" onclick="addGuidanceGroup()">Add</button>
+                                    </div>
+                                    <textarea id="guidance-candidates-textarea" class="form-control" placeholder="Enter candidates (one per line)" style="min-height: 60px; font-size: 0.9rem;"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Awards & Honors</label>
+                                <div class="tag-input-wrapper" style="border: 1px solid var(--gray-300); border-radius: 6px; padding: 6px; display: flex; flex-wrap: wrap; gap: 6px; background: var(--white);">
+                                    <div id="awards-tags" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+                                    <input type="text" id="awards-input" placeholder="Type and press Enter" style="border: none; outline: none; flex: 1; min-width: 150px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="border: 1px solid var(--gray-200); padding: 12px; border-radius: 8px; background: var(--gray-50);">
+                                <label style="font-weight: 700; margin-bottom: 8px; display: block;">Publications</label>
+                                <div id="publications-repeater-list" style="margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px;"></div>
+                                <div style="border-top: 1px dashed var(--gray-300); padding-top: 10px; display: flex; gap: 10px; align-items: flex-start;">
+                                    <select id="pub-type-select" class="form-control" style="width: 130px;">
+                                        <option value="International">International</option>
+                                        <option value="National">National</option>
+                                        <option value="Conference">Conference</option>
+                                    </select>
+                                    <textarea id="pub-citation-textarea" class="form-control" placeholder="Enter publication citation" style="flex: 1; min-height: 48px; font-size: 0.9rem;"></textarea>
+                                    <button type="button" class="btn btn-outline" style="padding: 5px 12px; font-size: 0.85rem; height: 38px;" onclick="addPublicationEntry()">Add</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="border: 1px solid var(--gray-200); padding: 12px; border-radius: 8px; background: var(--gray-50);">
+                                <label style="font-weight: 700; margin-bottom: 8px; display: block;">Patents</label>
+                                <div id="patents-repeater-list" style="margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px;"></div>
+                                <div style="border-top: 1px dashed var(--gray-300); padding-top: 10px; display: flex; gap: 10px; align-items: flex-start;">
+                                    <textarea id="patent-desc-textarea" class="form-control" placeholder="Enter patent description" style="flex: 1; min-height: 48px; font-size: 0.9rem;"></textarea>
+                                    <button type="button" class="btn btn-outline" style="padding: 5px 12px; font-size: 0.85rem; height: 38px;" onclick="addPatentEntry()">Add</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="border: 1px solid var(--gray-200); padding: 12px; border-radius: 8px; background: var(--gray-50);">
+                                <label style="font-weight: 700; margin-bottom: 8px; display: block;">Books / Book Chapters</label>
+                                <div id="books-repeater-list" style="margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px;"></div>
+                                <div style="border-top: 1px dashed var(--gray-300); padding-top: 10px; display: flex; gap: 10px; align-items: flex-start;">
+                                    <textarea id="book-citation-textarea" class="form-control" placeholder="Enter book citation" style="flex: 1; min-height: 48px; font-size: 0.9rem;"></textarea>
+                                    <button type="button" class="btn btn-outline" style="padding: 5px 12px; font-size: 0.85rem; height: 38px;" onclick="addBookEntry()">Add</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="border: 1px solid var(--gray-200); padding: 12px; border-radius: 8px; background: var(--gray-50);">
+                                <label style="font-weight: 700; margin-bottom: 8px; display: block;">Seminars Organized</label>
+                                <div id="seminars-repeater-list" style="margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px;"></div>
+                                <div style="border-top: 1px dashed var(--gray-300); padding-top: 10px; display: flex; gap: 10px; align-items: flex-start;">
+                                    <textarea id="seminar-desc-textarea" class="form-control" placeholder="Enter seminar description" style="flex: 1; min-height: 48px; font-size: 0.9rem;"></textarea>
+                                    <button type="button" class="btn btn-outline" style="padding: 5px 12px; font-size: 0.85rem; height: 38px;" onclick="addSeminarEntry()">Add</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Administrative Responsibilities</label>
+                                <div class="tag-input-wrapper" style="border: 1px solid var(--gray-300); border-radius: 6px; padding: 6px; display: flex; flex-wrap: wrap; gap: 6px; background: var(--white);">
+                                    <div id="admin-res-tags" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+                                    <input type="text" id="admin-res-input" placeholder="Type and press Enter" style="border: none; outline: none; flex: 1; min-width: 150px; font-size: 0.9rem;">
+                                </div>
+                            </div>
+
                             <div class="form-group"><label>Present Address</label><textarea id="facAddress" class="form-control" style="min-height: 60px;"></textarea></div>
                         </div>
                     </div>
@@ -168,24 +257,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 category: category,
                 name: document.getElementById('facName').value,
                 designation: document.getElementById('facDesignation').value,
-                email: document.getElementById('facEmail').value,
-                phone: document.getElementById('facPhone').value,
                 qualification: document.getElementById('facQualification').value,
-                gender: document.getElementById('facGender').value,
                 photo_url: photoUrl,
-                specialization: document.getElementById('facSpecialization').value,
-                experience: document.getElementById('facExperience').value,
-                subjects: document.getElementById('facSubjects').value,
-                research_areas: document.getElementById('facResearchAreas').value,
-                research_guidance: document.getElementById('facResearchGuidance').value,
-                awards: document.getElementById('facAwards').value,
-                publications: document.getElementById('facPublications').value,
-                patents: document.getElementById('facPatents').value,
-                books: document.getElementById('facBooks').value,
-                seminars: document.getElementById('facSeminars').value,
-                admin_responsibilities: document.getElementById('facAdminRes').value,
-                address: document.getElementById('facAddress').value,
                 special_role: document.getElementById('facSpecialRole').value,
+                experience: document.getElementById('facExperience').value || '',
+                contact: {
+                    email: document.getElementById('facEmail').value,
+                    phone: document.getElementById('facPhone').value,
+                    address: document.getElementById('facAddress').value,
+                },
+                specialization: window.currentFormArrays.specialization,
+                research_areas: window.currentFormArrays.research_areas,
+                awards: window.currentFormArrays.awards,
+                admin_responsibilities: window.currentFormArrays.admin_responsibilities,
+                subjects_taught: window.currentFormArrays.subjects_taught,
+                research_guidance: window.currentFormArrays.research_guidance,
+                publications: window.currentFormArrays.publications,
+                books: window.currentFormArrays.books,
+                patents: window.currentFormArrays.patents,
+                seminars: window.currentFormArrays.seminars,
             };
 
             // If this is set as HOD, unset HOD for everyone else
@@ -284,12 +374,12 @@ function createProfileCard(profile) {
                 </div>
             </div>
             <div class="profile-details">
-                <div><i class="fas fa-envelope"></i> ${profile.email || 'N/A'}</div>
-                <div><i class="fas fa-phone"></i> ${profile.phone || 'N/A'}</div>
+                <div><i class="fas fa-envelope"></i> ${profile.contact?.email || 'N/A'}</div>
+                <div><i class="fas fa-phone"></i> ${profile.contact?.phone || 'N/A'}</div>
             </div>
             <div class="profile-actions">
-                <button class="action-btn" title="Edit" onclick="FacultyAdmin.openEditModal(${profile.id})"><i class="fas fa-pen"></i></button>
-                <button class="action-btn delete" title="Delete" onclick="FacultyAdmin.deleteProfile(${profile.id})"><i class="fas fa-trash"></i></button>
+                <button class="action-btn" title="Edit" onclick="FacultyAdmin.openEditModal('${profile.id}')"><i class="fas fa-pen"></i></button>
+                <button class="action-btn delete" title="Delete" onclick="FacultyAdmin.deleteProfile('${profile.id}')"><i class="fas fa-trash"></i></button>
             </div>
         </div>
     `;
@@ -304,6 +394,20 @@ window.FacultyAdmin = {
         document.getElementById('facPhotoInput').value = '';
         document.getElementById('facExistingPhoto').value = '';
         window.croppedFacultyPhotoBlob = null; // Clear old blobs on open
+        
+        // Reset currentFormArrays
+        window.currentFormArrays = {
+            specialization: [],
+            research_areas: [],
+            awards: [],
+            admin_responsibilities: [],
+            subjects_taught: [],
+            research_guidance: [],
+            publications: [],
+            books: [],
+            patents: [],
+            seminars: []
+        };
         
         // Determine active tab to conditionally show optional fields
         const isStaff = document.getElementById('tab-staff').classList.contains('active');
@@ -325,23 +429,24 @@ window.FacultyAdmin = {
             
             document.getElementById('facName').value = profile.name || '';
             document.getElementById('facDesignation').value = profile.designation || '';
-            document.getElementById('facEmail').value = profile.email || '';
-            document.getElementById('facPhone').value = profile.phone || '';
+            document.getElementById('facEmail').value = profile.contact?.email || '';
+            document.getElementById('facPhone').value = profile.contact?.phone || '';
             document.getElementById('facQualification').value = profile.qualification || '';
-            document.getElementById('facGender').value = profile.gender || '';
             document.getElementById('facSpecialRole').value = profile.special_role || '';
-            document.getElementById('facSpecialization').value = profile.specialization || '';
             document.getElementById('facExperience').value = profile.experience || '';
-            document.getElementById('facSubjects').value = profile.subjects || '';
-            document.getElementById('facResearchAreas').value = profile.research_areas || '';
-            document.getElementById('facResearchGuidance').value = profile.research_guidance || '';
-            document.getElementById('facAwards').value = profile.awards || '';
-            document.getElementById('facPublications').value = profile.publications || '';
-            document.getElementById('facPatents').value = profile.patents || '';
-            document.getElementById('facBooks').value = profile.books || '';
-            document.getElementById('facSeminars').value = profile.seminars || '';
-            document.getElementById('facAdminRes').value = profile.admin_responsibilities || '';
-            document.getElementById('facAddress').value = profile.address || '';
+            document.getElementById('facAddress').value = profile.contact?.address || '';
+
+            // Handle optional array fields
+            window.currentFormArrays.specialization = Array.isArray(profile.specialization) ? [...profile.specialization] : [];
+            window.currentFormArrays.research_areas = Array.isArray(profile.research_areas) ? [...profile.research_areas] : [];
+            window.currentFormArrays.awards = Array.isArray(profile.awards) ? [...profile.awards] : [];
+            window.currentFormArrays.admin_responsibilities = Array.isArray(profile.admin_responsibilities) ? [...profile.admin_responsibilities] : [];
+            window.currentFormArrays.subjects_taught = Array.isArray(profile.subjects_taught) ? [...profile.subjects_taught] : [];
+            window.currentFormArrays.research_guidance = Array.isArray(profile.research_guidance) ? [...profile.research_guidance] : [];
+            window.currentFormArrays.publications = Array.isArray(profile.publications) ? [...profile.publications] : [];
+            window.currentFormArrays.books = Array.isArray(profile.books) ? [...profile.books] : [];
+            window.currentFormArrays.patents = Array.isArray(profile.patents) ? [...profile.patents] : [];
+            window.currentFormArrays.seminars = Array.isArray(profile.seminars) ? [...profile.seminars] : [];
 
             if (profile.photo_url) {
                 document.getElementById('facExistingPhoto').value = profile.photo_url;
@@ -350,6 +455,24 @@ window.FacultyAdmin = {
                 img.style.display = 'block';
             }
         }
+
+        // Initialize and render tag inputs/editors
+        initTagInput('specialization-input', 'specialization-tags', 'specialization');
+        initTagInput('research-areas-input', 'research-areas-tags', 'research_areas');
+        initTagInput('awards-input', 'awards-tags', 'awards');
+        initTagInput('admin-res-input', 'admin-res-tags', 'admin_responsibilities');
+
+        renderTags('specialization-tags', 'specialization');
+        renderTags('research-areas-tags', 'research_areas');
+        renderTags('awards-tags', 'awards');
+        renderTags('admin-res-tags', 'admin_responsibilities');
+
+        renderSubjectsTaughtEditor();
+        renderGuidanceEditor();
+        renderPublicationsEditor();
+        renderBooksEditor();
+        renderPatentsEditor();
+        renderSeminarsEditor();
 
         AdminUtils.openModal('facultyModal');
     },
@@ -388,4 +511,308 @@ window.FacultyAdmin = {
             }
         });
     }
+};
+
+// Generic tag input manager
+window.currentFormArrays = {
+    specialization: [],
+    research_areas: [],
+    awards: [],
+    admin_responsibilities: [],
+    subjects_taught: [],
+    research_guidance: [],
+    publications: [],
+    books: [],
+    patents: [],
+    seminars: []
+};
+
+window.initTagInput = function(inputId, tagsId, fieldKey) {
+    const input = document.getElementById(inputId);
+    const tagsContainer = document.getElementById(tagsId);
+    
+    if (!input || !tagsContainer) return;
+
+    // Remove existing listeners by replacing the element
+    const newInput = input.cloneNode(true);
+    input.parentNode.replaceChild(newInput, input);
+
+    newInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const val = newInput.value.trim();
+            if (val && !window.currentFormArrays[fieldKey].includes(val)) {
+                window.currentFormArrays[fieldKey].push(val);
+                window.renderTags(tagsId, fieldKey);
+                newInput.value = '';
+            }
+        }
+    });
+};
+
+window.renderTags = function(tagsId, fieldKey) {
+    const tagsContainer = document.getElementById(tagsId);
+    if (!tagsContainer) return;
+    
+    tagsContainer.innerHTML = window.currentFormArrays[fieldKey].map((val, i) => `
+        <span class="tag-chip" style="background: var(--blue-50); color: var(--blue-700); border: 1px solid var(--blue-200); border-radius: 4px; padding: 2px 8px; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 5px; margin: 2px;">
+            ${val}
+            <i class="fas fa-times" style="cursor: pointer; font-size: 0.75rem;" onclick="removeFormArrayTag('${fieldKey}', ${i}, '${tagsId}')"></i>
+        </span>
+    `).join('');
+};
+
+window.removeFormArrayTag = function(fieldKey, index, tagsId) {
+    window.currentFormArrays[fieldKey].splice(index, 1);
+    window.renderTags(tagsId, fieldKey);
+};
+
+window.renderSubjectsTaughtEditor = function() {
+    const listContainer = document.getElementById('subjects-group-list');
+    if (!listContainer) return;
+    
+    if (window.currentFormArrays.subjects_taught.length === 0) {
+        listContainer.innerHTML = '<div style="color: var(--gray-500); font-style: italic; font-size: 0.9rem;">No subjects added yet.</div>';
+        return;
+    }
+    
+    listContainer.innerHTML = window.currentFormArrays.subjects_taught.map((group, i) => `
+        <div style="background: var(--white); border: 1px solid var(--gray-200); padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+            <div style="flex: 1;">
+                <strong style="color: var(--blue-900); font-size: 0.9rem;">${group.level}</strong>
+                <div style="font-size: 0.8rem; color: var(--gray-600); margin-top: 2px;">${group.subjects.join(', ')}</div>
+            </div>
+            <button type="button" class="action-btn delete" style="padding: 4px; font-size: 0.8rem; height: auto; width: auto; min-width: unset; border: none; background: transparent; color: var(--red-600);" onclick="removeSubjectsGroup(${i})"><i class="fas fa-trash"></i></button>
+        </div>
+    `).join('');
+};
+
+window.addSubjectsGroup = function() {
+    const levelSelect = document.getElementById('subject-level-select');
+    const textarea = document.getElementById('subject-list-textarea');
+    if (!levelSelect || !textarea) return;
+    
+    const level = levelSelect.value;
+    const subjects = textarea.value.split('\n').map(s => s.trim()).filter(Boolean);
+    
+    if (subjects.length === 0) {
+        alert('Please enter at least one subject.');
+        return;
+    }
+    
+    const existing = window.currentFormArrays.subjects_taught.find(g => g.level === level);
+    if (existing) {
+        existing.subjects = [...new Set([...existing.subjects, ...subjects])];
+    } else {
+        window.currentFormArrays.subjects_taught.push({ level, subjects });
+    }
+    
+    textarea.value = '';
+    window.renderSubjectsTaughtEditor();
+};
+
+window.removeSubjectsGroup = function(index) {
+    window.currentFormArrays.subjects_taught.splice(index, 1);
+    window.renderSubjectsTaughtEditor();
+};
+
+window.renderGuidanceEditor = function() {
+    const listContainer = document.getElementById('guidance-group-list');
+    if (!listContainer) return;
+    
+    if (window.currentFormArrays.research_guidance.length === 0) {
+        listContainer.innerHTML = '<div style="color: var(--gray-500); font-style: italic; font-size: 0.9rem;">No research guidance added yet.</div>';
+        return;
+    }
+    
+    listContainer.innerHTML = window.currentFormArrays.research_guidance.map((g, i) => `
+        <div style="background: var(--white); border: 1px solid var(--gray-200); padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+            <div style="flex: 1;">
+                <strong style="color: var(--blue-900); font-size: 0.9rem;">${g.degree} — ${g.summary || ''}</strong>
+                <div style="font-size: 0.8rem; color: var(--gray-600); margin-top: 2px;">Candidates: ${g.candidates.join(', ')}</div>
+            </div>
+            <button type="button" class="action-btn delete" style="padding: 4px; font-size: 0.8rem; height: auto; width: auto; min-width: unset; border: none; background: transparent; color: var(--red-600);" onclick="removeGuidanceGroup(${i})"><i class="fas fa-trash"></i></button>
+        </div>
+    `).join('');
+};
+
+window.addGuidanceGroup = function() {
+    const degreeSelect = document.getElementById('guidance-degree-select');
+    const summaryInput = document.getElementById('guidance-summary-input');
+    const candidatesTextarea = document.getElementById('guidance-candidates-textarea');
+    if (!degreeSelect || !summaryInput || !candidatesTextarea) return;
+    
+    const degree = degreeSelect.value;
+    const summary = summaryInput.value.trim();
+    const candidates = candidatesTextarea.value.split('\n').map(s => s.trim()).filter(Boolean);
+    
+    if (!summary && candidates.length === 0) {
+        alert('Please enter a summary or at least one candidate.');
+        return;
+    }
+    
+    window.currentFormArrays.research_guidance.push({ degree, summary, candidates });
+    
+    summaryInput.value = '';
+    candidatesTextarea.value = '';
+    window.renderGuidanceEditor();
+};
+
+window.removeGuidanceGroup = function(index) {
+    window.currentFormArrays.research_guidance.splice(index, 1);
+    window.renderGuidanceEditor();
+};
+
+window.renderPublicationsEditor = function() {
+    const listContainer = document.getElementById('publications-repeater-list');
+    if (!listContainer) return;
+    
+    if (window.currentFormArrays.publications.length === 0) {
+        listContainer.innerHTML = '<div style="color: var(--gray-500); font-style: italic; font-size: 0.9rem;">No publications added yet.</div>';
+        return;
+    }
+    
+    listContainer.innerHTML = window.currentFormArrays.publications.map((pub, i) => `
+        <div style="background: var(--white); border: 1px solid var(--gray-200); padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">
+            <div style="flex: 1;">
+                <span class="tag-chip" style="background: var(--blue-50); color: var(--blue-700); border: 1px solid var(--blue-200); border-radius: 4px; padding: 1px 6px; font-size: 0.75rem; font-weight: 600;">${pub.type}</span>
+                <div style="font-size: 0.85rem; color: var(--gray-800); margin-top: 4px; line-height: 1.4;">${pub.citation}</div>
+            </div>
+            <button type="button" class="action-btn delete" style="padding: 4px; font-size: 0.8rem; margin-top: 2px; height: auto; width: auto; min-width: unset; border: none; background: transparent; color: var(--red-600);" onclick="removePublicationEntry(${i})"><i class="fas fa-trash"></i></button>
+        </div>
+    `).join('');
+};
+
+window.addPublicationEntry = function() {
+    const typeSelect = document.getElementById('pub-type-select');
+    const citationTextarea = document.getElementById('pub-citation-textarea');
+    if (!typeSelect || !citationTextarea) return;
+    
+    const type = typeSelect.value;
+    const citation = citationTextarea.value.trim();
+    
+    if (!citation) {
+        alert('Please enter a citation.');
+        return;
+    }
+    
+    window.currentFormArrays.publications.push({ type, citation });
+    citationTextarea.value = '';
+    window.renderPublicationsEditor();
+};
+
+window.removePublicationEntry = function(index) {
+    window.currentFormArrays.publications.splice(index, 1);
+    window.renderPublicationsEditor();
+};
+
+window.renderBooksEditor = function() {
+    const listContainer = document.getElementById('books-repeater-list');
+    if (!listContainer) return;
+    
+    if (window.currentFormArrays.books.length === 0) {
+        listContainer.innerHTML = '<div style="color: var(--gray-500); font-style: italic; font-size: 0.9rem;">No books added yet.</div>';
+        return;
+    }
+    
+    listContainer.innerHTML = window.currentFormArrays.books.map((book, i) => `
+        <div style="background: var(--white); border: 1px solid var(--gray-200); padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">
+            <div style="flex: 1; font-size: 0.85rem; color: var(--gray-800); line-height: 1.4;">${book.citation}</div>
+            <button type="button" class="action-btn delete" style="padding: 4px; font-size: 0.8rem; height: auto; width: auto; min-width: unset; border: none; background: transparent; color: var(--red-600);" onclick="removeBookEntry(${i})"><i class="fas fa-trash"></i></button>
+        </div>
+    `).join('');
+};
+
+window.addBookEntry = function() {
+    const textarea = document.getElementById('book-citation-textarea');
+    if (!textarea) return;
+    
+    const citation = textarea.value.trim();
+    if (!citation) {
+        alert('Please enter a book citation.');
+        return;
+    }
+    
+    window.currentFormArrays.books.push({ citation });
+    textarea.value = '';
+    window.renderBooksEditor();
+};
+
+window.removeBookEntry = function(index) {
+    window.currentFormArrays.books.splice(index, 1);
+    window.renderBooksEditor();
+};
+
+window.renderPatentsEditor = function() {
+    const listContainer = document.getElementById('patents-repeater-list');
+    if (!listContainer) return;
+    
+    if (window.currentFormArrays.patents.length === 0) {
+        listContainer.innerHTML = '<div style="color: var(--gray-500); font-style: italic; font-size: 0.9rem;">No patents added yet.</div>';
+        return;
+    }
+    
+    listContainer.innerHTML = window.currentFormArrays.patents.map((p, i) => `
+        <div style="background: var(--white); border: 1px solid var(--gray-200); padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">
+            <div style="flex: 1; font-size: 0.85rem; color: var(--gray-800); line-height: 1.4;">${p.description}</div>
+            <button type="button" class="action-btn delete" style="padding: 4px; font-size: 0.8rem; height: auto; width: auto; min-width: unset; border: none; background: transparent; color: var(--red-600);" onclick="removePatentEntry(${i})"><i class="fas fa-trash"></i></button>
+        </div>
+    `).join('');
+};
+
+window.addPatentEntry = function() {
+    const textarea = document.getElementById('patent-desc-textarea');
+    if (!textarea) return;
+    
+    const description = textarea.value.trim();
+    if (!description) {
+        alert('Please enter a patent description.');
+        return;
+    }
+    
+    window.currentFormArrays.patents.push({ description });
+    textarea.value = '';
+    window.renderPatentsEditor();
+};
+
+window.removePatentEntry = function(index) {
+    window.currentFormArrays.patents.splice(index, 1);
+    window.renderPatentsEditor();
+};
+
+window.renderSeminarsEditor = function() {
+    const listContainer = document.getElementById('seminars-repeater-list');
+    if (!listContainer) return;
+    
+    if (window.currentFormArrays.seminars.length === 0) {
+        listContainer.innerHTML = '<div style="color: var(--gray-500); font-style: italic; font-size: 0.9rem;">No seminars added yet.</div>';
+        return;
+    }
+    
+    listContainer.innerHTML = window.currentFormArrays.seminars.map((s, i) => `
+        <div style="background: var(--white); border: 1px solid var(--gray-200); padding: 8px 12px; border-radius: 6px; display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">
+            <div style="flex: 1; font-size: 0.85rem; color: var(--gray-800); line-height: 1.4;">${s.description}</div>
+            <button type="button" class="action-btn delete" style="padding: 4px; font-size: 0.8rem; height: auto; width: auto; min-width: unset; border: none; background: transparent; color: var(--red-600);" onclick="removeSeminarEntry(${i})"><i class="fas fa-trash"></i></button>
+        </div>
+    `).join('');
+};
+
+window.addSeminarEntry = function() {
+    const textarea = document.getElementById('seminar-desc-textarea');
+    if (!textarea) return;
+    
+    const description = textarea.value.trim();
+    if (!description) {
+        alert('Please enter a seminar description.');
+        return;
+    }
+    
+    window.currentFormArrays.seminars.push({ description });
+    textarea.value = '';
+    window.renderSeminarsEditor();
+};
+
+window.removeSeminarEntry = function(index) {
+    window.currentFormArrays.seminars.splice(index, 1);
+    window.renderSeminarsEditor();
 };
