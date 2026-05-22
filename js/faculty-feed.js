@@ -57,11 +57,15 @@ function renderProfiles(container, profiles) {
         const email = profile.contact?.email || '';
         const phone = profile.contact?.phone || '';
 
+        const displayRole = profile.category === 'guest'
+            ? (profile.qualification || profile.designation || '')
+            : (profile.designation || '');
+
         html += `
             <div class="faculty-card">
                 ${photoHtml}
                 <h3>${profile.name}</h3>
-                <p class="faculty-designation">${profile.designation || ''}</p>
+                <p class="faculty-designation">${displayRole}</p>
                 ${profile.special_role ? `<div class="faculty-role-badge"><i class="fas fa-star"></i> ${profile.special_role}</div>` : ''}
                 <div class="faculty-contacts">
                     ${email ? `<div><i class="fas fa-envelope"></i> ${email}</div>` : ''}

@@ -41,12 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
                                             const img = document.getElementById('facPreview');
                                             img.src = url;
                                             img.style.display = 'block';
+                                            const removeBtn = document.getElementById('btn-remove-photo');
+                                            if (removeBtn) removeBtn.style.display = 'inline-block';
                                         });
                                     }">
                                 <span class="file-upload-text" style="font-size: 0.8rem;"><i class="fas fa-camera"></i></span>
-                                <img id="facPreview" style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; display: none; border-radius: 50%;">
+                                <img id="facPreview" style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; display: none; border-radius: 50%; pointer-events: none;">
                             </div>
                             <small style="color: var(--gray-500); display: block; margin-top: 8px;">Profile Photo</small>
+                            <button type="button" class="btn btn-outline" id="btn-remove-photo" style="padding: 4px 10px; font-size: 0.75rem; margin-top: 8px; display: none; font-weight: 500; border-color: var(--gray-300);" onclick="FacultyAdmin.removeModalPhoto()">
+                                <i class="fas fa-trash-alt" style="color: var(--red-500);"></i> Remove
+                            </button>
                             <input type="hidden" id="facExistingPhoto">
                         </div>
                         <div style="flex: 1;">
@@ -359,18 +364,26 @@ async function loadProfiles() {
 
 function createProfileCard(profile) {
     const photoHtml = profile.photo_url 
-        ? `<img src="${profile.photo_url}" style="width:100%; height:100%; object-fit:cover;">` 
-        : `<i class="fas fa-user" style="font-size: 2rem; color: var(--gray-400); margin: 15px 18px;"></i>`;
+        ? `<img src="${profile.photo_url}" id="avatar-img-${profile.id}" style="width:100%; height:100%; object-fit:cover;">` 
+        : `<i class="fas fa-user" id="avatar-placeholder-${profile.id}" style="font-size: 2rem; color: var(--gray-400); margin: 15px 18px;"></i>`;
+
+    const displayRole = profile.category === 'guest' 
+        ? (profile.qualification || profile.designation || '') 
+        : (profile.designation || '');
 
     return `
         <div class="profile-card">
             <div class="profile-header">
-                <div class="profile-img-wrap">
+                <div class="profile-img-wrap" id="avatar-wrap-${profile.id}">
                     ${photoHtml}
+                    <div class="avatar-hover-overlay" onclick="document.getElementById('avatarInput-${profile.id}').click(); event.stopPropagation();" title="Change Avatar">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <input type="file" id="avatarInput-${profile.id}" accept="image/*" style="display:none;" onchange="FacultyAdmin.directAvatarChange('${profile.id}', this)">
                 </div>
                 <div class="profile-info">
                     <h3 class="profile-name">${profile.name} ${profile.special_role ? `<span style="color:#f59e0b; font-size:0.8rem; margin-left:5px;"><i class="fas fa-star"></i> ${profile.special_role}</span>` : ''}</h3>
-                    <p class="profile-role">${profile.designation}</p>
+                    <p class="profile-role">${displayRole}</p>
                 </div>
             </div>
             <div class="profile-details">
@@ -394,6 +407,8 @@ window.FacultyAdmin = {
         document.getElementById('facPhotoInput').value = '';
         document.getElementById('facExistingPhoto').value = '';
         window.croppedFacultyPhotoBlob = null; // Clear old blobs on open
+        const removeBtn = document.getElementById('btn-remove-photo');
+        if (removeBtn) removeBtn.style.display = 'none';
         
         // Reset currentFormArrays
         window.currentFormArrays = {
@@ -427,11 +442,25 @@ window.FacultyAdmin = {
         if (id && window.facultyDataMap && window.facultyDataMap[id]) {
             const profile = window.facultyDataMap[id];
             
+            let modalDesignation = profile.designation || '';
+            let modalQualification = profile.qualification || '';
+
+            // Self-correct guest lecturers who stored qualification in designation field
+            if (profile.category === 'guest') {
+                if (!modalQualification && modalDesignation) {
+                    const lowerDes = modalDesignation.toLowerCase();
+                    if (!lowerDes.includes('guest') && !lowerDes.includes('lecturer') && !lowerDes.includes('faculty')) {
+                        modalQualification = modalDesignation;
+                        modalDesignation = 'Guest Lecturer';
+                    }
+                }
+            }
+
             document.getElementById('facName').value = profile.name || '';
-            document.getElementById('facDesignation').value = profile.designation || '';
+            document.getElementById('facDesignation').value = modalDesignation;
             document.getElementById('facEmail').value = profile.contact?.email || '';
             document.getElementById('facPhone').value = profile.contact?.phone || '';
-            document.getElementById('facQualification').value = profile.qualification || '';
+            document.getElementById('facQualification').value = modalQualification;
             document.getElementById('facSpecialRole').value = profile.special_role || '';
             document.getElementById('facExperience').value = profile.experience || '';
             document.getElementById('facAddress').value = profile.contact?.address || '';
@@ -453,6 +482,7 @@ window.FacultyAdmin = {
                 const img = document.getElementById('facPreview');
                 img.src = profile.photo_url;
                 img.style.display = 'block';
+                if (removeBtn) removeBtn.style.display = 'inline-block';
             }
         }
 
@@ -510,6 +540,93 @@ window.FacultyAdmin = {
                 alert('Failed to delete profile: ' + error.message);
             }
         });
+    },
+
+    removeModalPhoto: function() {
+        document.getElementById('facPreview').src = '';
+        document.getElementById('facPreview').style.display = 'none';
+        document.getElementById('facPhotoInput').value = '';
+        document.getElementById('facExistingPhoto').value = '';
+        window.croppedFacultyPhotoBlob = null;
+        const removeBtn = document.getElementById('btn-remove-photo');
+        if (removeBtn) removeBtn.style.display = 'none';
+    },
+
+    directAvatarChange: function(id, fileInput) {
+        if (!fileInput.files || !fileInput.files[0]) return;
+        const file = fileInput.files[0];
+        const profile = window.facultyDataMap && window.facultyDataMap[id];
+        if (!profile) {
+            console.error('Profile not found for ID:', id);
+            return;
+        }
+
+        // Open the cropper
+        AdminUtils.openCropper(file, 1, async (croppedBlob) => {
+            // Show a loading spinner inside the avatar container
+            const avatarWrap = document.getElementById(`avatar-wrap-${id}`);
+            const originalHTML = avatarWrap.innerHTML;
+            
+            // Set loading spinner styling
+            avatarWrap.innerHTML = `
+                <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--gray-100); border-radius: 50%;">
+                    <i class="fas fa-spinner fa-spin" style="color: var(--blue-600); font-size: 1.2rem;"></i>
+                </div>
+            `;
+
+            try {
+                const category = profile.category || 'faculty';
+                const fileExt = 'png'; // Cropper outputs PNG
+                const fileName = `${category}-${Date.now()}.${fileExt}`;
+
+                // Upload cropped image
+                const { data: uploadData, error: uploadError } = await supabase.storage
+                    .from('faculty_photos')
+                    .upload(fileName, croppedBlob);
+
+                if (uploadError) throw uploadError;
+
+                const { data: publicUrlData } = supabase.storage
+                    .from('faculty_photos')
+                    .getPublicUrl(fileName);
+
+                const newPhotoUrl = publicUrlData.publicUrl;
+
+                // Update database
+                const { error: updateError } = await supabase
+                    .from('faculty')
+                    .update({ photo_url: newPhotoUrl })
+                    .eq('id', id);
+
+                if (updateError) throw updateError;
+
+                // Delete old photo if it exists
+                if (profile.photo_url) {
+                    try {
+                        const urlObj = new URL(profile.photo_url);
+                        const pathParts = urlObj.pathname.split('/');
+                        const oldFileName = pathParts[pathParts.length - 1];
+                        await supabase.storage.from('faculty_photos').remove([oldFileName]);
+                    } catch (imgErr) {
+                        console.warn("Could not delete old image from bucket", imgErr);
+                    }
+                }
+
+                AdminUtils.showToast('Avatar updated successfully!');
+                
+                // Reload list to show updated card
+                loadProfiles();
+
+            } catch (error) {
+                console.error('Error updating direct avatar:', error);
+                AdminUtils.showToast('Failed to update avatar: ' + error.message, 'error');
+                // Restore original card html on error
+                avatarWrap.innerHTML = originalHTML;
+            }
+        });
+
+        // Reset the input file so it can trigger change event again if same file is picked
+        fileInput.value = '';
     }
 };
 
