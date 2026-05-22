@@ -61,6 +61,8 @@ function renderProfiles(container, profiles) {
             ? (profile.qualification || profile.designation || '')
             : (profile.designation || '');
 
+        const isStaff = profile.category === 'staff';
+
         html += `
             <div class="faculty-card">
                 ${photoHtml}
@@ -71,9 +73,11 @@ function renderProfiles(container, profiles) {
                     ${email ? `<div><i class="fas fa-envelope"></i> ${email}</div>` : ''}
                     ${phone ? `<div><i class="fas fa-phone"></i> ${phone}</div>` : ''}
                 </div>
+                ${!isStaff ? `
                 <button class="btn-view-profile" onclick="window.openProfileModal('${profile.id}')">
                     View Profile <i class="fas fa-arrow-right"></i>
                 </button>
+                ` : ''}
             </div>
         `;
     });
@@ -89,6 +93,7 @@ window.openProfileModal = function(id) {
 
     const modalOverlay = document.getElementById('facultyProfileModal');
     const modalBody = document.getElementById('modalProfileBody');
+    if (!modalOverlay || !modalBody) return;
 
     // Header
     const photoHtml = profile.photo_url 
