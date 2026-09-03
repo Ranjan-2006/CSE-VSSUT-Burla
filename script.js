@@ -129,6 +129,53 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+// ALUMNI MODAL
+function openAlumniModal() {
+    var modal = document.getElementById('alumniModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (typeof window.loadAllAlumniModal === 'function') {
+            window.loadAllAlumniModal();
+        }
+        var searchInput = document.getElementById('alumniModalSearch');
+        if (searchInput) {
+            setTimeout(() => searchInput.focus(), 150);
+        }
+    }
+}
+window.openAlumniModal = openAlumniModal;
+
+function closeAlumniModal() {
+    var modal = document.getElementById('alumniModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+window.closeAlumniModal = closeAlumniModal;
+
+document.addEventListener('DOMContentLoaded', () => {
+    var alumniClose = document.getElementById('alumniModalClose');
+    if (alumniClose) {
+        alumniClose.addEventListener('click', closeAlumniModal);
+    }
+    var alumniOverlay = document.getElementById('alumniModal');
+    if (alumniOverlay) {
+        alumniOverlay.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAlumniModal();
+            }
+        });
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeAlumniModal();
+        }
+    });
+});
+
+
 // PUBLICATIONS MODAL
 document.addEventListener('DOMContentLoaded', () => {
     const pubViewAllBtn = document.getElementById('viewPubBtn');
@@ -234,7 +281,7 @@ peoTabs.forEach(tab => {
 
 // SCROLL REVEAL
 const revealElements = document.querySelectorAll(
-    '.card-glass: .prog-card, .vm-card, .outcome-card, .area-chip, .gallery-block, .about-text, .hod-card'
+    '.card-glass, .prog-card, .vm-card, .outcome-card, .area-chip, .gallery-block, .about-text, .hod-card'
 );
 
 revealElements.forEach(el => {

@@ -4,14 +4,16 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard | Department of CSE</title>
+    <title>Distinguished Alumni | CSE — VSSUT Burla</title>
+    <meta name="description" content="Discover our distinguished alumni from the Department of Computer Science & Engineering at VSSUT Burla making an impact worldwide." />
     <link rel="stylesheet" href="../style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="../css/admin_components.css" />
-    <link rel="stylesheet" href="../css/admin_dashboard.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin_login.css" />
     <link rel="icon" type="image/png" href="../assets/logos/CSE.png" />
+    <link rel="stylesheet" href="../css/pages.css" />
+    <link rel="stylesheet" href="../css/faculty.css" />
+    <link rel="stylesheet" href="../css/admin_components.css" />
 </head>
 
 <body>
@@ -21,7 +23,7 @@
         <div class="topbar-inner">
             <span><i class="fas fa-envelope"></i> registrar@vssut.ac.in</span>
             <span><i class="fas fa-phone"></i> +91 8480441756</span>
-            <a href="#" id="admin-logout-btn" class="topbar-admin"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            <a href="#" id="openAdminLogin" class="topbar-admin"><i class="fas fa-user-shield"></i> Admin Login</a>
         </div>
     </div>
 
@@ -49,7 +51,6 @@
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#" class="nav-link active">Admin Dashboard</a></li>
                 <li><a href="../index.html" class="nav-link">Home</a></li>
                 <li class="has-dropdown">
                     <a href="javascript:void(0)" class="nav-link">Academics <i class="fas fa-chevron-down"></i></a>
@@ -78,73 +79,39 @@
         </div>
     </nav>
 
-    <!-- ===== ADMIN BODY ===== -->
-    <main class="admin-main">
+    <!-- ===== PAGE HERO ===== -->
+    <section class="page-hero">
         <div class="container">
-            <div class="admin-header">
-                <h2>Admin Control Panel</h2>
-                <p>Welcome back. Select a module below to manage department content and records.</p>
-            </div>
-            
-            <div class="admin-grid">
-                <!-- 1. News and Events -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.1s;" onclick="AdminModals.openNews(event)">
-                    <div class="admin-card-icon"><i class="fas fa-newspaper"></i></div>
-                    <h3>News & Events</h3>
-                    <p>Add, modify, or delete the latest departmental news and upcoming events.</p>
-                </a>
-                
-                <!-- 2. Research & Development -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.2s;" onclick="AdminModals.openResearch(event)">
-                    <div class="admin-card-icon"><i class="fas fa-flask"></i></div>
-                    <h3>Research & Development</h3>
-                    <p>Manage R&D projects, ongoing publications, and research details.</p>
-                </a>
-                
-                <!-- 3. Distinguished Alumni -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.3s;" onclick="AdminModals.openAlumni(event)">
-                    <div class="admin-card-icon"><i class="fas fa-user-graduate"></i></div>
-                    <h3>Distinguished Alumni</h3>
-                    <p>Add or update profiles of notable alumni and their achievements.</p>
-                </a>
-                
-                <!-- 4. Photo Gallery -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.4s;" onclick="AdminModals.openGallery(event)">
-                    <div class="admin-card-icon"><i class="fas fa-images"></i></div>
-                    <h3>Photo Gallery</h3>
-                    <p>Upload new event photos or manage existing albums in the gallery.</p>
-                </a>
-                
-                <!-- 5. Video Gallery -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.45s;" onclick="AdminModals.openVideos(event)">
-                    <div class="admin-card-icon"><i class="fab fa-youtube"></i></div>
-                    <h3>Video Gallery</h3>
-                    <p>Manage YouTube embeds and display main page videos.</p>
-                </a>
-                
-                <!-- 5. Course Structure -->
-                <a href="#" class="admin-card fade-in" style="animation-delay: 0.5s;" onclick="AdminModals.openCourseStructure(event)">
-                    <div class="admin-card-icon"><i class="fas fa-book"></i></div>
-                    <h3>Course Structure</h3>
-                    <p>Update academic syllabi and upload new course structure PDFs.</p>
-                </a>
-                
-                <!-- 6. Faculty & Staff -->
-                <a href="faculty-admin.html" class="admin-card fade-in" style="animation-delay: 0.6s;">
-                    <div class="admin-card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                    <h3>Faculty & Staff</h3>
-                    <p>Add or manage faculty members, guest lecturers, and support staff.</p>
-                </a>
-                
-                <!-- 7. Student Directory -->
-                <a href="student-admin.html" class="admin-card fade-in" style="animation-delay: 0.7s;">
-                    <div class="admin-card-icon"><i class="fas fa-users"></i></div>
-                    <h3>Student Directory</h3>
-                    <p>Maintain student records, update batch details, and manage directories.</p>
-                </a>
-            </div>
+            <h1>Distinguished Alumni</h1>
+            <p>Celebrating the achievements, leadership, and global impact of Department of Computer Science & Engineering graduates.</p>
         </div>
-    </main>
+    </section>
+
+    <!-- ===== CONTENT ===== -->
+    <section class="page-content-section" style="padding: 60px 0; background: var(--gray-50);">
+        <div class="container">
+
+            <!-- Filter & Search Bar -->
+            <div style="background: var(--white); border-radius: 14px; padding: 20px 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.04); margin-bottom: 36px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
+                <div style="position: relative; flex: 1; min-width: 260px;">
+                    <i class="fas fa-search" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--gray-400);"></i>
+                    <input type="text" id="alumniSearchInput" placeholder="Search by name, organization, designation..." style="width: 100%; padding: 12px 16px 12px 44px; border: 1px solid var(--gray-200); border-radius: 30px; font-size: 0.92rem; font-family: inherit; background: var(--gray-50); outline: none; transition: border-color 0.2s;">
+                </div>
+                <div style="display: flex; gap: 12px; align-items: center;">
+                    <label for="alumniBatchFilter" style="font-weight: 600; color: var(--blue-900); font-size: 0.9rem;"><i class="fas fa-filter" style="color: var(--blue-500);"></i> Batch:</label>
+                    <select id="alumniBatchFilter" style="padding: 10px 18px; border: 1px solid var(--gray-200); border-radius: 24px; font-size: 0.9rem; font-family: inherit; background: var(--white); color: var(--gray-700); cursor: pointer; outline: none;">
+                        <option value="all">All Batches</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Alumni Grid Container -->
+            <div id="alumni-page-grid" class="alumni-modal-grid" style="grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px;">
+                <!-- Populated dynamically by JS -->
+            </div>
+
+        </div>
+    </section>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer" id="contact">
@@ -152,15 +119,12 @@
             <div class="container footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo-row">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/Veer_Surendra_Sai_University_of_Technology_logo.png/200px-Veer_Surendra_Sai_University_of_Technology_logo.png"
-                            alt="VSSUT" class="footer-logo" onerror="this.style.display='none'" />
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/Veer_Surendra_Sai_University_of_Technology_logo.png/200px-Veer_Surendra_Sai_University_of_Technology_logo.png" alt="VSSUT" class="footer-logo" onerror="this.style.display='none'" />
                         <div>
                             <h4>Department of Computer Science & Engineering</h4>
-                            <p>VSSUT Burla</p>
+                            <p>Veer Surendra Sai University of Technology, Burla</p>
                         </div>
                     </div>
-                    <p class="footer-desc">Veer Surendra Sai University of Technology, Burla, Sambalpur — 768018,
-                        Odisha, India.</p>
                     <div class="footer-social">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -169,7 +133,6 @@
                         <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-
                 <div class="footer-col">
                     <h5>Quick Links</h5>
                     <ul class="quick-links-list">
@@ -187,11 +150,10 @@
                         <li><a href="javascript:void(0)">CDCE</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-col footer-contact">
                     <h5>Location</h5>
                     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><span>Burla, Sambalpur — 768018, Odisha</span></div>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3712.2620432708322!2d83.90142197450959!3d21.497453571517276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a213da4ec28af2d%3A0xb33a5cc9af8c33c7!2sVeer%20Surendra%20Sai%20University%20of%20Technology!5e0!3m2!1sen!2sin!4v1779050085492!5m2!1sen!2sin" width="100%" height="240" style="border:0; border-radius: 8px; margin-top: 12px; pointer-events: auto;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3712.2620432708322!2d83.90142197450959!3d21.497453571517276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a213da4ec28af2d%3A0xb33a5cc9af8c33c7!2sVeer%20Surendra%20Sai%20University%20of%20Technology!5e0!3m2!1sen!2sin!4v1779050085492!5m2!1sen!2sin" width="100%" height="200" style="border:0; border-radius: 8px; margin-top: 12px; pointer-events: auto;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -202,22 +164,45 @@
         </div>
     </footer>
 
-    <!-- Back to top -->
     <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
-
-    <!-- Cropper.js JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <script src="../script.js"></script>
-    <script src="../js/admin_utils.js"></script>
-    <script src="../js/admin_modals.js"></script>
-    <!-- Module Scripts -->
-    <script type="module" src="../js/admin-events.js"></script>
-    <script type="module" src="../js/admin-research.js"></script>
-    <script type="module" src="../js/admin-alumni.js"></script>
-    <script type="module" src="../js/admin-gallery.js"></script>
-    <script type="module" src="../js/admin-videos.js"></script>
-    <script type="module" src="../js/admin-courses.js"></script>
-    <script type="module" src="../js/admin-auth.js"></script>
-</body>
 
+    <!-- Dropdown Login Screen Overlay -->
+    <div class="login-screen" id="admin-login-overlay">
+        <button class="close-login-btn" id="closeLoginBtn"><i class="fas fa-times"></i></button>
+        <div class="login-card">
+            <div class="login-header">
+                <div class="shield-icon"><i class="fas fa-user-shield"></i></div>
+                <h2>Admin Portal</h2>
+                <p>Sign in to access the department dashboard</p>
+            </div>
+            <form class="login-form" id="admin-login-form">
+                <div class="input-group">
+                    <label for="login-email"><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="login-email" placeholder="Enter admin email" required autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="login-password"><i class="fas fa-lock"></i> Password</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="login-password" placeholder="Enter admin password" required>
+                        <i class="fas fa-eye toggle-password" id="togglePassword"></i>
+                    </div>
+                </div>
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" class="forgot-pwd">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn-login" id="login-submit-btn">Login <i class="fas fa-sign-in-alt"></i></button>
+            </form>
+            <div class="login-footer">
+                <p>Authorized Personnel Only</p>
+            </div>
+        </div>
+    </div>
+    <script src="../js/admin_login.js"></script>
+    <script type="module" src="../js/admin-auth.js"></script>
+    <script type="module" src="../js/alumni-page.js"></script>
+</body>
 </html>
